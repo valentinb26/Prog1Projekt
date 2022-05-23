@@ -14,5 +14,11 @@ public class main {
         System.out.println("bibidibabidi");
 
         //janne antworte hierdrafu bitte :)
+
+        test();
+    }
+
+    public static void test(){
+            System.out.println("methode funktioniert vale");
     }
 }
