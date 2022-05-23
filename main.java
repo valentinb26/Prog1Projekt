@@ -3,6 +3,7 @@ public class Main {
 
         System.out.println("Hallöchen und willkommen");
         test();
+        System.out.println("probe von fetch");
     }
 
     public static void test(){
