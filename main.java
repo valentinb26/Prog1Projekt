@@ -1,20 +1,7 @@
-public class main {
+public class Main {
     public static void main(String[] args) {
-        System.out.println("hallo janne aendert dies falls du es sehen kannst :D");
-        System.out.println("hallo janne ändert dies falls du es sehen kannst");
-        System.out.println("ich mach was");
-        System.out.println("habe was in intelij geändert");
-        System.out.println("nächste kleine änderung");
 
-        //änderung von janne vscode
-        //vale ändert was
-
-        System.out.println("So ein dreck.");
-
-        System.out.println("bibidibabidi");
-
-        //janne antworte hierdrafu bitte :)
-
+        System.out.println("Hallöchen und willkommen");
         test();
     }
 
@@ -23,6 +10,5 @@ public class main {
             for(int i = 0; i<10;i++) {
                 System.out.println(i);
             }
-            System.out.println("janne bracuht dringend eine schweinespezi");
     }
 }
