@@ -3,4 +3,4 @@ Moin moin
 Moin moin
 Moin Moin
 
-wir arbeiten hier an unserm IT Projekt und haben Spaß mit java :)
+wir arbeiten hier an unserm IT Projekt und haben Spaß mit C :)
