@@ -20,5 +20,8 @@ public class main {
 
     public static void test(){
             System.out.println("methode funktioniert vale");
+            for(int i = 0; i<10;i++) {
+                System.out.println(i);
+            }
     }
 }
