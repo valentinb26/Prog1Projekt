@@ -7,5 +7,6 @@ public class main {
         System.out.println("nächste kleine änderung");
 
         //änderung von janne vscode
+        System.out.println("bibidibabidi");
     }
 }
