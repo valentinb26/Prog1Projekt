@@ -8,6 +8,9 @@ public class main {
 
         //änderung von janne vscode
         //vale ändert was
+
+        System.out.println("So ein dreck.");
+
         System.out.println("bibidibabidi");
     }
 }
