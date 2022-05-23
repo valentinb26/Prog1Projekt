@@ -19,6 +19,6 @@ public class main {
     }
 
     public static void test(){
-            System.out.println("methode funktioniert vale");
+            System.out.println("janne bracuht dringend eine schweinespezi");
     }
 }
