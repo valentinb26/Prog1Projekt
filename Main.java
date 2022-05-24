@@ -3,9 +3,6 @@ public class Main {
         Menu.printMenu();
         Termin t = new Termin(new Datum(10, 10, 2022), new Uhrzeit(10, 30), "Friseur", "Bisschen Haare schneiden..");
         System.out.println(t.toString());
-        /*System.out.println("Hallöchen und willkommen");
-        test();
-        System.out.println("probe von fetch");*/
     }
 
     public static void test(){
@@ -16,6 +13,5 @@ public class Main {
             // noch ein Test
             final char CRLF = '\n';
             // vielleicht geht das ja...
-            //was wird das kollega????
     }
 }
