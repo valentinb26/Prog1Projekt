@@ -1,9 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("Hallöchen und willkommen");
+        Menu.printMenu();
+        Termin t = new Termin(new Datum(10, 10, 2022), new Uhrzeit(10, 30), "Friseur", "Bisschen Haare schneiden..");
+        System.out.println(t.toString());
+        /*System.out.println("Hallöchen und willkommen");
         test();
-        System.out.println("probe von fetch");
+        System.out.println("probe von fetch");*/
     }
 
     public static void test(){
