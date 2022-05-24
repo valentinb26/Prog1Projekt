@@ -36,7 +36,13 @@ public class Verwaltung {
     }
 
     // Termin löschen
+    public static boolean terminLoeschen() {
 
+        // true:    erfolgreich
+        // false:   nicht -||-
+
+        return false;
+    }
     // Termin bearbeiten
 
     
