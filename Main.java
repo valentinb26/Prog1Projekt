@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -11,5 +13,8 @@ public class Main {
             for(int i = 0; i<10;i++) {
                 System.out.println(i);
             }
+            // noch ein Test
+            final char CRLF = '\n';
+            // vielleicht geht das ja...
     }
 }
