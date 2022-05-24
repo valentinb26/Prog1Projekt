@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 public class Verwaltung {
     
     // Liste der Termine: 
-
+    public ArrayList<Termin> termine = new ArrayList<>(); // vielleicht auch ne Stacklist
 
     // Methoden vorerst static
 
@@ -17,7 +19,7 @@ public class Verwaltung {
         // Termine nach der Suche bspw. ausgeben lassen.
     }
     // Termin suchen
-        // Terminsuche nach String, gibt ID zurück.
+        // Terminsuche nach String, gibt ID(s) zurück.
     public int[] terminSuchen() {
         int[] ids; // Array der gefundenen IDs
         // Nach Name suchen
@@ -44,6 +46,9 @@ public class Verwaltung {
         return false;
     }
     // Termin bearbeiten
+    public static Termin terminBearbeiten() {
 
+        return null;
+    }
     
 }
