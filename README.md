@@ -15,6 +15,3 @@ Datenstruktur :
 Verwaltung Liste :
     -remove : suche Termin, gib Stelle in Liste, entferne stelle / arraylist rückt nächstes element nach
     -get : suche Termin, geben stelle in liste, bekommen Termin
-
-    https://go.codetogether.com/#/75f6dbd1-2d65-4eba-927f-a4d5c634152d/rOTaNI5DUXxiOW6FCM8oM4 (on clipboard)
-
