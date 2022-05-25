@@ -44,10 +44,14 @@ public class Menu {
                 //in arbeit
             }
             case 6 -> {
-                System.out.println("TEMPERROR nummer: " + ui);
+                System.out.println(repeat1 + ui + " (Hilfe)");
 
             }
-            case 7 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 7 -> {
+                System.out.println(repeat1 + ui + " (Beenden)");
+                System.out.println("Auf Weidersehen :)");
+
+            }
             default -> {
                 System.out.println("keine gültige Nummer! Versuchs nochmal :)");
                 inputHauptMenu(sc);
