@@ -10,9 +10,7 @@ public class Verwaltung {
     /*
     P U B L I C
     */
-
-    // Methoden vorerst static
-
+    
     // Termin einsehen
     public static void terminEinsehen(Termin t) {
         System.out.println(t);
