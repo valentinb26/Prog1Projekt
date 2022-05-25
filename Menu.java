@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Menu {
+    static final String prompt = ">\t";
     // Menue-Zeugs
 
     public static void printMenu() {
@@ -16,7 +17,7 @@ public class Menu {
         System.out.println("\t(7) Beenden");
 
         //prompt
-        System.out.print(">\t");
+        System.out.print(prompt);
 
         // Eingabe
         // Eingabeverarbeitung
@@ -39,7 +40,11 @@ public class Menu {
             case 5 -> System.out.println("TEMPERROR nummer: " + ui);
             case 6 -> System.out.println("TEMPERROR nummer: " + ui);
             case 7 -> System.out.println("TEMPERROR nummer: " + ui);
-            default -> System.out.println("keine gültige Nummer!");
+            default -> {
+                System.out.println("keine gültige Nummer! Versuchs nochmal :)");
+                System.out.print(prompt);
+                inputHauptMenu(sc);
+            }
         }
     }
 }
