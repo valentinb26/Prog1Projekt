@@ -27,12 +27,25 @@ public class Verwaltung {
     }
     // Termin suchen
         // Terminsuche nach String, gibt ID(s) zurück.
-    public int[] terminSuchen() {
-        int[] ids; // Array der gefundenen IDs
+    public int[] terminSuchen(String value) {
+        int[] ids = new int[termine.size()]; // Array der gefundenen IDs
+        int idIndex = 0;
         // Nach Name suchen
+        for(int i = 0; i < termine.size(); i++) {
+            if(termine.get(i).getName().contains(value)) {
+                System.out.println("TERMIN GEFUNDEN.");
+                ids[idIndex] = termine.get(i).getID();
+                idIndex++;
+            }
+        }
+        // Nach Datum
+        /*
+        for(int i = 0; i < termine.size(); i++) {
 
-        // Nach Beschreibung suchen
-
+        }*/
+        for(int i = 0; i < ids.length; i++) {
+            System.out.println(ids[i]);
+        }
         // nach jeder übereinstimmenden Zeichenkette entsprechende ID an Array anhängen
 
         return null;
@@ -62,8 +75,6 @@ public class Verwaltung {
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
         return null;
     }
-    
-
     // Termin löschen
     public static boolean terminLoeschen() {
 
