@@ -10,13 +10,7 @@ public class Main {
         Menu.inputHauptMenu(userInput);
 
         Termin t = new Termin(new Datum(10, 10, 2022), new Uhrzeit(10, 30), "Friseur", "Bisschen Haare schneiden..");
-        Menu.inputTerminEinsehen(t);
-        //System.out.println(t.toString());
-
-
-        Verwaltung.terminErstellen(sc);
-        Verwaltung.terminErstellen(sc);
-        Verwaltung.terminErstellen(sc);
+        Termin t2 = new Termin(new Datum(11, 10, 2022), new Uhrzeit(10, 32), "Frisur", "Haare kuerzen..");
 
         Verwaltung.termineEinsehen();
         sc.close();
