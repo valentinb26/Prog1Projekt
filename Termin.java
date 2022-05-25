@@ -18,6 +18,14 @@ public class Termin {
         id++;
     }
 
+
+    public String getName() {
+        return this.name;
+    }
+    public int getID() {
+        return this.terminId;
+    }
+
     @Override
     public String toString() {
         return "Termin: " + this.name.toUpperCase() + "\n"
