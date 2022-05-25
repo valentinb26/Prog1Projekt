@@ -21,19 +21,32 @@ public class Menu {
         System.out.print(PROMPT);
         int ui = sc.nextInt();
         final String repeat1 ="Von ihnen gewählter Menüpunkt: ";
+
         switch (ui) {
             case 1 -> {
                 System.out.println(repeat1 + ui+" (Termin einsehen)");
                 Verwaltung.termineEinsehen();
             }
             case 2 -> {
-                System.out.println( repeat1 + ui);
+                System.out.println( repeat1 + ui + " (Termin erstellen)");
                 Verwaltung.terminErstellen(sc);
             }
-            case 3 -> System.out.println("TEMPERROR nummer: " + ui);
-            case 4 -> System.out.println("TEMPERROR nummer: " + ui);
-            case 5 -> System.out.println("TEMPERROR nummer: " + ui);
-            case 6 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 3 -> {
+                System.out.println(repeat1 + ui + " (Termin suchen)");
+                //Verwaltung.terminSuchen();
+            }
+            case 4 -> {
+                System.out.println(repeat1 + ui + " (Termin bearbeiten)");
+                Verwaltung.terminBearbeiten();
+            }
+            case 5 -> {
+                System.out.println(repeat1 + ui + " (Ansicht)");
+                //in arbeit
+            }
+            case 6 -> {
+                System.out.println("TEMPERROR nummer: " + ui);
+
+            }
             case 7 -> System.out.println("TEMPERROR nummer: " + ui);
             default -> {
                 System.out.println("keine gültige Nummer! Versuchs nochmal :)");
