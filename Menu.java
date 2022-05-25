@@ -19,30 +19,15 @@ public class Menu {
     }
 
     public static void inputMenu(int ui){
-        switch (ui){
-            case 1:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 2:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 3:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 4:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 5:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 6:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 7:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            default:
-                System.out.println("keine gültige Nummer!");
+        switch (ui) {
+            case 1 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 2 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 3 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 4 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 5 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 6 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 7 -> System.out.println("TEMPERROR nummer: " + ui);
+            default -> System.out.println("keine gültige Nummer!");
         }
     }
 }
