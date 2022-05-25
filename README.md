@@ -13,7 +13,7 @@ Datenstruktur :
     -Termin hat ID
 
 Verwaltung Liste :
-    -remove : suche Termin, gib Stelle in Liste, entferne stelle
+    -remove : suche Termin, gib Stelle in Liste, entferne stelle / arraylist rückt nächstes element nach
     -get : suche Termin, geben stelle in liste, bekommen Termin
 
 
