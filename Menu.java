@@ -18,7 +18,7 @@ public class Menu {
         // Ausführen
     }
 
-    public static void inputMenu(int ui){
+    public static void inputHauptMenu(int ui){
         switch (ui) {
             case 1 -> System.out.println("TEMPERROR nummer: " + ui);
             case 2 -> System.out.println("TEMPERROR nummer: " + ui);
