@@ -36,7 +36,6 @@ public class Menu {
             case 7 -> System.out.println("TEMPERROR nummer: " + ui);
             default -> {
                 System.out.println("keine gültige Nummer! Versuchs nochmal :)");
-                System.out.print(prompt);
                 inputHauptMenu(sc);
             }
         }
