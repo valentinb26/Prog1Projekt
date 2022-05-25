@@ -4,10 +4,8 @@ public class Datum {
     private int jahr;
 
     public Datum(int tag, int monat, int jahr) {
-
         // Checken, ob Tag zu Monat passt. Eventuell 29. Februar im Schaltjahr.
-        // Sonst Exception.
-
+        // Sonst Exception
         this.tag = tag;
         this.monat = monat;
         this.jahr = jahr;

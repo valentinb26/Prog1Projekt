@@ -12,6 +12,9 @@ public class Menu {
         System.out.println("\t(6) Hilfe");
         System.out.println("\t(7) Beenden");
         
+        
+
+        
 
         // Eingabe
         // Eingabeverarbeitung

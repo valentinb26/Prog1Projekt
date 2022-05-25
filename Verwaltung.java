@@ -1,18 +1,22 @@
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Verwaltung {
     
+    // Felder, Variablen:
     // Liste der Termine: 
-    public ArrayList<Termin> termine = new ArrayList<>(); // vielleicht auch ne Stacklist
-
+    //private static ArrayList<Termin> termine = new ArrayList<>(); // vielleicht auch ne Stacklist
+    private static Map<Integer, Termin> termine;
+    /*
+    PUBLIC
+    */
     // Methoden vorerst static
-
-
 
     // Termin einsehen
     public static void terminEinsehen(Termin t) {
-            System.out.println(t);
+        
+        System.out.println(t);
     }
 
     // Mehrere Termine einsehen
@@ -49,6 +53,9 @@ public class Verwaltung {
         System.out.printf("%-20s", "Beschreibung: \n\t");
         String beschr = sc.nextLine();
 
+        // Termin zur Liste hinzufügen
+        termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
+
         sc.close();
         return null;
     }
@@ -66,6 +73,28 @@ public class Verwaltung {
     public static Termin terminBearbeiten() {
 
         return null;
+    }
+
+    /*
+    PRIVATE
+    */
+
+    private static Datum convertToDatum(String dat) {
+        // TT.MM.JJJJ
+        String[] parts = dat.split(".");
+
+        int day   = Integer.parseInt(parts[0]);
+        int month = Integer.parseInt(parts[1]);
+        int year  = Integer.parseInt(parts[2]);
+        return new Datum(day, month, year);
+    }
+
+    private static Uhrzeit convertToUhrzeit(String uhrzeit) {
+        String[] parts = uhrzeit.split(":");
+
+        int hours   = Integer.parseInt(parts[0]);
+        int minutes = Integer.parseInt(parts[1]);
+        return new Uhrzeit(hours, minutes);
     }
     
 }
