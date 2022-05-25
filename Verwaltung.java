@@ -37,17 +37,13 @@ public class Verwaltung {
         // Termin muss irgendwo in Liste gespeichert werden.
 
         // Eingabe Datum in DD.MM.YYYY
-        System.out.print("Datum: \nDD.MM.YYYY\r");
-        Scanner sc = new Scanner(System.in);
-        sc.nextLine();
+        System.out.print("Datum: DD.MM.YYYY");
 
         // Eingabe Uhrzeit in HH:MM
 
         // Eingabe Name:
 
         // Eingabe Beschreibung:
-        
-        sc.close();
         return null;
     }
     
