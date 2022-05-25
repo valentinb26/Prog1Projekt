@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Verwaltung {
     
@@ -34,8 +35,22 @@ public class Verwaltung {
     // Termin erstellen
     public static Termin terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
+
+        // Eingabe Datum in DD.MM.YYYY
+        System.out.print("Datum: \nDD.MM.YYYY\r");
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
+
+        // Eingabe Uhrzeit in HH:MM
+
+        // Eingabe Name:
+
+        // Eingabe Beschreibung:
+        
+        sc.close();
         return null;
     }
+    
 
     // Termin löschen
     public static boolean terminLoeschen() {
