@@ -6,8 +6,8 @@ public class Verwaltung {
     
     // Felder, Variablen:
     // Liste der Termine: 
-    //private static ArrayList<Termin> termine = new ArrayList<>(); // vielleicht auch ne Stacklist
-    private static Map<Integer, Termin> termine;
+    private static ArrayList<Termin> termine = new ArrayList<>(); // vielleicht auch ne Stacklist
+    
     /*
     PUBLIC
     */
