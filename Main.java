@@ -2,12 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Menu.printMenu();
 
-        Scanner sc = new Scanner(System.in);
-
         int userInput = sc.nextInt();
-        Menu.inputHauptMenu(userInput);
+        Menu.inputHauptMenu(userInput,sc);
 
         Termin t = new Termin(new Datum(10, 10, 2022), new Uhrzeit(10, 30), "Friseur", "Bisschen Haare schneiden..");
         Termin t2 = new Termin(new Datum(11, 10, 2022), new Uhrzeit(10, 32), "Frisur", "Haare kuerzen..");

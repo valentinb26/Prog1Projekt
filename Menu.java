@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Menu {
     // Menue-Zeugs
 
@@ -21,13 +23,17 @@ public class Menu {
         // Ausführen
     }
 
-    public static void inputHauptMenu(int ui){
+    public static void inputHauptMenu(int ui, Scanner sc){
         switch (ui) {
             case 1 -> {
                 System.out.println("Von ihnen gewählte Menüpunkt: " + ui+" (Termin einsehen)");
                 Verwaltung.termineEinsehen();
             }
-            case 2 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 2 -> {
+                System.out.println("TEMPERROR nummer: " + ui);
+                Verwaltung.terminErstellen(sc);
+            }
+
             case 3 -> System.out.println("TEMPERROR nummer: " + ui);
             case 4 -> System.out.println("TEMPERROR nummer: " + ui);
             case 5 -> System.out.println("TEMPERROR nummer: " + ui);
@@ -36,4 +42,7 @@ public class Menu {
             default -> System.out.println("keine gültige Nummer!");
         }
     }
+
+
+
 }
