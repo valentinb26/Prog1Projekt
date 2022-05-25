@@ -23,7 +23,7 @@ public class Menu {
 
     public static void inputHauptMenu(int ui){
         switch (ui) {
-            case 1 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 1 -> System.out.println("Von ihnen gewählte Menüpunkt: " + ui+" (Termin einsehen)");
             case 2 -> System.out.println("TEMPERROR nummer: " + ui);
             case 3 -> System.out.println("TEMPERROR nummer: " + ui);
             case 4 -> System.out.println("TEMPERROR nummer: " + ui);
@@ -32,5 +32,9 @@ public class Menu {
             case 7 -> System.out.println("TEMPERROR nummer: " + ui);
             default -> System.out.println("keine gültige Nummer!");
         }
+    }
+
+    public static void inputTerminEinsehen(Termin t){
+        System.out.println(t.toString());
     }
 }
