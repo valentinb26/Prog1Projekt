@@ -19,7 +19,10 @@ public class Menu {
 
     public static void inputHauptMenu(int ui) {
         switch (ui) {
-            case 1 -> System.out.println("Von ihnen gewählte Menüpunkt: " + ui+" (Termin einsehen)");
+            case 1 -> {
+                System.out.println("Von ihnen gewählte Menüpunkt: " + ui+" (Termin einsehen)");
+                Verwaltung.termineEinsehen();
+            }
             case 2 -> System.out.println("TEMPERROR nummer: " + ui);
             case 3 -> System.out.println("TEMPERROR nummer: " + ui);
             case 4 -> System.out.println("TEMPERROR nummer: " + ui);
