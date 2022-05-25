@@ -1,11 +1,17 @@
 # IF1_ProjektGruppe2
-Moin moin
-Moin moin
-Moin Moin
 
-wir arbeiten hier an unserm IT Projekt und haben Spaß mit C :)
-aber java ist auch eine Insel
-C ist auch eine schöne Insel.
-https://go.codetogether.com/#/81b4e116-9966-4096-b7e8-751984a075a1/fN52M5s2l08LnTlfHBh9yN
 
-https://go.codetogether.com/#/75f6dbd1-2d65-4eba-927f-a4d5c634152d/3g1iSyxlDhJSe0jQVzK0ka 
+
+
+Ideen Pool :
+Datenstruktur :
+
+    -arrayList durchgehen
+    -suche nach Name und Datum
+    -gibt id
+    -ID soll eindeutig für Termin sein
+    -Termin hat ID
+
+Verwaltung Liste :
+    -remove : suche Termin, gib Stelle in Liste, entferne stelle
+    -get : suche Termin, geben stelle in liste, bekommen Termin
