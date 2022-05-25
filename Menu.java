@@ -20,13 +20,14 @@ public class Menu {
     public static void inputHauptMenu(Scanner sc){
         System.out.print(PROMPT);
         int ui = sc.nextInt();
+        final String repeat1 ="Von ihnen gewählter Menüpunkt: ";
         switch (ui) {
             case 1 -> {
-                System.out.println("Von ihnen gewählte Menüpunkt: " + ui+" (Termin einsehen)");
+                System.out.println(repeat1 + ui+" (Termin einsehen)");
                 Verwaltung.termineEinsehen();
             }
             case 2 -> {
-                System.out.println("TEMPERROR nummer: " + ui);
+                System.out.println( repeat1 + ui);
                 Verwaltung.terminErstellen(sc);
             }
             case 3 -> System.out.println("TEMPERROR nummer: " + ui);
@@ -36,7 +37,6 @@ public class Menu {
             case 7 -> System.out.println("TEMPERROR nummer: " + ui);
             default -> {
                 System.out.println("keine gültige Nummer! Versuchs nochmal :)");
-                System.out.print(prompt);
                 inputHauptMenu(sc);
             }
         }
