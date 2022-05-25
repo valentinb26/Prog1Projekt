@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Menu {
-    static final String prompt = ">\t";
+    static final String PROMPT = ">\t";
     // Menue-Zeugs
 
     public static void printMenu() {
@@ -15,16 +15,10 @@ public class Menu {
         System.out.println("\t(5) Ansicht");
         System.out.println("\t(6) Hilfe");
         System.out.println("\t(7) Beenden");
-
-        //prompt
-        System.out.print(prompt);
-
-        // Eingabe
-        // Eingabeverarbeitung
-        // Ausführen
     }
 
     public static void inputHauptMenu(Scanner sc){
+        System.out.print(PROMPT);
         int ui = sc.nextInt();
         switch (ui) {
             case 1 -> {
