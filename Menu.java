@@ -13,36 +13,24 @@ public class Menu {
         System.out.println("\t(6) Hilfe");
         System.out.println("\t(7) Beenden");
 
+        //prompt
+        System.out.print(">\t");
+
         // Eingabe
         // Eingabeverarbeitung
         // Ausführen
     }
 
-    public static void inputMenu(int ui){
-        switch (ui){
-            case 1:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 2:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 3:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 4:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 5:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 6:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            case 7:
-                System.out.println("TEMPERROR nummer: "+ui);
-                break;
-            default:
-                System.out.println("keine gültige Nummer!");
+    public static void inputHauptMenu(int ui){
+        switch (ui) {
+            case 1 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 2 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 3 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 4 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 5 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 6 -> System.out.println("TEMPERROR nummer: " + ui);
+            case 7 -> System.out.println("TEMPERROR nummer: " + ui);
+            default -> System.out.println("keine gültige Nummer!");
         }
     }
 }

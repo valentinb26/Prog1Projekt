@@ -7,7 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int userInput = sc.nextInt();
-        Menu.inputMenu(userInput);
+        Menu.inputHauptMenu(userInput);
 
         Termin t = new Termin(new Datum(10, 10, 2022), new Uhrzeit(10, 30), "Friseur", "Bisschen Haare schneiden..");
         Termin t2 = new Termin(new Datum(11, 10, 2022), new Uhrzeit(10, 32), "Frisur", "Haare kuerzen..");
