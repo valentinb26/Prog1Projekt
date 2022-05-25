@@ -4,8 +4,8 @@
 
 
 Ideen Pool :
-Datenstruktur :
 
+Datenstruktur :
     -arrayList durchgehen
     -suche nach Name und Datum
     -gibt id
@@ -15,3 +15,5 @@ Datenstruktur :
 Verwaltung Liste :
     -remove : suche Termin, gib Stelle in Liste, entferne stelle
     -get : suche Termin, geben stelle in liste, bekommen Termin
+
+

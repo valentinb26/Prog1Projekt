@@ -40,15 +40,19 @@ public class Verwaltung {
     public static Termin terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
         Scanner sc = new Scanner(System.in);
+
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
         String datum = sc.nextLine();
+
         // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
         String uhrzeit = sc.nextLine();
+
         // Eingabe Name:
         System.out.printf("%-20s", "Name: ");
         String name = sc.nextLine();
+
         // Eingabe Beschreibung:
         System.out.printf("%-20s", "Beschreibung: \n\t");
         String beschr = sc.nextLine();
