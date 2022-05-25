@@ -96,10 +96,6 @@ public class Verwaltung {
     private static Datum convertToDatum(String dat) {
         // TT.MM.JJJJ
         String[] parts = dat.split(".");
-        System.out.println(parts[0]);
-        System.out.println(parts[1]);
-        System.out.println(parts[2]);
-
         int day   = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
         int year  = Integer.parseInt(parts[2]);
