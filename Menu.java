@@ -23,7 +23,8 @@ public class Menu {
         // Ausführen
     }
 
-    public static void inputHauptMenu(int ui, Scanner sc){
+    public static void inputHauptMenu(Scanner sc){
+        int ui = sc.nextInt();
         switch (ui) {
             case 1 -> {
                 System.out.println("Von ihnen gewählte Menüpunkt: " + ui+" (Termin einsehen)");
