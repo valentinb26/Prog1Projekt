@@ -18,13 +18,14 @@ public class Termin {
         id++;
     }
 
-
+    // Getter und (Setter)
     public String getName() {
         return this.name;
     }
     public int getID() {
         return this.terminId;
     }
+    // END Getter und (Setter)
 
     @Override
     public String toString() {
