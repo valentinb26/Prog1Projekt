@@ -5,19 +5,19 @@ public class Verwaltung {
     
     // Felder, Variablen:
     // Liste der Termine: 
-    private static ArrayList<Termin> termine = new ArrayList<>(); // vielleicht auch ne Stacklist
+    private static ArrayList<Termin> termine = new ArrayList<>(); 
     
     /*
-    PUBLIC
+    P U B L I C
     */
+
     // Methoden vorerst static
 
     // Termin einsehen
     public static void terminEinsehen(Termin t) {
-        
         System.out.println(t);
     }
-
+    
     // Mehrere Termine einsehen
     public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
@@ -39,9 +39,8 @@ public class Verwaltung {
     }
 
     // Termin erstellen
-    public static Termin terminErstellen() {
+    public static Termin terminErstellen(Scanner sc) {
         // Termin muss irgendwo in Liste gespeichert werden.
-        Scanner sc = new Scanner(System.in);
 
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
@@ -61,8 +60,6 @@ public class Verwaltung {
 
         // Termin zur Liste hinzufügen
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
-
-        sc.close();
         return null;
     }
     
@@ -88,6 +85,9 @@ public class Verwaltung {
     private static Datum convertToDatum(String dat) {
         // TT.MM.JJJJ
         String[] parts = dat.split(".");
+        System.out.println(parts[0]);
+        System.out.println(parts[1]);
+        System.out.println(parts[2]);
 
         int day   = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
