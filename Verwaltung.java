@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Verwaltung {
@@ -20,8 +19,11 @@ public class Verwaltung {
     }
 
     // Mehrere Termine einsehen
-    public static void termineEinsehen(int[] ids) {
+    public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
+        for(Termin t : termine) {
+            System.out.println(t);
+        }
     }
     // Termin suchen
         // Terminsuche nach String, gibt ID(s) zurück.

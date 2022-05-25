@@ -4,7 +4,14 @@ public class Main {
         Termin t = new Termin(new Datum(10, 10, 2022), new Uhrzeit(10, 30), "Friseur", "Bisschen Haare schneiden..");
         System.out.println(t.toString());
 
+        
+
         Verwaltung.terminErstellen();
+        Verwaltung.terminErstellen();
+        Verwaltung.terminErstellen();
+
+        Verwaltung.termineEinsehen();
+
 
     }
 }
