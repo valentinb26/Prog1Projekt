@@ -57,6 +57,9 @@ public class Verwaltung {
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
         String datum = sc.nextLine();
 
+        //weis nicht aber das hier behebt das problem
+        String fill = sc.nextLine();
+
         // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
         String uhrzeit = sc.nextLine();
