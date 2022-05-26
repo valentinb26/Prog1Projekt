@@ -55,22 +55,24 @@ public class Verwaltung {
 
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
-        String datum = sc.nextLine();
+        String datum = sc.next();
 
-        //weis nicht aber das hier behebt das problem
-        String fill = sc.nextLine();
+        //weis nicht aber das hier behebt das problem für nextLine();
+       // String fill = sc.nextLine();
 
         // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
-        String uhrzeit = sc.nextLine();
+        String uhrzeit = sc.next();
 
         // Eingabe Name:
         System.out.printf("%-20s", "Name: ");
-        String name = sc.nextLine();
+        String name = sc.next();
 
         // Eingabe Beschreibung:
         System.out.printf("%-20s", "Beschreibung: \n\t");
-        String beschr = sc.nextLine();
+        String beschr = sc.next();
+
+        sc.close();
 
         // Termin zur Liste hinzufügen
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));

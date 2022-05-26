@@ -19,7 +19,8 @@ public class Menu {
 
     public static void inputHauptMenu(Scanner sc){
         System.out.print(PROMPT);
-        int ui = sc.nextInt();
+        //int ui = sc.nextInt();
+        int ui = 2;
         final String repeat1 = "Von ihnen gewaehlter Menuepunkt: ";
         
         // Eingabeverarbeitung.
