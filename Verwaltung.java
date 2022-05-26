@@ -71,7 +71,7 @@ public class Verwaltung {
 
         // Termin zur Liste hinzufügen
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
-        return null;
+        return null; // new Termin(blablabla);
     }
     // Termin löschen
     public static boolean terminLoeschen() {
@@ -93,7 +93,7 @@ public class Verwaltung {
 
     private static Datum convertToDatum(String dat) {
         // TT.MM.JJJJ
-        String[] parts = dat.split(".");
+        String[] parts = dat.split("\\."); // Metacharacter escape "\\"
         int day   = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
         int year  = Integer.parseInt(parts[2]);
