@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        //du willst dass man wieder ins menü kommt um andere Dinge zu tun oder ?
+        //du willst dass man wieder ins menü kommt um andere Dinge zu tun oder ? Ja
         boolean running = true;
         
         while(running) {
@@ -12,5 +12,6 @@ public class Main {
             Menu.inputHauptMenu(sc);
         }
         sc.close();
+        
     }
 }
