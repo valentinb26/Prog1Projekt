@@ -5,6 +5,7 @@ public class Datum {
 
     public Datum(int tag, int monat, int jahr) {
         // Checken, ob Tag zu Monat passt. Eventuell 29. Februar im Schaltjahr.
+        // Schaltjahr wenn (jahr mod 4 = 0)
         // Sonst Exception
         this.tag = tag;
         this.monat = monat;
