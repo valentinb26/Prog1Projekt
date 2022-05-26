@@ -52,17 +52,18 @@ public class Verwaltung {
     // Termin erstellen
     public static Termin terminErstellen(Scanner sc) {
         // Termin muss irgendwo in Liste gespeichert werden.
-
+        
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
-        String datum = sc.next();
+        sc.next();
+        String datum = sc.nextLine();
 
         //weis nicht aber das hier behebt das problem für nextLine();
-       // String fill = sc.nextLine();
+        
 
         // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
-        String uhrzeit = sc.next();
+        String uhrzeit = sc.nextLine();
 
         // Eingabe Name:
         System.out.printf("%-20s", "Name: ");
@@ -72,7 +73,7 @@ public class Verwaltung {
         System.out.printf("%-20s", "Beschreibung: \n\t");
         String beschr = sc.next();
 
-        sc.close();
+        //sc.close();
 
         // Termin zur Liste hinzufügen
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
@@ -111,6 +112,5 @@ public class Verwaltung {
         int hours   = Integer.parseInt(parts[0]);
         int minutes = Integer.parseInt(parts[1]);
         return new Uhrzeit(hours, minutes);
-    }
-    
+    }   
 }
