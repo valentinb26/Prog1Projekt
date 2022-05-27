@@ -1,3 +1,5 @@
+package App;
+
 import java.util.ArrayList;
 
 import OwnUtil.Input;
@@ -10,6 +12,10 @@ public class Verwaltung {
     // Felder, Variablen:
     // Liste der Termine: 
     private static ArrayList<Termin> termine = new ArrayList<>(); 
+
+    public static ArrayList<Termin> getTermine() {
+        return termine;
+    }
 
     private final static String SEPARATOR = "===================";
 

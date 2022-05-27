@@ -1,3 +1,5 @@
+package App;
+
 import OwnUtil.Input;
 
 public class Menu {
