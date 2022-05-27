@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import OwnUtil.Input;
 import Typen.Datum;
@@ -68,7 +67,7 @@ public class Verwaltung {
     }
 
     // Termin erstellen
-    public static Termin terminErstellen(Scanner scn) {
+    public static Termin terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
         
         // Eingabe Datum in DD.MM.YYYY

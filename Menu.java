@@ -1,9 +1,7 @@
-import java.util.Scanner;
-
 import OwnUtil.Input;
 
 public class Menu {
-    private static final String PROMPT = ">\t";
+    private static final String PROMPT = "\t>";
     // Menue-Zeugs
 
     public static void printMenu() {
@@ -19,9 +17,9 @@ public class Menu {
         System.out.println("\t(7) Beenden");
     }
 
-    public static void inputHauptMenu(Scanner sc){
+    public static void inputHauptMenu(){
         System.out.print(PROMPT);
-        int ui = sc.nextInt();
+        int ui = Input.readInt();
         final String repeat1 = "Von ihnen gewaehlter Menuepunkt: ";
         
         // Eingabeverarbeitung.
@@ -32,7 +30,7 @@ public class Menu {
         }
         case 2 -> {
             System.out.println( repeat1 + ui + " (Termin erstellen)");
-            Verwaltung.terminErstellen(sc);
+            Verwaltung.terminErstellen();
         }
         case 3 -> {
             System.out.println(repeat1 + ui + " (Termin suchen)");
@@ -63,7 +61,6 @@ public class Menu {
         default -> {
             System.out.println("keine gültige Nummer! Versuchs nochmal :)");
         }
-            
         }
     }
 }
