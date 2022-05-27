@@ -6,7 +6,7 @@ public class Termin {
     private String beschr;
     private int terminId;
     private boolean erledigt = false;
-    private static int id = 0;
+    protected static int id = 0;
     // eventuell noch Ort
 
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr) {
@@ -29,7 +29,7 @@ public class Termin {
 
     @Override
     public String toString() {
-        return "Termin: " + this.name.toUpperCase() + "\n"
+        return "Termin: " + this.name + "\n"
                 + "Beschreibung: " + this.beschr + "\n"
                 + "am " + this.datum + " um " + this.uhrzeit + "\n"
                 + "ID:" + this.terminId + "\n"

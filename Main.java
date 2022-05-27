@@ -9,6 +9,7 @@ public class Main {
 
         //du willst dass man wieder ins menü kommt um andere Dinge zu tun oder ? Ja
         boolean running = true;
+        // Startroutine ( CSV Datei einlesen, ID neu setzen, (Protokoll starten))
         
         while(running) {
             Menu.printMenu();

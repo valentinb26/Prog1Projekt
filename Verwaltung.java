@@ -6,53 +6,60 @@ public class Verwaltung {
     // Felder, Variablen:
     // Liste der Termine: 
     private static ArrayList<Termin> termine = new ArrayList<>(); 
-    
-    private static Scanner sc = new Scanner(System.in);
+
+    private final static String SEPARATOR = "===================";
     /*
     P U B L I C
     */
     
     // Termin einsehen
-    public static void terminEinsehen(Termin t) {
-
-        for (int i = 0; i < termine.size(); i++) {
-            System.out.println(termine.get(i));
+    public static void terminEinsehen(int id) {
+        // Termin suchen, der diese ID hat.
+        // Danach Termin ausgeben.
+        System.out.println("INTERN: Termin Einsehen:");
+        for(int i = 0; i < termine.size(); i++) {
+            if(termine.get(i).getID() == id) {
+                System.out.println(SEPARATOR);
+                System.out.println(termine.get(i));
+            }
         }
 
-        System.out.println(t);
     }
     
     // Mehrere Termine einsehen
     public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
         for(Termin t : termine) {
+            System.out.println(SEPARATOR);
             System.out.println(t);
         }
+        System.out.println(SEPARATOR);
     }
+    
     // Termin suchen
-        // Terminsuche nach String, gibt ID(s) zurück.
-    public int[] terminSuchen(String value) {
+    public static void terminSuchen(String value) {
+
         int[] ids = new int[termine.size()]; // Array der gefundenen IDs
-        int idIndex = 0;
+                                             // Keine teilweise Übereinstimmung: -1
+                                             // Teilweise Übereinstimmung:       id
+        
         // Nach Name suchen
         for(int i = 0; i < termine.size(); i++) {
-            if(termine.get(i).getName().contains(value)) {
-                System.out.println("TERMIN GEFUNDEN.");
-                ids[idIndex] = termine.get(i).getID();
-                idIndex++;
+            if(termine.get(i).getName().toUpperCase().contains(value.toUpperCase())) {
+                ids[i] = termine.get(i).getID();
+            } 
+            else {
+                ids[i] = -1;
             }
         }
-        // Nach Datum
-        /*
-        for(int i = 0; i < termine.size(); i++) {
 
-        }*/
         for(int i = 0; i < ids.length; i++) {
-            System.out.println(ids[i]);
+            if(ids[i] != -1) {
+                System.out.println(ids[i] + ":");
+                terminEinsehen(ids[i]);
+            }
         }
-        // nach jeder übereinstimmenden Zeichenkette entsprechende ID an Array anhängen
-
-        return null;
+        //return ids;
     }
 
     // Termin erstellen
@@ -62,41 +69,35 @@ public class Verwaltung {
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
         //sc.next();
-        String datum = sc.nextLine();
+        String datum = Input.readLine();
 
         // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
-        String uhrzeit = sc.nextLine();
+        String uhrzeit = Input.readLine();
 
         // Eingabe Name:
         System.out.printf("%-20s", "Name: ");
-        String name = sc.nextLine();
+        String name = Input.readLine();
 
         // Eingabe Beschreibung:
         System.out.printf("%-20s", "Beschreibung: \n\t");
-        String beschr = sc.nextLine();
-
-        System.out.println("Datum: " + datum);
-        //sc.close();
+        String beschr = Input.readLine();
 
         // Termin zur Liste hinzufügen
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
-
-        System.out.println(termine.get(0));
         return null; // new Termin(blablabla);
     }
+    
     // Termin löschen
-    public static boolean terminLoeschen() {
+    public static void terminLoeschen(int id) {
 
         // true:    erfolgreich
         // false:   nicht -||-
-
-        return false;
     }
+    
     // Termin bearbeiten
-    public static Termin terminBearbeiten() {
+    public static void terminBearbeiten() {
 
-        return null;
     }
 
     /*

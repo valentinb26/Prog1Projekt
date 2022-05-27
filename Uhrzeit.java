@@ -16,6 +16,16 @@ public class Uhrzeit {
     @Override
     public String toString() {
         // Eventuell mit 0 vor einstelligen Zahlen.
-        return hours + ":" + minutes;
+        String szHours = String.valueOf(this.hours);
+        String szMinutes = String.valueOf(this.minutes);
+
+        if(hours < 10) {
+            szHours = "0" + hours;
+        }
+        if(minutes < 10) {
+            szMinutes = "0" + minutes;
+        }
+
+        return szHours + ":" + szMinutes;
     }
 }
