@@ -17,7 +17,6 @@ public class Verwaltung {
 
         for (int i = 0; i < termine.size(); i++) {
             System.out.println(termine.get(i));
-
         }
 
         System.out.println(t);
@@ -104,6 +103,8 @@ public class Verwaltung {
     PRIVATE
     */
 
+
+    //Exception werfen beim splitten für Rechtschreibfehler !!
     private static Datum convertToDatum(String dat) {
         // TT.MM.JJJJ
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
@@ -118,6 +119,7 @@ public class Verwaltung {
         return new Datum(day, month, year);
     }
 
+    //Exception werfen beim splitten für Rechtschreibfehler !!
     private static Uhrzeit convertToUhrzeit(String uhrzeit) {
         String[] parts = uhrzeit.split(":");
 
