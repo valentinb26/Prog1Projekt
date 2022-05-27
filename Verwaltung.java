@@ -14,6 +14,12 @@ public class Verwaltung {
     
     // Termin einsehen
     public static void terminEinsehen(Termin t) {
+
+        for (int i = 0; i < termine.size(); i++) {
+            System.out.println(termine.get(i));
+
+        }
+
         System.out.println(t);
     }
     
@@ -76,6 +82,8 @@ public class Verwaltung {
 
         // Termin zur Liste hinzufügen
         termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
+
+        System.out.println(termine.get(0));
         return null; // new Termin(blablabla);
     }
     // Termin löschen
