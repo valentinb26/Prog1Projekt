@@ -8,6 +8,7 @@ public class Verwaltung {
     private static ArrayList<Termin> termine = new ArrayList<>(); 
 
     private final static String SEPARATOR = "===================";
+
     /*
     P U B L I C
     */
@@ -59,7 +60,6 @@ public class Verwaltung {
                 terminEinsehen(ids[i]);
             }
         }
-        //return ids;
     }
 
     // Termin erstellen
@@ -90,9 +90,28 @@ public class Verwaltung {
     
     // Termin löschen
     public static void terminLoeschen(int id) {
-
         // true:    erfolgreich
         // false:   nicht -||-
+        System.out.print("ID: ");
+        id = Input.readInt();
+
+        int indexInList = -1;
+
+        for(int i = 0; i < termine.size(); i++) {
+            if(termine.get(i).getID() == id) {
+                indexInList = i;
+                break;
+            }
+        }
+        
+        try {
+            termine.remove(indexInList);
+            System.out.println("INTERN: Termin mit index " + indexInList + " und id " + id + " entfernt.");
+        }
+        catch(IndexOutOfBoundsException e) {
+            System.out.println("INTERN: Termin-ID nicht gefunden.");
+        }       
+
     }
     
     // Termin bearbeiten
