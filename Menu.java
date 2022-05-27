@@ -7,7 +7,7 @@ public class Menu {
     // Menue-Zeugs
 
     public static void printMenu() {
-
+        // Output.clearScreen();
         System.out.println("Menue des Uebelst-Coolen-Umfangreichen-Killer-Kalenders fuer HFT Studenten.");
         System.out.println("( Zur Menuepunktwahl Nummer eingeben )");
         System.out.println("\t(1) Termine einsehen");

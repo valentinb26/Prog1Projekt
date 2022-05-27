@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import OwnUtil.Input;
 import Typen.Datum;
+import Typen.Termin;
 import Typen.Uhrzeit;
 
 public class Verwaltung {
@@ -94,10 +95,6 @@ public class Verwaltung {
     
     // Termin löschen
     public static void terminLoeschen(int id) {
-        // true:    erfolgreich
-        // false:   nicht -||-
-        System.out.print("ID: ");
-        id = Input.readInt();
 
         int indexInList = -1;
 

@@ -1,6 +1,4 @@
-import Typen.Datum;
-import Typen.Uhrzeit;
-
+package Typen;
 public class Termin {
 
     private Datum datum;

@@ -15,4 +15,6 @@ public class Input {
     public static int readInt() {
         return sc.nextInt();
     }
+
+    
 }
