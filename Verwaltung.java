@@ -7,6 +7,7 @@ public class Verwaltung {
     // Liste der Termine: 
     private static ArrayList<Termin> termine = new ArrayList<>(); 
     
+    private static Scanner sc = new Scanner(System.in);
     /*
     P U B L I C
     */
@@ -50,16 +51,13 @@ public class Verwaltung {
     }
 
     // Termin erstellen
-    public static Termin terminErstellen(Scanner sc) {
+    public static Termin terminErstellen(Scanner scn) {
         // Termin muss irgendwo in Liste gespeichert werden.
         
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
-        sc.next();
+        //sc.next();
         String datum = sc.nextLine();
-
-        //weis nicht aber das hier behebt das problem für nextLine();
-        
 
         // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
@@ -67,12 +65,13 @@ public class Verwaltung {
 
         // Eingabe Name:
         System.out.printf("%-20s", "Name: ");
-        String name = sc.next();
+        String name = sc.nextLine();
 
         // Eingabe Beschreibung:
         System.out.printf("%-20s", "Beschreibung: \n\t");
-        String beschr = sc.next();
+        String beschr = sc.nextLine();
 
+        System.out.println("Datum: " + datum);
         //sc.close();
 
         // Termin zur Liste hinzufügen
@@ -100,9 +99,14 @@ public class Verwaltung {
     private static Datum convertToDatum(String dat) {
         // TT.MM.JJJJ
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
+        
+        for(String s : parts) {
+            System.out.println(s);
+        }
         int day   = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
         int year  = Integer.parseInt(parts[2]);
+        System.out.println("convertToDatum");
         return new Datum(day, month, year);
     }
 
