@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import OwnUtil.Input;
+import Typen.Datum;
+import Typen.Uhrzeit;
+
 public class Verwaltung {
     
     // Felder, Variablen:
@@ -103,7 +107,7 @@ public class Verwaltung {
                 break;
             }
         }
-        
+
         try {
             termine.remove(indexInList);
             System.out.println("INTERN: Termin mit index " + indexInList + " und id " + id + " entfernt.");
