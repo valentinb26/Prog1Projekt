@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import OwnUtil.Input;
+
 public class Menu {
     private static final String PROMPT = ">\t";
     // Menue-Zeugs
@@ -11,7 +13,7 @@ public class Menu {
         System.out.println("\t(1) Termine einsehen");
         System.out.println("\t(2) Termin erstellen");
         System.out.println("\t(3) Termin suchen");
-        System.out.println("\t(4) Termin bearbeiten");
+        System.out.println("\t(4) Termin loeschen / eigentlich bearbeiten");
         System.out.println("\t(5) Ansicht");
         System.out.println("\t(6) Hilfe");
         System.out.println("\t(7) Beenden");
@@ -40,7 +42,9 @@ public class Menu {
         }
         case 4 -> {
             System.out.println(repeat1 + ui + " (Termin bearbeiten)");
-            Verwaltung.terminBearbeiten();
+            System.out.print("ID: ");
+            int id = Input.readInt();
+            Verwaltung.terminLoeschen(id);
         }
         case 5 -> {
             System.out.println(repeat1 + ui + " (Ansicht)");
