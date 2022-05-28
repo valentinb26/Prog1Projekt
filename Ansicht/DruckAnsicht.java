@@ -9,4 +9,7 @@ public class DruckAnsicht extends Ansicht {
     public void erstelleListenAnsicht() {
         // Liste
     }
+    public void erstelleFormatierteAnsicht() {
+        
+    }
 }
