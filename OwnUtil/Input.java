@@ -13,7 +13,16 @@ public class Input {
     }
 
     public static int readInt() {
-        return sc.nextInt();
+        // readLine deswegen weil sich tokenbasierte und zeilenbasierte Eingaben nicht vertragen
+        // nach tokenbasierter Eingabe könnte noch ein "\n" im Puffer liegen.
+        // Wir beschränken uns ab jetzt auf zeilenbasierte Eingaben.
+
+        try {
+            return Integer.parseInt(readLine());
+        }
+        catch(NumberFormatException e) {
+            return -1;
+        }
     }
 
     
