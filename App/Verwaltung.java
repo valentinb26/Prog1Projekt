@@ -48,7 +48,7 @@ public class Verwaltung {
     }
     
     // Termin suchen
-    public static int[] terminSuchen() {
+    public static void terminSuchen() {
 
         Output.printTitle("Terminsuche");
 
@@ -80,7 +80,6 @@ public class Verwaltung {
                 terminEinsehen(ids[i]);
             }
         }
-        return ids;
     }
 
     // Termin erstellen
