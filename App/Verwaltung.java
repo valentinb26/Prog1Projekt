@@ -18,7 +18,7 @@ public class Verwaltung {
         return termine;
     }
 
-    private final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = =";
+    private final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
 
     /*
     P U B L I C
@@ -96,11 +96,11 @@ public class Verwaltung {
         String uhrzeit = Input.readLine();
 
         // Eingabe Name:
-        System.out.printf("%-20s", "Name: ");
+        System.out.printf("%-20s", "Bezeichnung: ");
         String name = Input.readLine();
 
         // Eingabe Beschreibung:
-        System.out.printf("%-20s", "Beschreibung: \n\t");
+        System.out.printf("%-20s", "Beschreibung: ");
         String beschr = Input.readLine();
 
         // Termin zur Liste hinzufügen

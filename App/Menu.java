@@ -48,6 +48,7 @@ public class Menu {
         }
         case 5 -> {
             System.out.println(repeat1 + ui + " (Termin bearbeiten)");
+            Verwaltung.terminBearbeiten();
             //in arbeit
         }
         case 6 -> {
