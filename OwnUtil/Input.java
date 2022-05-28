@@ -13,7 +13,7 @@ public class Input {
     }
 
     public static int readInt() {
-        // readLine deswegen weil sich tokenbasierte und zeilenbasierte Eingaben nicht vertragen
+        // readLine deswegen, weil sich tokenbasierte und zeilenbasierte Eingaben nicht vertragen
         // nach tokenbasierter Eingabe könnte noch ein "\n" im Puffer liegen.
         // Wir beschränken uns ab jetzt auf zeilenbasierte Eingaben.
 

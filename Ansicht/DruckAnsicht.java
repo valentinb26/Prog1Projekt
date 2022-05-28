@@ -17,6 +17,6 @@ public class DruckAnsicht extends Ansicht {
 
     }
     public void erstelleFormatierteAnsicht() {
-        
+        // Formatierte Ansicht!
     }
 }

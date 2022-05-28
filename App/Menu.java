@@ -1,14 +1,15 @@
 package App;
 
 import OwnUtil.Input;
+import OwnUtil.Output;
 
 public class Menu {
-    private static final String PROMPT = "\t>";
+    private static final String PROMPT = "\t> ";
     // Menue-Zeugs
 
     public static void printMenu() {
-        // Output.clearScreen();
-        System.out.println("Menue des Uebelst-Coolen-Umfangreichen-Killer-Kalenders fuer HFT Studenten.");
+        //Output.clearScreen();
+        System.out.println("\n\t\tM E N U E\n");
         System.out.println("( Zur Menuepunktwahl Nummer eingeben )");
         System.out.println("\t(1) Termine einsehen");
         System.out.println("\t(2) Termin erstellen");

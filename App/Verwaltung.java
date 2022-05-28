@@ -17,7 +17,7 @@ public class Verwaltung {
         return termine;
     }
 
-    private final static String SEPARATOR = "===================";
+    private final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = =";
 
     /*
     P U B L I C
@@ -73,7 +73,7 @@ public class Verwaltung {
     }
 
     // Termin erstellen
-    public static Termin terminErstellen() {
+    public static void terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
 
         // Eingabe Datum in DD.MM.YYYY
@@ -94,8 +94,10 @@ public class Verwaltung {
         String beschr = Input.readLine();
 
         // Termin zur Liste hinzufügen
-        termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
-        return null; // new Termin(blablabla);
+        if(convertToDatum(datum) != null && convertToUhrzeit(uhrzeit) != null) {
+            termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
+            System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
+        }
     }
     
     // Termin löschen
