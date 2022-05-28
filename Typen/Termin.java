@@ -1,4 +1,5 @@
 package Typen;
+
 public class Termin {
 
     private Datum datum;
@@ -36,4 +37,5 @@ public class Termin {
                 + "ID:" + this.terminId + "\n"
                 + "Erledigt:" + this.erledigt + "\n";
     }
+
 }

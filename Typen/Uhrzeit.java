@@ -1,4 +1,5 @@
 package Typen;
+
 public class Uhrzeit {
     
     private int minutes;
@@ -12,6 +13,14 @@ public class Uhrzeit {
 
         this.minutes = minutes;
         this.hours = hours;
+    }
+
+    public int getMinutes() {
+        return this.minutes;
+    }
+
+    public int getHours() {
+        return this.hours;
     }
 
     @Override
@@ -28,5 +37,13 @@ public class Uhrzeit {
         }
 
         return szHours + ":" + szMinutes;
+    }
+
+    @Override
+    public boolean equals(Object u) {
+        if(this.getHours() == ((Uhrzeit)u).getHours() && this.getMinutes() == ((Uhrzeit)u).getMinutes()) {
+            return true;
+        }
+        return false;
     }
 }

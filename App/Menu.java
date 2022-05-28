@@ -31,7 +31,7 @@ public class Menu {
             Verwaltung.termineEinsehen();
         }
         case 2 -> {
-            System.out.println( repeat1 + ui + " (Termin erstellen)");
+            System.out.println(repeat1 + ui + " (Termin erstellen)");
             Verwaltung.terminErstellen();
         }
         case 3 -> {
@@ -56,12 +56,12 @@ public class Menu {
         }
         case 7 -> {
             System.out.println(repeat1 + ui + " (Beenden)");
-            System.out.println("Auf Weidersehen :)");
+            System.out.println("Auf Wiedersehen :)");
             System.exit(0);
             // Protokoll-Aufruf "Beendet durch Benutzereingabe.".
         }
         default -> {
-            System.out.println("keine gültige Nummer! Versuchs nochmal :)");
+            System.out.println("keine gueltige Nummer! Versuchs nochmal :)");
         }
         }
     }

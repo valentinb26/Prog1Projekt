@@ -13,6 +13,28 @@ public class Datum {
         this.jahr = jahr;
     }
 
+    public int getTag() {
+        return this.tag;
+    }
+
+    public int getMonat() {
+        return this.monat; 
+    }
+
+    public int getJahr() {
+        return this.jahr;
+    }
+
+    @Override
+    public boolean equals(Object d) {
+        if(this.getJahr()     == ((Datum) d).getJahr() 
+           && this.getMonat() == ((Datum) d).getMonat()
+           && this.getTag()   == ((Datum) d).getTag()) {
+               return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return tag + "." + monat + "." + jahr;

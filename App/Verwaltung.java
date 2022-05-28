@@ -75,7 +75,7 @@ public class Verwaltung {
     // Termin erstellen
     public static Termin terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
-        
+
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
         //sc.next();
@@ -135,22 +135,31 @@ public class Verwaltung {
         // TT.MM.JJJJ
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
         
-        for(String s : parts) {
-            System.out.println(s);
+        try {
+            int day   = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int year  = Integer.parseInt(parts[2]);
+            return new Datum(day, month, year);
         }
-        int day   = Integer.parseInt(parts[0]);
-        int month = Integer.parseInt(parts[1]);
-        int year  = Integer.parseInt(parts[2]);
-        System.out.println("convertToDatum");
-        return new Datum(day, month, year);
+        catch(NumberFormatException e) {
+            System.out.println("!! Datumsformat falsch !!");
+        }
+        return null;
     }
 
     //Exception werfen beim splitten für Rechtschreibfehler !!
     private static Uhrzeit convertToUhrzeit(String uhrzeit) {
         String[] parts = uhrzeit.split(":");
 
-        int hours   = Integer.parseInt(parts[0]);
-        int minutes = Integer.parseInt(parts[1]);
-        return new Uhrzeit(hours, minutes);
+        try {
+            int hours   = Integer.parseInt(parts[0]);
+            int minutes = Integer.parseInt(parts[1]);
+            return new Uhrzeit(hours, minutes);
+        }
+        catch(NumberFormatException e) {
+            System.out.println("!! Uhrzeitformat falsch !!");
+        }
+
+        return null;
     }   
 }

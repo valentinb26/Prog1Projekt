@@ -5,7 +5,7 @@ public class Output {
         final String OS = System.getProperty("os.name");
         if(OS.contains("Windows")) {
             try {
-                Runtime.getRuntime().exec("cls");
+                Runtime.getRuntime().exec("cmd cls");
             }
             catch(Exception e) {
                 e.printStackTrace();
