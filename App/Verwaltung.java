@@ -3,6 +3,7 @@ package App;
 import java.util.ArrayList;
 
 import OwnUtil.Input;
+import OwnUtil.Output;
 import Typen.Datum;
 import Typen.Termin;
 import Typen.Uhrzeit;
@@ -24,22 +25,21 @@ public class Verwaltung {
     */
     
     // Termin einsehen
-    public static void terminEinsehen(int id) {
+    private static void terminEinsehen(int id) {
         // Termin suchen, der diese ID hat.
         // Danach Termin ausgeben.
-        System.out.println("INTERN: Termin Einsehen:");
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getID() == id) {
                 System.out.println(SEPARATOR);
                 System.out.println(termine.get(i));
             }
         }
-
     }
     
     // Mehrere Termine einsehen
     public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
+        Output.printTitle("Termineinsehung");
         for(Termin t : termine) {
             System.out.println(SEPARATOR);
             System.out.println(t);
@@ -48,8 +48,14 @@ public class Verwaltung {
     }
     
     // Termin suchen
-    public static void terminSuchen(String value) {
+    public static void terminSuchen() {
 
+        Output.printTitle("Terminsuche");
+
+        System.out.print("Suchbegriff: ");
+        String value = Input.readLine();
+
+        int terminCount = 0;
         int[] ids = new int[termine.size()]; // Array der gefundenen IDs
                                              // Keine teilweise Übereinstimmung: -1
                                              // Teilweise Übereinstimmung:       id
@@ -58,15 +64,19 @@ public class Verwaltung {
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getName().toUpperCase().contains(value.toUpperCase())) {
                 ids[i] = termine.get(i).getID();
+                terminCount++;
             } 
             else {
                 ids[i] = -1;
             }
         }
 
+        if(terminCount > 0) {
+            System.out.println("\nNach " + value + " wurde/n " + terminCount + " Termin/e gefunden.");
+        }
+
         for(int i = 0; i < ids.length; i++) {
             if(ids[i] != -1) {
-                System.out.println(ids[i] + ":");
                 terminEinsehen(ids[i]);
             }
         }
@@ -75,7 +85,7 @@ public class Verwaltung {
     // Termin erstellen
     public static void terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
-
+        Output.printTitle("Terminerstellung");
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
         //sc.next();
@@ -94,9 +104,12 @@ public class Verwaltung {
         String beschr = Input.readLine();
 
         // Termin zur Liste hinzufügen
-        if(convertToDatum(datum) != null && convertToUhrzeit(uhrzeit) != null) {
+        if(convertToDatum(datum) != null & convertToUhrzeit(uhrzeit) != null) {
             termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
             System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
+        } 
+        else {
+            System.out.println("\n===== Termin konnte nicht erstellt werden =====\n");
         }
     }
     
@@ -104,6 +117,8 @@ public class Verwaltung {
     public static void terminLoeschen(int id) {
 
         int indexInList = -1;
+
+        Output.printTitle("Terminloeschung");
 
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getID() == id) {
@@ -124,7 +139,7 @@ public class Verwaltung {
     
     // Termin bearbeiten
     public static void terminBearbeiten() {
-
+        Output.printTitle("Terminbearbeitung");
     }
 
     /*
@@ -158,7 +173,7 @@ public class Verwaltung {
             int minutes = Integer.parseInt(parts[1]);
             return new Uhrzeit(hours, minutes);
         }
-        catch(NumberFormatException e) {
+        catch(Exception e) {
             System.out.println("!! Uhrzeitformat falsch !!");
         }
 

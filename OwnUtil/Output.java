@@ -3,6 +3,7 @@ package OwnUtil;
 import java.io.IOException;
 
 public class Output {
+
     public final static void clearScreen() {
         try {
             String nameOS = System.getProperty("os.name");
@@ -21,5 +22,9 @@ public class Output {
         catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public final static void printTitle(String title) {
+        System.out.println("\n-----------> " + title.toUpperCase() + "\n");
     }
 }

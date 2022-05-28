@@ -8,7 +8,7 @@ public class Menu {
     // Menue-Zeugs
 
     public static void printMenu() {
-        Output.clearScreen();
+        //Output.clearScreen();
         System.out.println("\n\t\tM E N U E\n");
         System.out.println("( Zur Menuepunktwahl Nummer eingeben )");
         System.out.println("\t(1) Termine einsehen");
@@ -37,9 +37,7 @@ public class Menu {
         }
         case 3 -> {
             System.out.println(repeat1 + ui + " (Termin suchen)");
-            System.out.print("Value: ");
-            String value = Input.readLine();
-            Verwaltung.terminSuchen(value);
+            Verwaltung.terminSuchen();
         }
         case 4 -> {
             System.out.println(repeat1 + ui + " (Termin bearbeiten)");
