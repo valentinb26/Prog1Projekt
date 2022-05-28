@@ -48,7 +48,7 @@ public class Verwaltung {
     }
     
     // Termin suchen
-    public static void terminSuchen() {
+    public static int[] terminSuchen() {
 
         Output.printTitle("Terminsuche");
 
@@ -80,6 +80,7 @@ public class Verwaltung {
                 terminEinsehen(ids[i]);
             }
         }
+        return ids;
     }
 
     // Termin erstellen
@@ -104,6 +105,8 @@ public class Verwaltung {
         String beschr = Input.readLine();
 
         // Termin zur Liste hinzufügen
+        // Wichtig: einmaliges und (&), Datum und Uhrzeit müssen für korrekte
+        // Fehleranzeige geprüft werden.
         if(convertToDatum(datum) != null & convertToUhrzeit(uhrzeit) != null) {
             termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
             System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
@@ -139,12 +142,70 @@ public class Verwaltung {
     
     // Termin bearbeiten
     public static void terminBearbeiten() {
+        
+        
+        
         Output.printTitle("Terminbearbeitung");
+
+        // ID Eingabe
+        System.out.print("ID: ");
+        int id = Input.readInt();
+
+        if(existTermin(id) == false) {
+            System.out.println("!! Termin [" + id + "] existiert nicht. !!");
+            return;
+        }
+
+        // Stapelabfrage was geändert werden soll
+
+
+        // Erledigt? J/N
+        System.out.print("Erledigt? (J/N) ");
+        if(Input.readLine().toUpperCase() == "Y") {
+
+        }
+        else if(Input.readLine().toUpperCase() == "N") {
+
+        }
+
+        // Datum? J/N
+        System.out.print("Datum? (J/N) ");
+        if(Input.readLine().toUpperCase() == "Y") {
+            
+        }
+        // Uhrzeit? J/N
+
+        if(Input.readLine().toUpperCase() == "Y") {
+            
+        }
+        // Name? J/N
+
+        if(Input.readLine().toUpperCase() == "Y") {
+            
+        }
+        // Beschreibung? J/N
+
+        if(Input.readLine().toUpperCase() == "Y") {
+            
+        }
+        
+
+
     }
 
     /*
     PRIVATE
     */
+
+    // Existiert Termin?
+    private static boolean existTermin(int id) {
+        for(int i = 0; i < termine.size(); i++) {
+            if(termine.get(i).getID() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     //Exception werfen beim splitten für Rechtschreibfehler !!
