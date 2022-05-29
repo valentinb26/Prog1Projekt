@@ -72,7 +72,7 @@ public class Verwaltung {
         }
 
         if(terminCount > 0) {
-            System.out.println("\nNach " + value + " wurde/n " + terminCount + " Termin/e gefunden.");
+            System.out.println("\nFuer " + value + " wurde/n " + terminCount + " Termin/e gefunden.");
         }
 
         for(int i = 0; i < ids.length; i++) {
@@ -86,9 +86,9 @@ public class Verwaltung {
     public static void terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
         Output.printTitle("Terminerstellung");
+        
         // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
-        //sc.next();
         String datum = Input.readLine();
 
         // Eingabe Uhrzeit in HH:MM
@@ -108,6 +108,7 @@ public class Verwaltung {
         // Fehleranzeige geprüft werden.
         if(convertToDatum(datum) != null & convertToUhrzeit(uhrzeit) != null) {
             termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
+            // TODO Termin auch in der CSV Datei speichern
             System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
         } 
         else {
@@ -117,6 +118,8 @@ public class Verwaltung {
     
     // Termin löschen
     public static void terminLoeschen(int id) {
+
+        // TODO Termin auch in der CSV datei löschen
 
         int indexInList = -1;
 
@@ -142,15 +145,16 @@ public class Verwaltung {
     // Termin bearbeiten
     public static void terminBearbeiten() {
         
-        
-        
         Output.printTitle("Terminbearbeitung");
+        System.out.println("Keine Aenderung -> Feld leer lassen");
+        System.out.println("Aenderung       -> J eingeben.");
 
         // ID Eingabe
-        System.out.print("ID: ");
+        System.out.print("\nID: ");
         int id = Input.readInt();
 
-        if(existTermin(id) == false) {
+        Termin t = existTermin(id);
+        if(t == null) {
             System.out.println("!! Termin [" + id + "] existiert nicht. !!");
             return;
         }
@@ -160,16 +164,19 @@ public class Verwaltung {
 
         // Erledigt? J/N
         System.out.print("Erledigt? (J/N) ");
-        if(Input.readLine().toUpperCase() == "Y") {
-
+        if(Input.readLine().toUpperCase() == "J") {
+            t.setErledigt(true);
         }
         else if(Input.readLine().toUpperCase() == "N") {
-
+            t.setErledigt(false);
         }
+
 
         // Datum? J/N
         System.out.print("Datum? (J/N) ");
-        if(Input.readLine().toUpperCase() == "Y") {
+        if(Input.readLine().toUpperCase() == "J") {
+            System.out.print("Neues Datum: ");
+            String newDatum = Input.readLine();
             
         }
         // Uhrzeit? J/N
@@ -197,13 +204,13 @@ public class Verwaltung {
     */
 
     // Existiert Termin?
-    private static boolean existTermin(int id) {
+    private static Termin existTermin(int id) {
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getID() == id) {
-                return true;
+                return termine.get(i);
             }
         }
-        return false;
+        return null;
     }
 
 

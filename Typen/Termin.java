@@ -27,13 +27,30 @@ public class Termin {
     public int getID() {
         return this.terminId;
     }
+
+    public void setErledigt(boolean value) {
+        this.erledigt = value;
+    }
+    public void setDatum(Datum value) {
+        this.datum = value;
+    }
+    public void setUhrzeit(Uhrzeit value) {
+        this.uhrzeit = value;
+    }
+    public void setName(String value) {
+        this.name = value;
+    }
+    public void setBeschreibung(String value) {
+        this.beschr = value;
+    }
+    
     // END Getter und (Setter)
 
     @Override
     public String toString() {
         return    "Termin:           " + this.name + "\n"
                 + "Beschreibung:     " + this.beschr + "\n"
-                + "am " + this.datum + " um " + this.uhrzeit + "\n"
+                + "am " + this.datum + " - um " + this.uhrzeit + "\n"
                 + "ID:               " + this.terminId + "\n"
                 + "Erledigt:         " + this.erledigt;
     }
