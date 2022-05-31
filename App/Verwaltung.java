@@ -97,11 +97,18 @@ public class Verwaltung {
 
         // Eingabe Name:
         System.out.printf("%-20s", "Bezeichnung: ");
-        String name = Input.readLine();
+        String name;
+        if((name = Input.readLine()) == ""){
+            System.out.println("!! Name muss ausgefuellt sein !!");
+            return;
+        }
 
         // Eingabe Beschreibung:
         System.out.printf("%-20s", "Beschreibung: ");
-        String beschr = Input.readLine();
+        String beschr;
+        if((beschr = Input.readLine()) == "") {
+            beschr = "-";
+        }
 
         // Termin zur Liste hinzufügen
         // Wichtig: einmaliges und (&), Datum und Uhrzeit müssen für korrekte
