@@ -34,6 +34,7 @@ public class Verwaltung {
                 System.out.println(termine.get(i));
             }
         }
+        System.out.println(SEPARATOR);
     }
     
     // Mehrere Termine einsehen
@@ -71,10 +72,8 @@ public class Verwaltung {
             }
         }
 
-        if(terminCount > 0) {
-            System.out.println("\nFuer " + value + " wurde/n " + terminCount + " Termin/e gefunden.");
-        }
-
+        System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
+    
         for(int i = 0; i < ids.length; i++) {
             if(ids[i] != -1) {
                 terminEinsehen(ids[i]);
