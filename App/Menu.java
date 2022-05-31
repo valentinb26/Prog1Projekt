@@ -1,7 +1,7 @@
 package App;
 
 import OwnUtil.Input;
-import OwnUtil.Output;
+//import OwnUtil.Output;
 
 public class Menu {
     private static final String PROMPT = "\t> ";

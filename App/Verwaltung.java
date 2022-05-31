@@ -14,6 +14,7 @@ public class Verwaltung {
     // Liste der Termine: 
     private static ArrayList<Termin> termine = new ArrayList<>(); 
 
+    // Kein Setter -> Read only
     public static ArrayList<Termin> getTermine() {
         return termine;
     }
@@ -21,7 +22,18 @@ public class Verwaltung {
     private final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
 
     /*
-    P U B L I C
+    Methoden:
+        - terminEinsehen
+        - termineEinsehen
+        - terminSuchen
+        - terminErstellen
+        - terminLoeschen
+        - terminBearbeiten
+
+        Noch (!) in der Verwaltung:
+        - existTermin
+        - convertToDatum
+        - convert ToUhrzeit
     */
     
     // Termin einsehen
@@ -233,6 +245,7 @@ public class Verwaltung {
     PRIVATE
     */
 
+    // Sollte eigetnlich in OwnUtil rein.
     // Existiert Termin?
     private static Termin existTermin(int id) {
         for(int i = 0; i < termine.size(); i++) {
