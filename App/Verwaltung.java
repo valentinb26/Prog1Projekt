@@ -138,65 +138,89 @@ public class Verwaltung {
         }
         catch(IndexOutOfBoundsException e) {
             System.out.println("INTERN: Termin-ID nicht gefunden.");
-        }       
-
+        }
+        System.out.println("\n===== Termin erfolgreich geloescht. =====\n"); 
     }
     
     // Termin bearbeiten
     public static void terminBearbeiten() {
+
+        // TODO auch in CSV-Datei bearbeiten.
         
-        Output.printTitle("Terminbearbeitung");
-        System.out.println("Keine Aenderung -> Feld leer lassen");
-        System.out.println("Aenderung       -> J eingeben.");
+        final int ARGUMENT_COUNT = 4;
 
-        // ID Eingabe
-        System.out.print("\nID: ");
-        int id = Input.readInt();
+        Output.printTitle("Terminbearbeitung:");
 
-        Termin t = existTermin(id);
-        if(t == null) {
-            System.out.println("!! Termin [" + id + "] existiert nicht. !!");
+        // ID Eingabe:
+        System.out.print("ID: ");
+        Termin t;
+        int inputId = Input.readInt();
+
+        if((t = existTermin(inputId)) == null) {
+            System.out.println("!! ID nicht gefunden. !!");
             return;
         }
 
-        // Stapelabfrage was geändert werden soll
+        // Termin hat: (D)atum (N)ame (U)hrzeit (B)eschreibung
+        // Beispiel Nutzereingabe: "du" bzw. "ud"
+        // Jeder Buchstabe darf nur einmal vorkommen
+        System.out.println("\n(D)atum (N)ame (U)hrzeit (B)eschreibung");
+        System.out.println("Anfangsbuchstaben ohne Leerzeichen getrennt eingeben: (Bspw.: DNU)");
+        System.out.print("Eingabe: ");
 
+        String input = Input.readLine();
+        input = input.toUpperCase();
+        
+        for (int i = 0; i < ARGUMENT_COUNT; i++)  {
+            if(input.contains("D")) {
+                input = input.replace("D", "");
 
-        // Erledigt? J/N
-        System.out.print("Erledigt? (J/N) ");
-        if(Input.readLine().toUpperCase() == "J") {
-            t.setErledigt(true);
-        }
-        else if(Input.readLine().toUpperCase() == "N") {
-            t.setErledigt(false);
-        }
+                System.out.print("Neues Datum: ");
+                String datum = Input.readLine();
+                Datum d;
+                if((d = convertToDatum(datum)) != null) {
+                    t.setDatum(d);
+                }
+                else return;
+            }
+            else if(input.contains("N")) {
+               input = input.replace("N", "");
 
+                System.out.print("Neuer Name: ");
+                String name = Input.readLine();
+                if(name == "") {
+                    continue;
+                }
+                else if(name != null) {
+                    t.setName(name);
+                }
+            }
+            else if(input.contains("U")) {
+                input = input.replace("U", "");
 
-        // Datum? J/N
-        System.out.print("Datum? (J/N) ");
-        if(Input.readLine().toUpperCase() == "J") {
-            System.out.print("Neues Datum: ");
-            String newDatum = Input.readLine();
-            
-        }
-        // Uhrzeit? J/N
+                System.out.print("Neue Uhrzeit: ");
+                String uhrzeit = Input.readLine();
+                Uhrzeit u;
+                if((u = convertToUhrzeit(uhrzeit)) != null) {
+                    t.setUhrzeit(u);
+                }
+                else return;
+            }
+            else if(input.contains("B")) {
+                input = input.replace("B", "");
 
-        if(Input.readLine().toUpperCase() == "Y") {
-            
-        }
-        // Name? J/N
-
-        if(Input.readLine().toUpperCase() == "Y") {
-            
-        }
-        // Beschreibung? J/N
-
-        if(Input.readLine().toUpperCase() == "Y") {
-            
+                System.out.println("Neue Beschreibung: ");
+                String beschr = Input.readLine();
+                if(beschr == "") {
+                    continue;
+                }
+                else if(beschr != null) {
+                    t.setBeschreibung(beschr);
+                }
+            }
         }
         
-
-
+        System.out.println("\n===== Termin erfolgreich bearbeitet. =====\n");
     }
 
     /*
@@ -212,7 +236,6 @@ public class Verwaltung {
         }
         return null;
     }
-
 
     //Exception werfen beim splitten für Rechtschreibfehler !!
     private static Datum convertToDatum(String dat) {
