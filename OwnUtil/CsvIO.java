@@ -20,18 +20,18 @@ public class CsvIO {
     }
 
     public static void CsvWrite(){
+        //ruft createStructure auf um Ordner mit der csv datei zu erstellen
         try {
             createStructure();
         }catch (IOException e) {
             System.out.println("something wrong i can feel it");
         }
 
-        //Verwaltung.getTerime(); um Liste zu erhalten
-
+        //schreibt den inhalt der Liste in die csv Datei per toString und BufferedWriter
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))){
 
             for (int i = 0; i < Verwaltung.getTermine().size(); i++) {
-                writer.write(Verwaltung.getTermine().get(i).toString());
+                writer.write(Verwaltung.getTermine().get(i).toStringCsv());
                 writer.write('\n');
             }
 
@@ -40,6 +40,7 @@ public class CsvIO {
         }
     }
 
+    //erstellt ein Ordner für die csv Datei
     public static void createStructure() throws IOException{
         File datei = new File(PATHNAME);
         if (! datei.exists()){

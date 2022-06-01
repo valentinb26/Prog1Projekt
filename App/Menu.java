@@ -3,6 +3,7 @@ package App;
 import OwnUtil.CsvIO;
 import OwnUtil.Input;
 import OwnUtil.Output;
+import Typen.Termin;
 
 public class Menu {
     // Menue-Zeugs
