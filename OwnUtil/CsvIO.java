@@ -5,7 +5,9 @@ import App.Verwaltung;
 import Typen.Termin;
 
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -15,7 +17,15 @@ public class CsvIO {
 
 
     public static void csvRead() {
+        String[] line = new String[6];
 
+        try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
+            
+        }
+        catch(Exception e) {
+
+        }
+        
 
     }
 
