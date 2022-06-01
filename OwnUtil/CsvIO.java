@@ -14,12 +14,12 @@ public class CsvIO {
     public static final String PATHNAME = "../CSV/Kalender.csv";
 
 
-    public static void CsvRead(){
+    public static void csvRead() {
 
 
     }
 
-    public static void CsvWrite(){
+    public static void csvWrite() {
         //ruft createStructure auf um Ordner mit der csv datei zu erstellen
         try {
             createStructure();
