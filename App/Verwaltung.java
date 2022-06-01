@@ -21,6 +21,9 @@ public class Verwaltung {
         return termine;
     }
 
+    public static void setTermine(ArrayList<Termin> list) {
+        termine = list;
+    }
     /*
     Methoden:
         - terminEinsehen

@@ -8,7 +8,8 @@ public class Main {
         boolean running = true;
         // Startroutine ( CSV Datei einlesen, ID neu setzen, (Protokoll starten))
 
-
+        Verwaltung.setTermine(CsvIO.csvRead());
+        
         while(running) {
             Menu.printMenu();
             Menu.inputHauptMenu();

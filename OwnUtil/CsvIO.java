@@ -18,7 +18,7 @@ public class CsvIO {
     //Klasse für Input und Output in und aus einer Csv Datei
     public static final String PATHNAME = "./CSV/Kalender.csv";
 
-    public static void csvRead() {
+    public static ArrayList<Termin> csvRead() {
 
         // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
         // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN 
@@ -32,16 +32,19 @@ public class CsvIO {
         boolean erledigt;
 
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
-            String line = "";
-            String[] parts = new String[6];
-            while (br.readLine() != null) {
+                   
+            String line;
+            while ((line = br.readLine()) != null) {
+
+                line = br.readLine();
+                String[] parts = line.split(";");
 
                 if(line.length() > 4) {
                     Termin.setNewStartId(Integer.parseInt(line));
+                    return temp;
                 } // Beschränkt auf 10000 Termine.
 
-                line = br.readLine();
-                parts = line.split(";");
+                
 
                 id = Integer.parseInt(parts[0]);
                 name = parts[1];
@@ -62,6 +65,8 @@ public class CsvIO {
             catch(Exception e) {
                 e.printStackTrace();
             }
+
+            return temp;
         }
     
     public static void csvWrite() {
@@ -80,7 +85,8 @@ public class CsvIO {
                 writer.write('\n');
             }
             // Letzte Id
-            writer.write(Termin.getCurrentId());
+            System.out.println(Termin.getCurrentId());
+            writer.write(String.valueOf(Termin.getCurrentId()));
             writer.write('\n');
         }
         catch (Exception e){
@@ -91,7 +97,7 @@ public class CsvIO {
     //erstellt ein Ordner für die csv Datei
     public static void createStructure() throws IOException{
         File datei = new File(PATHNAME);
-        if (! datei.exists()){
+        /*if (! datei.exists()){
             File verzeichnis = datei.getParentFile();
             if (verzeichnis != null){
                 if (! verzeichnis.exists()){
@@ -99,6 +105,13 @@ public class CsvIO {
                 }
                 datei.createNewFile();
             }
+        }*/
+        File verzeichnis = datei.getParentFile();
+        if(datei.exists() && !datei.isDirectory()){
+            System.out.println(datei + " Exists");
+        }else{
+            System.out.println(datei + " Does not exists");
+            datei.createNewFile();
         }
     }
 }
