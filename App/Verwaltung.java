@@ -1,7 +1,9 @@
 package App;
 
+// Externe Packages
 import java.util.ArrayList;
 
+// Eigene Packages
 import OwnUtil.Input;
 import OwnUtil.Output;
 import Typen.Datum;
@@ -13,13 +15,10 @@ public class Verwaltung {
     // Felder, Variablen:
     // Liste der Termine: 
     private static ArrayList<Termin> termine = new ArrayList<>(); 
-
     // Kein Setter -> Read only
     public static ArrayList<Termin> getTermine() {
         return termine;
     }
-
-    private final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
 
     /*
     Methoden:
@@ -42,11 +41,11 @@ public class Verwaltung {
         // Danach Termin ausgeben.
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getID() == id) {
-                System.out.println(SEPARATOR);
+                System.out.println(Output.SEPARATOR);
                 System.out.println(termine.get(i));
             }
         }
-        System.out.println(SEPARATOR);
+        System.out.println(Output.SEPARATOR);
     }
     
     // Mehrere Termine einsehen
@@ -54,10 +53,10 @@ public class Verwaltung {
         // Termine nach der Suche bspw. ausgeben lassen.
         Output.printTitle("Termineinsehung");
         for(Termin t : termine) {
-            System.out.println(SEPARATOR);
+            System.out.println(Output.SEPARATOR);
             System.out.println(t);
         }
-        System.out.println(SEPARATOR);
+        System.out.println(Output.SEPARATOR);
     }
     
     // Termin suchen
@@ -148,6 +147,13 @@ public class Verwaltung {
                 indexInList = i;
                 break;
             }
+        }
+
+        System.out.println("Sind Sie sicher? (J/N)");
+        String input = Input.readLine().toUpperCase();
+        if(input == "N" || input != "J") {
+            System.out.println("===== Loeschvorgang abgebrochen =====");
+            return;
         }
 
         try {
@@ -242,10 +248,11 @@ public class Verwaltung {
     }
 
     /*
-    PRIVATE
+    H i l f s m e t h o d e n 
     */
 
     // Sollte eigetnlich in OwnUtil rein.
+
     // Existiert Termin?
     private static Termin existTermin(int id) {
         for(int i = 0; i < termine.size(); i++) {
