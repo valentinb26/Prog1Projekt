@@ -37,6 +37,7 @@ public class CsvIO {
             String[] parts = new String[6];
             while (br.readLine() != null) {
 
+                //versteh ich nicht?????
                 if(line.length() > 4) {
                     Termin.setNewStartId(Integer.parseInt(line));
                 } // Beschränkt auf 10000 Termine.
@@ -58,6 +59,7 @@ public class CsvIO {
                 erledigt = Boolean.parseBoolean(parts[5]);
 
                 Verwaltung.setTermine(datum,uhrzeit,name,beschreibung);
+
             }
             
             }
