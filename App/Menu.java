@@ -60,10 +60,10 @@ public class Menu {
             // Hilfe
         }
         case 8 -> {
-            System.out.println(repeat1 + ui + " (Beenden)");
+            System.out.println(repeat1 + ui + " (Speichern & Beenden)");
             System.out.println("Auf Wiedersehen :)");
-            System.exit(0);
             // Protokoll-Aufruf "Beendet durch Benutzereingabe.".
+            System.exit(0);
         }
         default -> {
             System.out.println("keine gueltige Nummer! Versuchs nochmal :)");
