@@ -270,7 +270,7 @@ public class Verwaltung {
         return null;
     }
 
-    //Exception werfen beim splitten für Rechtschreibfehler !!
+    //Exception werfen beim splitten für Schreibfehler !!
     private static Datum convertToDatum(String dat) {
         // TT.MM.JJJJ
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
@@ -287,7 +287,7 @@ public class Verwaltung {
         return null;
     }
 
-    //Exception werfen beim splitten für Rechtschreibfehler !!
+    //Exception werfen beim splitten für Schreibfehler !!
     private static Uhrzeit convertToUhrzeit(String uhrzeit) {
         String[] parts = uhrzeit.split(":");
 
