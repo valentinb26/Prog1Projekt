@@ -28,6 +28,9 @@ public class Termin {
     public int getID() {
         return this.terminId;
     }
+    public Uhrzeit getUhrzeit() {
+        return this.uhrzeit;
+    }
 
     public void setErledigt(boolean value) {
         this.erledigt = value;
