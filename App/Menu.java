@@ -22,7 +22,7 @@ public class Menu {
         System.out.println("\t(8) Speichern & Beenden");
     }
 
-    public static void inputHauptMenu(){
+    public static void inputHauptMenu() {
         System.out.print(Output.PROMPT);
         int ui = Input.readInt();
         final String repeat1 = "Von Ihnen gewaehlter Menuepunkt: ";
