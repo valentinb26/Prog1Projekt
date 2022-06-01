@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class CsvIO {
     //Klasse für Input und Output in und aus einer Csv Datei
-    public static final String PATHNAME = "../CSV/Kalender.csv";
+    public static final String PATHNAME = "../../CSV/Kalender.csv";
 
 
     public static void csvRead() {
