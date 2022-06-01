@@ -2,6 +2,9 @@ package OwnUtil;
 
 public class Output {
 
+
+    public final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
+
     public static void clearScreen() {
         try {
             String nameOS = System.getProperty("os.name");
