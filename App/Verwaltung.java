@@ -6,6 +6,7 @@ import java.util.ArrayList;
 // Eigene Packages
 import OwnUtil.Input;
 import OwnUtil.Output;
+import OwnUtil.Convert;
 import Typen.Datum;
 import Typen.Termin;
 import Typen.Uhrzeit;
@@ -31,7 +32,7 @@ public class Verwaltung {
 
         Noch (!) in der Verwaltung:
         - existTermin
-        - convertToDatum
+        - Convert.convertToDatum
         - convert ToUhrzeit
     */
     
@@ -123,8 +124,8 @@ public class Verwaltung {
         // Termin zur Liste hinzufügen
         // Wichtig: einmaliges und (&), Datum und Uhrzeit müssen für korrekte
         // Fehleranzeige geprüft werden.
-        if(convertToDatum(datum) != null & convertToUhrzeit(uhrzeit) != null) {
-            termine.add(new Termin(convertToDatum(datum), convertToUhrzeit(uhrzeit), name, beschr));
+        if(Convert.convertToDatum(datum) != null & Convert.convertToUhrzeit(uhrzeit) != null) {
+            termine.add(new Termin(Convert.convertToDatum(datum), Convert.convertToUhrzeit(uhrzeit), name, beschr));
             // TODO Termin auch in der CSV Datei speichern
             System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
         } 
@@ -187,7 +188,7 @@ public class Verwaltung {
         Termin t;
         int inputId = Input.readInt();
 
-        if((t = existTermin(inputId)) == null) {
+        if((t = Convert.existTermin(inputId)) == null) {
             System.out.println("!! ID nicht gefunden. !!");
             return;
         }
@@ -209,7 +210,7 @@ public class Verwaltung {
                 System.out.print("Neues Datum: ");
                 String datum = Input.readLine();
                 Datum d;
-                if((d = convertToDatum(datum)) != null) {
+                if((d = Convert.convertToDatum(datum)) != null) {
                     t.setDatum(d);
                 }
                 else return;
@@ -232,7 +233,7 @@ public class Verwaltung {
                 System.out.print("Neue Uhrzeit: ");
                 String uhrzeit = Input.readLine();
                 Uhrzeit u;
-                if((u = convertToUhrzeit(uhrzeit)) != null) {
+                if((u = Convert.convertToUhrzeit(uhrzeit)) != null) {
                     t.setUhrzeit(u);
                 }
                 else return;
@@ -260,49 +261,5 @@ public class Verwaltung {
 
     // Sollte eigetnlich in OwnUtil rein.
 
-    // Existiert Termin?
-    private static Termin existTermin(int id) {
-        for(int i = 0; i < termine.size(); i++) {
-            if(termine.get(i).getID() == id) {
-                return termine.get(i);
-            }
-        }
-        return null;
-    }
-
-    //Exception werfen beim splitten für Schreibfehler !!
-    private static Datum convertToDatum(String dat) {
-        // TT.MM.JJJJ
-        String[] parts = dat.split("\\."); // Metacharacter escape "\\"
-        
-        try {
-            int day   = Integer.parseInt(parts[0]);
-            int month = Integer.parseInt(parts[1]);
-            int year  = Integer.parseInt(parts[2]);
-            return new Datum(day, month, year);
-        }
-        catch(NumberFormatException e) {
-            System.out.println("!! Datumsformat falsch !!");
-        }
-        catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-
-    //Exception werfen beim splitten für Schreibfehler !!
-    private static Uhrzeit convertToUhrzeit(String uhrzeit) {
-        String[] parts = uhrzeit.split(":");
-
-        try {
-            int hours   = Integer.parseInt(parts[0]);
-            int minutes = Integer.parseInt(parts[1]);
-            return new Uhrzeit(hours, minutes);
-        }
-        catch(Exception e) {
-            System.out.println("!! Uhrzeitformat falsch !!");
-        }
-
-        return null;
-    }   
+       
 }
