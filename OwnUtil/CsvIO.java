@@ -3,6 +3,8 @@ package OwnUtil;
 
 import App.Verwaltung;
 import Typen.Termin;
+import Typen.Datum;
+import Typen.Uhrzeit;
 
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
@@ -19,13 +21,31 @@ public class CsvIO {
         
 
     public static void csvRead() {
+
+        // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
+        // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN 
         ArrayList<Termin> temp = new ArrayList<Termin>();
+
+        int id;
+        String name;
+        String beschreibung;
+        Datum datum;
+        Uhrzeit uhrzeit;
+        boolean erledigt;
+
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
             String line = "";
+            String[] parts = new String[6];
             while (br.readLine() != null) {
                 line = br.readLine();
-                temp.add(line.split(";"));
+                parts = line.split(";");
 
+                id = Integer.parseInt(parts[0]);
+                name = parts[1];
+                beschreibung = parts[2];
+                datum = Convert.convertToDatum(parts[3]);
+                uhrzeit = Convert.convertToUhrzeit(parts[4]);
+                erledigt = Boolean.parseBoolean(parts[5]);
             }
             
             }catch(IOException e) {
