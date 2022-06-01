@@ -47,6 +47,10 @@ public class Termin {
     
     // END Getter und (Setter)
 
+    public static void setNewStartId(int newid) {
+        id = newid;
+    }
+
     @Override
     public String toString() {
         return    "Termin:           " + this.name + "\n"

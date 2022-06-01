@@ -18,8 +18,6 @@ public class CsvIO {
     //Klasse für Input und Output in und aus einer Csv Datei
     public static final String PATHNAME = "./CSV/Kalender.csv";
 
-        
-
     public static void csvRead() {
 
         // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
@@ -59,12 +57,8 @@ public class CsvIO {
             catch(Exception e) {
                 e.printStackTrace();
             }
-
         }
-        
-
     
-
     public static void csvWrite() {
         //ruft createStructure auf um Ordner mit der csv datei zu erstellen
         try {
