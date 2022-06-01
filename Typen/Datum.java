@@ -4,10 +4,15 @@ public class Datum {
     private int monat;
     private int jahr;
 
-    public Datum(int tag, int monat, int jahr) {
+    public Datum(int tag, int monat, int jahr) throws Exception {
         // Checken, ob Tag zu Monat passt. Eventuell 29. Februar im Schaltjahr.
         // Schaltjahr wenn (jahr mod 4 = 0)
         // Sonst Exception
+
+        if(isDatumValid(tag, monat, jahr) == false) {
+            throw new Exception("Datum existiert nicht!");
+        }
+
         this.tag = tag;
         this.monat = monat;
         this.jahr = jahr;
@@ -23,6 +28,32 @@ public class Datum {
 
     public int getJahr() {
         return this.jahr;
+    }
+
+    private boolean isDatumValid(int tag, int monat, int jahr) {
+        if(monat > 12 || tag > 31) return false;
+        else if(monat == 1 || monat == 3 || monat == 5 || monat == 7) {
+            if(tag > 31) {
+                return false;
+            }
+        }
+        else if(monat == 12 || monat == 10 || monat == 8) {
+            if(tag > 31) {
+                return false;
+            }
+        }
+        else if(monat == 4 || monat == 6 || monat == 9 || monat == 11) {
+            if(tag > 30) return false;
+        }
+        else if(monat == 2) {
+            if(jahr % 4 == 0) {
+                if(tag > 29) return false;
+            }
+            else if(jahr % 4 != 0) {
+                if(tag > 28) return false;
+            }
+        }
+        return true;
     }
 
     @Override

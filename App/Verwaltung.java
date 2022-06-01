@@ -284,6 +284,9 @@ public class Verwaltung {
         catch(NumberFormatException e) {
             System.out.println("!! Datumsformat falsch !!");
         }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 

@@ -5,11 +5,15 @@ public class Uhrzeit {
     private int minutes;
     private int hours;
 
-    public Uhrzeit(int hours, int minutes) {
+    public Uhrzeit(int hours, int minutes) throws Exception {
 
         // hours muss kleiner 24 sein.
         // minutes muss kleiner 60 sein.
         // sonst Exception.
+
+        if(hours >= 24 || minutes > 60) {
+            throw new Exception("Uhrzeitformat falsch!");
+        }
 
         this.minutes = minutes;
         this.hours = hours;

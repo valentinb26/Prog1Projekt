@@ -58,14 +58,4 @@ public class Termin {
                 + "ID:               " + this.terminId + "\n"
                 + "Erledigt:         " + this.erledigt;
     }
-
-    /*@Override
-    public String toString() {
-        final String format = "%-20:%s\n";
-        return String.format(format, "Termin", this.name) +
-               String.format(format, "Beschreibung", this.beschr) +
-               String.format("am %s um %s\n", this.datum, this.uhrzeit) + 
-               String.format(format, String.valueOf(this.erledigt)); 
-    }*/
-
 }
