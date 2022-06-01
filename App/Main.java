@@ -9,6 +9,6 @@ public class Main {
         while(running) {
             Menu.printMenu();
             Menu.inputHauptMenu();
-        }        
+        }       
     }
 }
