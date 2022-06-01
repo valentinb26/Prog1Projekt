@@ -10,24 +10,32 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CsvIO {
     //Klasse für Input und Output in und aus einer Csv Datei
-    public static final String PATHNAME = "../../CSV/Kalender.csv";
+    public static final String PATHNAME = "./CSV/Kalender.csv";
 
+        
 
     public static void csvRead() {
-        String[] line = new String[6];
-
+        ArrayList<Termin> temp = new ArrayList<Termin>();
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
+            String line = "";
+            while (br.readLine() != null) {
+                line = br.readLine();
+                temp.add(line.split(";"));
+
+            }
             
-        }
-        catch(Exception e) {
+            }catch(IOException e) {
+            System.out.println("TEMPERROR");
+            }
 
         }
         
 
-    }
+    
 
     public static void csvWrite() {
         //ruft createStructure auf um Ordner mit der csv datei zu erstellen
