@@ -1,10 +1,9 @@
 package App;
 
 import OwnUtil.Input;
-//import OwnUtil.Output;
+import OwnUtil.Output;
 
 public class Menu {
-    private static final String PROMPT = "\t> ";
     // Menue-Zeugs
 
     public static void printMenu() {
@@ -22,9 +21,9 @@ public class Menu {
     }
 
     public static void inputHauptMenu(){
-        System.out.print(PROMPT);
+        System.out.print(Output.PROMPT);
         int ui = Input.readInt();
-        final String repeat1 = "Von ihnen gewaehlter Menuepunkt: ";
+        final String repeat1 = "Von Ihnen gewaehlter Menuepunkt: ";
         
         // Eingabeverarbeitung.
         switch (ui) {
