@@ -41,10 +41,10 @@ public class CsvIO {
                 line1 = br.readLine();
                 System.out.println(line1);
             }
-            System.out.println("teiler");
 
             String line;
 
+            //der kommt nicht in die Schleife rein warum ??
             while ((line = br.readLine()) != null) {
 
                 String[] parts = line.split(";");
