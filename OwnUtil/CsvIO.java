@@ -36,7 +36,6 @@ public class CsvIO {
             String line;
             while ((line = br.readLine()) != null) {
 
-                line = br.readLine();
                 String[] parts = line.split(";");
 
                 if(line.length() > 4) {
