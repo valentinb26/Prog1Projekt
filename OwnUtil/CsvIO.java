@@ -1,6 +1,9 @@
 package OwnUtil;
 
+
+import App.Verwaltung;
 import Typen.Termin;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -27,7 +30,10 @@ public class CsvIO {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))){
 
-            writer.write();
+            for (int i = 0; i < Verwaltung.getTermine().size(); i++) {
+                writer.write(Verwaltung.getTermine().get(i).toString());
+                writer.write('\n');
+            }
 
         }catch (Exception e){
             System.out.println("Something wrong u can feel it");

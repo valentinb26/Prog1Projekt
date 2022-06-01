@@ -1,5 +1,6 @@
 package App;
 
+import OwnUtil.CsvIO;
 import OwnUtil.Input;
 import OwnUtil.Output;
 
@@ -61,6 +62,7 @@ public class Menu {
         case 8 -> {
             System.out.println(repeat1 + ui + " (Speichern & Beenden)");
             System.out.println("Auf Wiedersehen :)");
+            CsvIO.CsvWrite();
             // Protokoll-Aufruf "Beendet durch Benutzereingabe.".
             System.exit(0);
         }
