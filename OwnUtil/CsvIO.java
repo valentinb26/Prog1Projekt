@@ -1,11 +1,15 @@
 package OwnUtil;
 
+import Typen.Termin;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class CsvIO {
     //Klasse für Input und Output in und aus einer Csv Datei
-    public static final String PATHNAME = "../CSV/Kalender.csv";
+    public static final String PATHNAME = "./CSV/Kalender.csv";
+
 
     public static void CsvRead(){
 
@@ -15,11 +19,19 @@ public class CsvIO {
     public static void CsvWrite(){
         try {
             createStructure();
-        }catch (IOException e){
+        }catch (IOException e) {
             System.out.println("something wrong i can feel it");
         }
 
+        //Verwaltung.getTerime(); um Liste zu erhalten
 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))){
+
+            writer.write();
+
+        }catch (Exception e){
+            System.out.println("Something wrong u can feel it");
+        }
     }
 
     public static void createStructure() throws IOException{

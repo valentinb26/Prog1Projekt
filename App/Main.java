@@ -7,7 +7,7 @@ public class Main {
 
         //boolean running = true;
         // Startroutine ( CSV Datei einlesen, ID neu setzen, (Protokoll starten))
-        CsvIO.CsvRead();
+        CsvIO.CsvWrite();
 
         while(true) {
             Menu.printMenu();

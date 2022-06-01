@@ -56,6 +56,10 @@ public class Termin {
                 + "Erledigt:         " + this.erledigt;
     }
 
+    public String toStringCsv() {
+        return this.terminId + ";" + this.name + ":" + this.beschr + ";" + this.datum + ";" + this.uhrzeit + ";" + this.erledigt;
+    }
+
     /*@Override
     public String toString() {
         final String format = "%-20:%s\n";

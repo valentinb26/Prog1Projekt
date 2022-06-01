@@ -14,7 +14,7 @@ public class Verwaltung {
     
     // Felder, Variablen:
     // Liste der Termine: 
-    private static ArrayList<Termin> termine = new ArrayList<>(); 
+    private static ArrayList<Termin> termine = new ArrayList<>();
     // Kein Setter -> Read only
     public static ArrayList<Termin> getTermine() {
         return termine;
