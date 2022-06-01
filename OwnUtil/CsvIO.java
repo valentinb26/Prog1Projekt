@@ -14,15 +14,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+//Klasse für Input und Output in und aus einer Csv Datei
 public class CsvIO {
-    //Klasse für Input und Output in und aus einer Csv Datei
+
     public static final String PATHNAME = "./CSV/Kalender.csv";
 
     public static void csvRead() {
 
         // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
-        // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN 
-        ArrayList<Termin> temp = new ArrayList<Termin>();
+        // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN
 
         int id;
         String name;
@@ -40,9 +41,11 @@ public class CsvIO {
                     Termin.setNewStartId(Integer.parseInt(line));
                 } // Beschränkt auf 10000 Termine.
 
+                //nimm inhalt der csv datei zeilenweise und teilt sie am ; in ein array
                 line = br.readLine();
                 parts = line.split(";");
 
+                //nimmt das entstandene array und weißt die stellen richtig zu um einen Termin zu erstellen
                 id = Integer.parseInt(parts[0]);
                 name = parts[1];
                 beschreibung = parts[2];
@@ -53,6 +56,8 @@ public class CsvIO {
                     System.out.println("Fehler beim Einlesen!");
                 }
                 erledigt = Boolean.parseBoolean(parts[5]);
+
+                Verwaltung.setTermine(datum,uhrzeit,name,beschreibung);
             }
             
             }
@@ -79,7 +84,7 @@ public class CsvIO {
                 writer.write(Verwaltung.getTermine().get(i).toStringCsv());
                 writer.write('\n');
             }
-            // Letzte Id
+            //schreibt die Letzte Id in die csv datei
             writer.write(Termin.getCurrentId());
             writer.write('\n');
         }
@@ -88,7 +93,7 @@ public class CsvIO {
         }
     }
 
-    //erstellt ein Ordner für die csv Datei
+    //erstellt ein Ordner und die csv Datei falls keine/r vorhanden ist
     public static void createStructure() throws IOException{
         File datei = new File(PATHNAME);
         if (! datei.exists()){

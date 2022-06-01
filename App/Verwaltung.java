@@ -16,9 +16,15 @@ public class Verwaltung {
     // Felder, Variablen:
     // Liste der Termine: 
     private static ArrayList<Termin> termine = new ArrayList<>();
-    // Kein Setter -> Read only
+
+    //getter für die Termine
     public static ArrayList<Termin> getTermine() {
         return termine;
+    }
+
+    //setter für den Übertrag csv in Arraylist
+    public static void setTermine(Datum datum, Uhrzeit uhrzeit, String name,String beschreibung) {
+        termine.add(new Termin(datum,uhrzeit,name,beschreibung));
     }
 
     /*
