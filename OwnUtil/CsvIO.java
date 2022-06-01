@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.cert.LDAPCertStoreParameters;
 import java.util.ArrayList;
 
 
@@ -35,7 +34,17 @@ public class CsvIO {
 
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
                    
+            String line1;
+
+
+            for (int i = 0; i < 2; i++) {
+                line1 = br.readLine();
+                System.out.println(line1);
+            }
+            System.out.println("teiler");
+
             String line;
+
             while ((line = br.readLine()) != null) {
 
                 String[] parts = line.split(";");
@@ -45,6 +54,8 @@ public class CsvIO {
                     Termin.setNewStartId(Integer.parseInt(line));
                     return temp;
                 } // Beschränkt auf 10000 Termine.
+
+
 
                 
 
@@ -63,10 +74,13 @@ public class CsvIO {
                 Verwaltung.setTermine(datum,uhrzeit,name,beschreibung);
 
             }
-            
             }
             catch(IOException e) {
                 System.out.println("TEMPERROR");
+            }
+            catch (ArrayIndexOutOfBoundsException e){
+                System.out.println("Keine Termine gefunden oder erfolglose übernahme!");
+                e.printStackTrace();
             }
             catch(Exception e) {
                 e.printStackTrace();
@@ -90,15 +104,13 @@ public class CsvIO {
                 writer.write(Verwaltung.getTermine().get(i).toStringCsv());
                 writer.write('\n');
             }
-<<<<<<< HEAD
             // Letzte Id
             System.out.println(Termin.getCurrentId());
             writer.write(String.valueOf(Termin.getCurrentId()));
-=======
+
             //schreibt die Letzte Id in die csv datei
-            writer.write(Termin.getCurrentId());
->>>>>>> a837ff1b5bda298985a5e737542de93c5378fa40
-            writer.write('\n');
+            //writer.write(Termin.getCurrentId());
+           // writer.write('\n');
         }
         catch (Exception e){
             System.out.println("Something wrong u can feel it");
@@ -108,15 +120,6 @@ public class CsvIO {
     //erstellt ein Ordner und die csv Datei falls keine/r vorhanden ist
     public static void createStructure() throws IOException{
         File datei = new File(PATHNAME);
-        /*if (! datei.exists()){
-            File verzeichnis = datei.getParentFile();
-            if (verzeichnis != null){
-                if (! verzeichnis.exists()){
-                    verzeichnis.mkdir();
-                }
-                datei.createNewFile();
-            }
-        }*/
         File verzeichnis = datei.getParentFile();
         if(datei.exists() && !datei.isDirectory()){
             System.out.println(datei + " Exists");
