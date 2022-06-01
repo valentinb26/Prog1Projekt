@@ -58,6 +58,7 @@ public class Menu {
         }
         case 7 -> {
             System.out.println(repeat1 + ui + " (Hilfe)");
+
             // Hilfe
         }
         case 8 -> {
@@ -72,4 +73,5 @@ public class Menu {
         }
         }
     }
+
 }
