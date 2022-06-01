@@ -28,6 +28,9 @@ public class Termin {
     public int getID() {
         return this.terminId;
     }
+    public static int getCurrentId() {
+        return id;
+    }
 
     public void setErledigt(boolean value) {
         this.erledigt = value;

@@ -35,6 +35,11 @@ public class CsvIO {
             String line = "";
             String[] parts = new String[6];
             while (br.readLine() != null) {
+
+                if(line.length() > 4) {
+                    Termin.setNewStartId(Integer.parseInt(line));
+                } // Beschränkt auf 10000 Termine.
+
                 line = br.readLine();
                 parts = line.split(";");
 
@@ -74,8 +79,11 @@ public class CsvIO {
                 writer.write(Verwaltung.getTermine().get(i).toStringCsv());
                 writer.write('\n');
             }
-
-        }catch (Exception e){
+            // Letzte Id
+            writer.write(Termin.getCurrentId());
+            writer.write('\n');
+        }
+        catch (Exception e){
             System.out.println("Something wrong u can feel it");
         }
     }
