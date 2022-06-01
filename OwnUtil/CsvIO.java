@@ -5,14 +5,8 @@ import java.io.IOException;
 
 public class CsvIO {
     //Klasse für Input und Output in und aus einer Csv Datei
-    public static final String PATHNAME = "../CSV/Kalender.csv";
 
     public static void CsvRead(){
-
-
-    }
-
-    public static void CsvWrite(){
         try {
             createStructure();
         }catch (IOException e){
@@ -20,10 +14,15 @@ public class CsvIO {
         }
 
 
+
+    }
+
+    public static void CsvWrite(){
+
     }
 
     public static void createStructure() throws IOException{
-        File datei = new File(PATHNAME);
+        File datei = new File("./CSV/Kalender.csv");
         if (! datei.exists()){
             File verzeichnis = datei.getParentFile();
             if (verzeichnis != null){
