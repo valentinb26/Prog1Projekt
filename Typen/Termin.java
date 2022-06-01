@@ -57,6 +57,6 @@ public class Termin {
     }
 
     public String toStringCsv() {
-        return this.terminId + ";" + this.name + ":" + this.beschr + ";" + this.datum + ";" + this.uhrzeit + ";" + this.erledigt;
+        return this.terminId + ";" + this.name + ";" + this.beschr + ";" + this.datum + ";" + this.uhrzeit + ";" + this.erledigt;
     }
 }
