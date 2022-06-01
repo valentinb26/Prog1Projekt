@@ -18,7 +18,7 @@ public class Menu {
         System.out.println("\t(5) Termin bearbeiten");
         System.out.println("\t(6) Ansicht");
         System.out.println("\t(7) Hilfe");
-        System.out.println("\t(8) Beenden");
+        System.out.println("\t(8) Speichern & Beenden");
     }
 
     public static void inputHauptMenu(){
