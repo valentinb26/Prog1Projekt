@@ -149,21 +149,28 @@ public class Verwaltung {
             }
         }
 
-        System.out.println("Sind Sie sicher? (J/N)");
-        String input = Input.readLine().toUpperCase();
-        if(input == "N" || input != "J") {
+        if(indexInList == -1) {
+            System.out.println("INTERN: Termin-ID nicht gefunden.");
             System.out.println("===== Loeschvorgang abgebrochen =====");
             return;
         }
 
-        try {
+        System.out.println("Sind Sie sicher? (J/N)");
+        String input = Input.readLine();
+        System.out.println(input);
+        if(input.toUpperCase().equals("N")) {
+            System.out.println("===== Loeschvorgang abgebrochen =====");
+            return;
+        }
+        else if(input.toUpperCase().equals("J")) {
             termine.remove(indexInList);
             System.out.println("INTERN: Termin mit index " + indexInList + " und id " + id + " entfernt.");
+            System.out.println("\n===== Termin erfolgreich geloescht. =====\n");
         }
-        catch(IndexOutOfBoundsException e) {
-            System.out.println("INTERN: Termin-ID nicht gefunden.");
+        else {
+            System.out.println("===== Loeschvorgang abgebrochen =====");
+            return;
         }
-        System.out.println("\n===== Termin erfolgreich geloescht. =====\n"); 
     }
     
     // Termin bearbeiten
