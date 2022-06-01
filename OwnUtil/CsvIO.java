@@ -43,13 +43,21 @@ public class CsvIO {
                 id = Integer.parseInt(parts[0]);
                 name = parts[1];
                 beschreibung = parts[2];
-                datum = Convert.convertToDatum(parts[3]);
-                uhrzeit = Convert.convertToUhrzeit(parts[4]);
+                if((datum = Convert.convertToDatum(parts[3])) == null) {
+                    System.out.println("Fehler beim Einlesen!");
+                }
+                if((uhrzeit = Convert.convertToUhrzeit(parts[4])) == null) {
+                    System.out.println("Fehler beim Einlesen!");
+                }
                 erledigt = Boolean.parseBoolean(parts[5]);
             }
             
-            }catch(IOException e) {
-            System.out.println("TEMPERROR");
+            }
+            catch(IOException e) {
+                System.out.println("TEMPERROR");
+            }
+            catch(Exception e) {
+                e.printStackTrace();
             }
 
         }
