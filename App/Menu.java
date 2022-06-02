@@ -8,7 +8,6 @@ import OwnUtil.Output;
 
 public class Menu {
     // Menue-Zeugs
-
     public static void printMenu() {
         System.out.println("\n\t\tM E N U E\n");
         System.out.println("\t(1) Termine einsehen");
