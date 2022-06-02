@@ -34,32 +34,28 @@ public class CsvIO {
 
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
                    
+            /*
             String line1;
-
-
             for (int i = 0; i < 2; i++) {
                 line1 = br.readLine();
                 System.out.println(line1);
-            }
+            }*/
 
             String line;
 
             //der kommt nicht in die Schleife rein warum ??
             while ((line = br.readLine()) != null) {
 
+                System.out.println(line);
                 String[] parts = line.split(";");
 
-                //versteh ich nicht?????
-                if(line.length() > 4) {
+                // versteh ich nicht?????
+                if(line.length() < 5) {
                     Termin.setNewStartId(Integer.parseInt(line));
                     return temp;
                 } // Beschränkt auf 10000 Termine.
 
-
-
-                
-
-                //nimmt das entstandene array und weißt die stellen richtig zu um einen Termin zu erstellen
+                // nimmt das entstandene Aarry und weißt die Stellen richtig zu um einen Termin zu erstellen
                 id = Integer.parseInt(parts[0]);
                 name = parts[1];
                 beschreibung = parts[2];
@@ -71,9 +67,14 @@ public class CsvIO {
                 }
                 erledigt = Boolean.parseBoolean(parts[5]);
 
-                Verwaltung.setTermine(datum,uhrzeit,name,beschreibung);
-
+                temp.add(new Termin(datum, uhrzeit, name, beschreibung));
+                //Verwaltung.setTermine(datum,uhrzeit,name,beschreibung);
+                
+                // ich geb einfach die temp-Liste in die Main
+                // und hab die dann gleich in der Verwaltung.
+                
             }
+            return temp;
             }
             catch(IOException e) {
                 System.out.println("TEMPERROR");
@@ -90,15 +91,15 @@ public class CsvIO {
         }
     
     public static void csvWrite() {
-        //ruft createStructure auf um Ordner mit der csv datei zu erstellen
+        // ruft createStructure auf um Ordner mit der csv datei zu erstellen
         try {
             createStructure();
         }catch (IOException e) {
             System.out.println("something wrong i can feel it");
         }
 
-        //schreibt den inhalt der Liste in die csv Datei per toString und BufferedWriter
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))){
+        // schreibt den inhalt der Liste in die csv Datei per toString und BufferedWriter
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))) {
 
             for (int i = 0; i < Verwaltung.getTermine().size(); i++) {
                 writer.write(Verwaltung.getTermine().get(i).toStringCsv());
@@ -118,13 +119,13 @@ public class CsvIO {
     }
 
     //erstellt ein Ordner und die csv Datei falls keine/r vorhanden ist
-    public static void createStructure() throws IOException{
+    public static void createStructure() throws IOException {
         File datei = new File(PATHNAME);
         File verzeichnis = datei.getParentFile();
         if(datei.exists() && !datei.isDirectory()){
-            System.out.println(datei + " Exists");
+            System.out.println(datei + " exists");
         }else{
-            System.out.println(datei + " Does not exists");
+            System.out.println(datei + " does not exist");
             datei.createNewFile();
         }
     }

@@ -23,8 +23,12 @@ public class Verwaltung {
     }
 
     //setter für den Übertrag csv in Arraylist
-    public static void setTermine(Datum datum, Uhrzeit uhrzeit, String name,String beschreibung) {
+    
+    /*public static void setTermine(Datum datum, Uhrzeit uhrzeit, String name,String beschreibung) {
         termine.add(new Termin(datum,uhrzeit,name,beschreibung));
+    }*/
+    public static void setTermine(ArrayList<Termin> t) {
+        termine = t;
     }
 
     /*
