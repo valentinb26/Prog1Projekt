@@ -19,7 +19,7 @@ public class CsvIO {
     public static final String PATHNAME = "./CSV/Kalender.csv";
 
     public static ArrayList<Termin> csvRead() {
-        ArrayList<Termin> temp = new ArrayList();
+        ArrayList<Termin> temp = new ArrayList<>();
         // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
         // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN
 
