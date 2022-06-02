@@ -10,6 +10,7 @@ import OwnUtil.Convert;
 import Typen.Datum;
 import Typen.Termin;
 import Typen.Uhrzeit;
+import Ansicht.KonsolenAnsicht;
 
 public class Verwaltung {
     
@@ -52,14 +53,13 @@ public class Verwaltung {
     // Mehrere Termine einsehen
     public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
-        Output.printTitle("Termineinsicht");
-        /* 
+        Output.printTitle("Kompakte Ansicht");
+        System.out.printf("\n%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
+        System.out.println("---------------------------------------------------");
         for(Termin t : termine) {
-            System.out.println(Output.SEPARATOR);
-            System.out.println(t);
+            // DATUM:- UHRZEIT: \tID:- NAME:- 
+            System.out.printf("%-10s | %-7s     | %-4d | %s\n", t.getDatum().toString(), t.getUhrzeit().toString(), t.getID(), t.getName());
         }
-        System.out.println(Output.SEPARATOR);*/
-        
     }
     
     // Termin suchen

@@ -16,7 +16,7 @@ public class Menu {
         System.out.println("\t(3) Termin suchen");
         System.out.println("\t(4) Termin loeschen");
         System.out.println("\t(5) Termin bearbeiten");
-        System.out.println("\t(6) Ansicht");
+        System.out.println("\t(6) Erweiterte Ansicht");
         System.out.println("\t(7) Hilfe");
         System.out.println("\t(8) Speichern & Beenden");
     }
@@ -53,8 +53,7 @@ public class Menu {
         }
         case 6 -> {
             System.out.println(repeat1 + ui + " (Ansicht)");
-            KonsolenAnsicht a = new KonsolenAnsicht();
-            a.erstelleListenAnsicht();
+            KonsolenAnsicht.erstelleErweiterteAnsicht();
         }
         case 7 -> {
             System.out.println(repeat1 + ui + " (Hilfe)");
