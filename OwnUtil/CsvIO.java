@@ -33,13 +33,6 @@ public class CsvIO {
         boolean erledigt;
 
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
-                   
-            /*
-            String line1;
-            for (int i = 0; i < 2; i++) {
-                line1 = br.readLine();
-                System.out.println(line1);
-            }*/
 
             String line;
 
@@ -68,7 +61,6 @@ public class CsvIO {
                 erledigt = Boolean.parseBoolean(parts[5]);
 
                 temp.add(new Termin(datum, uhrzeit, name, beschreibung));
-                //Verwaltung.setTermine(datum,uhrzeit,name,beschreibung);
                 
                 // ich geb einfach die temp-Liste in die Main
                 // und hab die dann gleich in der Verwaltung.
