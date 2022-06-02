@@ -3,15 +3,12 @@ package App;
 import OwnUtil.CsvIO;
 import OwnUtil.Input;
 import OwnUtil.Output;
-import Typen.Termin;
 
 public class Menu {
     // Menue-Zeugs
 
     public static void printMenu() {
-        //Output.clearScreen();
         System.out.println("\n\t\tM E N U E\n");
-        //System.out.println("( Zur Menuepunktwahl Nummer eingeben )");
         System.out.println("\t(1) Termine einsehen");
         System.out.println("\t(2) Termin erstellen");
         System.out.println("\t(3) Termin suchen");
