@@ -113,7 +113,7 @@ public class CsvIO {
     //erstellt ein Ordner und die csv Datei falls keine/r vorhanden ist
     public static void createStructure() throws IOException {
         File datei = new File(PATHNAME);
-        File verzeichnis = datei.getParentFile();
+        //File verzeichnis = datei.getParentFile();
         if(datei.exists() && !datei.isDirectory()){
             System.out.println(datei + " exists");
         }else{
