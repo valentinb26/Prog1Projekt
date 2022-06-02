@@ -5,7 +5,7 @@ import OwnUtil.Output;
 public class About {
     public static void help() {
         System.out.println(Output.SEPARATOR);
-        System.out.println("\n\t\tHILFE");
+        Output.printTitle("HILFE");
 
         System.out.println(
                 "1) Menue-Bedienung:\n " +
@@ -24,26 +24,6 @@ public class About {
                 "5) Haftungsausschluss:\n" +
                 "\tIm Falle von Datenverlust haftet der Hersteller nicht!\n"
         );
-/*
-        System.out.println("1) Menue-Bedienung:");
-        System.out.println("\tMenuepunkte werden mit Nummern angefuehrt.\n");
-
-        System.out.println("2) Speichern&Beenden");
-        System.out.println("\tNur bei korrektem verlassen der Anwendung werden vorgenommene\n" +
-                            "\tAenderungen übernommen!\n");
-
-        System.out.println("3) Datenverwaltung:");
-        System.out.println("\tIhre Daten werden in einer externen CSV-Datei aufbewahrt.\n");
-
-        System.out.println("4) Datensicherheit:");
-        System.out.println("\tIhre Daten werden nicht an dritte weitgegeben und sind\n" +
-                            "\tjederzeit von Ihnen einseh- und bearbeitbar.\n");
-
-        System.out.println("5) Haftungsausschluss:");
-        System.out.println("\tIm Falle von Datenverlust haftet der Hersteller nicht!\n");
-
- */
-
 
         System.out.println("Baeuerle Liebig GmbH&CoKG©");
         System.out.println(Output.SEPARATOR);

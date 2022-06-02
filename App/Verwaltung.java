@@ -58,7 +58,7 @@ public class Verwaltung {
     // Mehrere Termine einsehen
     public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
-        Output.printTitle("Termineinsehung");
+        Output.printTitle("Termineinsicht");
         for(Termin t : termine) {
             System.out.println(Output.SEPARATOR);
             System.out.println(t);
@@ -71,7 +71,7 @@ public class Verwaltung {
 
         Output.printTitle("Terminsuche");
 
-        System.out.print("Suchbegriff: ");
+        System.out.print("Suche nach Name: ");
         String value = Input.readLine();
 
         int terminCount = 0;
