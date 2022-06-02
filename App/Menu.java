@@ -1,5 +1,6 @@
 package App;
 
+import About.About;
 import OwnUtil.CsvIO;
 import OwnUtil.Input;
 import OwnUtil.Output;
@@ -55,7 +56,7 @@ public class Menu {
         }
         case 7 -> {
             System.out.println(repeat1 + ui + " (Hilfe)");
-
+            About.help();
             // Hilfe
         }
         case 8 -> {
