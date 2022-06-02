@@ -16,7 +16,6 @@ public class Input {
         // readLine deswegen, weil sich tokenbasierte und zeilenbasierte Eingaben nicht vertragen
         // nach tokenbasierter Eingabe könnte noch ein "\n" im Puffer liegen.
         // Wir beschränken uns ab jetzt auf zeilenbasierte Eingaben.
-
         try {
             return Integer.parseInt(readLine());
         }

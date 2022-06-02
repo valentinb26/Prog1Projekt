@@ -21,7 +21,6 @@ public class Verwaltung {
     public static ArrayList<Termin> getTermine() {
         return termine;
     }
-
     //setter für den Übertrag csv in Arraylist
     public static void setTermine(ArrayList<Termin> t) {
         termine = t;
@@ -35,11 +34,6 @@ public class Verwaltung {
         - terminErstellen
         - terminLoeschen
         - terminBearbeiten
-
-        Noch (!) in der Verwaltung:
-        - existTermin
-        - Convert.convertToDatum
-        - convert ToUhrzeit
     */
     
     // Termin einsehen
@@ -59,11 +53,13 @@ public class Verwaltung {
     public static void termineEinsehen() {
         // Termine nach der Suche bspw. ausgeben lassen.
         Output.printTitle("Termineinsicht");
+        /* 
         for(Termin t : termine) {
             System.out.println(Output.SEPARATOR);
             System.out.println(t);
         }
-        System.out.println(Output.SEPARATOR);
+        System.out.println(Output.SEPARATOR);*/
+        
     }
     
     // Termin suchen
@@ -132,7 +128,6 @@ public class Verwaltung {
         // Fehleranzeige geprüft werden.
         if(Convert.convertToDatum(datum) != null & Convert.convertToUhrzeit(uhrzeit) != null) {
             termine.add(new Termin(Convert.convertToDatum(datum), Convert.convertToUhrzeit(uhrzeit), name, beschr));
-            // TODO Termin auch in der CSV Datei speichern
             System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
         } 
         else {
@@ -182,10 +177,8 @@ public class Verwaltung {
     
     // Termin bearbeiten
     public static void terminBearbeiten() {
-
-        // TODO auch in CSV-Datei bearbeiten.
         
-        final int ARGUMENT_COUNT = 4;
+        final int ARGUMENT_COUNT = 5;
 
         Output.printTitle("Terminbearbeitung:");
 
@@ -199,10 +192,10 @@ public class Verwaltung {
             return;
         }
 
-        // Termin hat: (D)atum (N)ame (U)hrzeit (B)eschreibung
+        // Termin hat: (D)atum (N)ame (U)hrzeit (B)eschreibung (E)rledigt
         // Beispiel Nutzereingabe: "du" bzw. "ud"
         // Jeder Buchstabe darf nur einmal vorkommen
-        System.out.println("\n(D)atum (N)ame (U)hrzeit (B)eschreibung");
+        System.out.println("\n(D)atum (N)ame (U)hrzeit (B)eschreibung (E)rledigt");
         System.out.println("Anfangsbuchstaben ohne Leerzeichen getrennt eingeben: (Bspw.: DNU)");
         System.out.print("Eingabe: ");
 
@@ -256,16 +249,21 @@ public class Verwaltung {
                     t.setBeschreibung(beschr);
                 }
             }
+            else if(input.contains("E")) {
+                input = input.replace("E", "");
+
+                System.out.print("Termin erledigt? (J/N) ");
+                String erledigt = Input.readLine();
+                if(erledigt.toUpperCase().equals("J")) {
+                    t.setErledigt(true);
+                }
+                else if(erledigt.toUpperCase().equals("N")) {
+                    t.setErledigt(false);
+                }
+                else return;
+        }
         }
         
         System.out.println("\n===== Termin erfolgreich bearbeitet. =====\n");
     }
-
-    /*
-    H i l f s m e t h o d e n 
-    */
-
-    // Sollte eigetnlich in OwnUtil rein.
-
-       
 }
