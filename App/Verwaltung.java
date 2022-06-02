@@ -10,7 +10,6 @@ import OwnUtil.Convert;
 import Typen.Datum;
 import Typen.Termin;
 import Typen.Uhrzeit;
-import Ansicht.KonsolenAnsicht;
 
 public class Verwaltung {
     
