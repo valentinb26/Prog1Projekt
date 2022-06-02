@@ -1,5 +1,6 @@
 package App;
 
+import Ansicht.KonsolenAnsicht;
 import OwnUtil.CsvIO;
 import OwnUtil.Input;
 import OwnUtil.Output;
@@ -51,7 +52,8 @@ public class Menu {
         }
         case 6 -> {
             System.out.println(repeat1 + ui + " (Ansicht)");
-            // Ansicht
+            KonsolenAnsicht a = new KonsolenAnsicht();
+            a.erstelleListenAnsicht();
         }
         case 7 -> {
             System.out.println(repeat1 + ui + " (Hilfe)");

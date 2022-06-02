@@ -28,6 +28,12 @@ public class Termin {
     public int getID() {
         return this.terminId;
     }
+    public Datum getDatum() {
+        return this.datum;
+    }
+    public Uhrzeit getUhrzeit() {
+        return this.uhrzeit;
+    }
     public static int getCurrentId() {
         return id;
     }

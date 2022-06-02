@@ -68,6 +68,20 @@ public class Datum {
 
     @Override
     public String toString() {
-        return tag + "." + monat + "." + jahr;
+        String szTag, szMonat, szJahr = String.valueOf(jahr);
+        if(tag < 10) {
+            szTag = "0" + String.valueOf(tag);
+        } 
+        else {
+            szTag = String.valueOf(tag);
+        }
+
+        if(monat < 10) {
+            szMonat = "0" + String.valueOf(monat);
+        }
+        else {
+            szMonat = String.valueOf(monat);
+        }
+        return szTag + "." + szMonat + "." + szJahr;
     }
 }
