@@ -45,7 +45,7 @@ public class About {
  */
 
 
-        System.out.println("Bauerle Liebig GmbH&CoKG©");
+        System.out.println("Baeuerle Liebig GmbH&CoKG©");
         System.out.println(Output.SEPARATOR);
     }
 }

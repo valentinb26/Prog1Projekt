@@ -4,7 +4,7 @@ public class Output {
 
 
     public final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
-    public final static String PROMPT = "\t> ";
+    public final static String PROMPT = "\t</> ";
 
     public static void clearScreen() {
         try {
