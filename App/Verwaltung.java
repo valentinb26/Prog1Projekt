@@ -25,12 +25,14 @@ public class Verwaltung {
     public static void setTermine(ArrayList<Termin> t) {
         termine = t;
     }
-
+    
     /*
     Methoden:
         - terminEinsehen
         - termineEinsehen
         - terminSuchen
+        - terminNachNameSuchen
+        - terminNachDatumSuchen
         - terminErstellen
         - terminLoeschen
         - terminBearbeiten
@@ -47,6 +49,7 @@ public class Verwaltung {
             }
         }
     }
+  
     private static void terminEinsehen(int id, boolean isKompakt) {
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getID() == id) {
@@ -75,7 +78,6 @@ public class Verwaltung {
         int idsNachNameLen = 0;
         int idsNachDatumLen = 0;
 
-
         // Input Name
         System.out.print("Suche nach Name:  ");
         String szName = Input.readLine();
@@ -83,8 +85,6 @@ public class Verwaltung {
         System.out.print("Suche nach Datum: ");
         String szDatum = Input.readLine();
 
-
-        
         int[] idsNachName = terminNachNameSuchen(szName);
         if(idsNachName != null) idsNachNameLen = idsNachName.length;
 
@@ -137,7 +137,6 @@ public class Verwaltung {
         }
 
         System.out.println(Output.SEPARATOR);
-
         //System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
     }
 
