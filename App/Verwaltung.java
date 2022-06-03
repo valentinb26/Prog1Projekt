@@ -63,12 +63,59 @@ public class Verwaltung {
     
     // Termin suchen
     public static void terminSuchen() {
-
         Output.printTitle("Terminsuche");
 
+        // Input Name
         System.out.print("Suche nach Name: ");
-        String value = Input.readLine();
+        String szName = Input.readLine();
+        // Input Datum
+        System.out.print("Suche nach Datum: ");
+        String szDatum = Input.readLine();
 
+        int[] idsNachName = terminNachNameSuchen(szName);
+        int[] idsNachDatum = terminNachDatumSuchen(Convert.convertToDatum(szDatum));
+
+        System.out.println("Ergebnisse nach Name:");
+        for(int i = 0; i < idsNachName.length; i++) {
+            if(idsNachName[i] != -1) {
+                terminEinsehen(idsNachName[i]);
+            }
+        }
+
+        System.out.println("Ergebnisse nach Datum:");
+        for(int i = 0; i < idsNachDatum.length; i++) {
+            if(idsNachDatum[i] != -1) {
+                terminEinsehen(idsNachDatum[i]);
+            }
+        }
+
+        //System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
+    }
+
+    // Hilfsmethode "NACH_DATUM"
+    private static int[] terminNachDatumSuchen(Datum datum) {
+        int terminCount = 0;
+        int [] ids = new int[termine.size()];
+
+        for(int i = 0; i < termine.size(); i++) {
+            if(datum.getJahr() == termine.get(i).getDatum().getJahr()) {
+                if(datum.getMonat() == termine.get(i).getDatum().getMonat()) {
+                    if(datum.getTag() == termine.get(i).getDatum().getTag()) {
+                        ids[i] = termine.get(i).getID();
+                        terminCount++;
+                    }
+                 }
+            }
+            else {
+                ids[i] = -1;
+            }
+        }
+        System.out.println("Nach Datum: " + terminCount + " Treffer.");
+        return ids;
+    }
+    
+    // Hilfsmethode "NACH_NAME"
+    private static int[] terminNachNameSuchen(String value) {
         int terminCount = 0;
         int[] ids = new int[termine.size()]; // Array der gefundenen IDs
                                              // Keine teilweise Übereinstimmung: -1
@@ -84,14 +131,8 @@ public class Verwaltung {
                 ids[i] = -1;
             }
         }
-
-        System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
-    
-        for(int i = 0; i < ids.length; i++) {
-            if(ids[i] != -1) {
-                terminEinsehen(ids[i]);
-            }
-        }
+        System.out.println("Nach Name:  " + terminCount + " Treffer.");
+        return ids;
     }
 
     // Termin erstellen
