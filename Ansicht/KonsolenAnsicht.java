@@ -1,6 +1,9 @@
 package Ansicht;
 
 import Typen.Termin;
+
+import java.util.ArrayList;
+
 import App.Verwaltung;
 import OwnUtil.Output;
 

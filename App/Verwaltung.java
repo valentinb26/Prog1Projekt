@@ -46,7 +46,14 @@ public class Verwaltung {
                 System.out.println(termine.get(i));
             }
         }
-        System.out.println(Output.SEPARATOR);
+    }
+    private static void terminEinsehen(int id, boolean isKompakt) {
+        for(int i = 0; i < termine.size(); i++) {
+            if(termine.get(i).getID() == id) {
+                System.out.printf("%-10s | %-7s     | %-4d | %s\n", 
+                termine.get(i).getDatum().toString(), termine.get(i).getUhrzeit().toString(), termine.get(i).getID(), termine.get(i).getName());
+            }
+        }
     }
     
     // Mehrere Termine einsehen
@@ -74,20 +81,43 @@ public class Verwaltung {
 
         int[] idsNachName = terminNachNameSuchen(szName);
         int[] idsNachDatum = terminNachDatumSuchen(Convert.convertToDatum(szDatum));
+        int[] idsSchnitt = new int[Math.max(idsNachName.length, idsNachDatum.length)];
 
+        int schnittCounter = 0;
+        // Über beide Arrays iterieren und Schnitt
+        for(int n = 0; n < idsNachName.length; n++) {
+            for(int d = 0; d < idsNachDatum.length; d++) {
+                if(idsNachName[n] == idsNachDatum[d]) {
+                    idsSchnitt[schnittCounter] = idsNachName[n];    
+                    schnittCounter++;
+                }
+            }
+        }
+
+        System.out.printf("\n%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
+        System.out.println(Output.SEPARATOR);
         System.out.println("Ergebnisse nach Name:");
         for(int i = 0; i < idsNachName.length; i++) {
             if(idsNachName[i] != -1) {
-                terminEinsehen(idsNachName[i]);
+                terminEinsehen(idsNachName[i], true);
             }
         }
+        System.out.println(Output.SEPARATOR);
 
         System.out.println("Ergebnisse nach Datum:");
         for(int i = 0; i < idsNachDatum.length; i++) {
             if(idsNachDatum[i] != -1) {
-                terminEinsehen(idsNachDatum[i]);
+                terminEinsehen(idsNachDatum[i], true);
             }
         }
+        System.out.println(Output.SEPARATOR);
+
+        System.out.println("Uebereinstimmung in Name und Datum:");
+        for(int i = 0; i < schnittCounter; i++) {
+            terminEinsehen(idsSchnitt[i], true);
+        }
+
+        System.out.println(Output.SEPARATOR);
 
         //System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
     }
