@@ -25,7 +25,7 @@ public class Verwaltung {
     public static void setTermine(ArrayList<Termin> t) {
         termine = t;
     }
-    
+
     /*
     Methoden:
         - terminEinsehen
@@ -34,7 +34,7 @@ public class Verwaltung {
         - terminNachNameSuchen
         - terminNachDatumSuchen
         - terminErstellen
-        - terminLoeschen
+        - terminLoeschen                
         - terminBearbeiten
     */
     
