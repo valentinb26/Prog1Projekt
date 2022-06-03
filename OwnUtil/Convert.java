@@ -18,6 +18,8 @@ public class Convert {
 
     //Exception werfen beim splitten für Schreibfehler !!
     public static Datum convertToDatum(String dat) {
+        
+        if(dat.isEmpty()) return null;
         // TT.MM.JJJJ
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
         

@@ -72,49 +72,68 @@ public class Verwaltung {
     public static void terminSuchen() {
         Output.printTitle("Terminsuche");
 
+        int idsNachNameLen = 0;
+        int idsNachDatumLen = 0;
+
+
         // Input Name
-        System.out.print("Suche nach Name: ");
+        System.out.print("Suche nach Name:  ");
         String szName = Input.readLine();
         // Input Datum
         System.out.print("Suche nach Datum: ");
         String szDatum = Input.readLine();
 
+
+        
         int[] idsNachName = terminNachNameSuchen(szName);
+        if(idsNachName != null) idsNachNameLen = idsNachName.length;
+
         int[] idsNachDatum = terminNachDatumSuchen(Convert.convertToDatum(szDatum));
-        int[] idsSchnitt = new int[Math.max(idsNachName.length, idsNachDatum.length)];
+        if(idsNachDatum != null) idsNachDatumLen = idsNachDatum.length;
+        
+        int[] idsSchnitt = new int[Math.max(idsNachNameLen, idsNachDatumLen)];
 
         int schnittCounter = 0;
         // Über beide Arrays iterieren und Schnitt
-        for(int n = 0; n < idsNachName.length; n++) {
-            for(int d = 0; d < idsNachDatum.length; d++) {
-                if(idsNachName[n] == idsNachDatum[d]) {
-                    idsSchnitt[schnittCounter] = idsNachName[n];    
-                    schnittCounter++;
+
+        if(idsNachName != null && idsNachDatum != null) {
+            for(int n = 0; n < idsNachNameLen; n++) {
+                for(int d = 0; d < idsNachDatumLen; d++) {
+                    if(idsNachName[n] == idsNachDatum[d]) {
+                        idsSchnitt[schnittCounter] = idsNachName[n];    
+                        schnittCounter++;
+                    }
                 }
             }
         }
 
         System.out.printf("\n%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
-        System.out.println(Output.SEPARATOR);
-        System.out.println("Ergebnisse nach Name:");
-        for(int i = 0; i < idsNachName.length; i++) {
-            if(idsNachName[i] != -1) {
-                terminEinsehen(idsNachName[i], true);
+        
+        if(idsNachName != null) {
+            System.out.println(Output.SEPARATOR);
+            System.out.println("Ergebnisse nach Name:");
+            for(int i = 0; i < idsNachName.length; i++) {
+                if(idsNachName[i] != -1) {
+                    terminEinsehen(idsNachName[i], true);
+                }
             }
+            System.out.println(Output.SEPARATOR);
         }
-        System.out.println(Output.SEPARATOR);
 
-        System.out.println("Ergebnisse nach Datum:");
-        for(int i = 0; i < idsNachDatum.length; i++) {
-            if(idsNachDatum[i] != -1) {
-                terminEinsehen(idsNachDatum[i], true);
+        if(idsNachDatum != null) {
+            System.out.println("Ergebnisse nach Datum:");
+            for(int i = 0; i < idsNachDatum.length; i++) {
+                if(idsNachDatum[i] != -1) {
+                    terminEinsehen(idsNachDatum[i], true);
+                }
             }
+            System.out.println(Output.SEPARATOR);
         }
-        System.out.println(Output.SEPARATOR);
-
-        System.out.println("Uebereinstimmung in Name und Datum:");
-        for(int i = 0; i < schnittCounter; i++) {
-            terminEinsehen(idsSchnitt[i], true);
+        if(idsSchnitt != null && schnittCounter != 0) {
+            System.out.println("Uebereinstimmung in Name und Datum:");
+            for(int i = 0; i < schnittCounter; i++) {
+                terminEinsehen(idsSchnitt[i], true);
+            }
         }
 
         System.out.println(Output.SEPARATOR);
@@ -124,6 +143,11 @@ public class Verwaltung {
 
     // Hilfsmethode "NACH_DATUM"
     private static int[] terminNachDatumSuchen(Datum datum) {
+
+        if(datum == null) {
+            return null;
+        }
+
         int terminCount = 0;
         int [] ids = new int[termine.size()];
 
@@ -146,6 +170,11 @@ public class Verwaltung {
     
     // Hilfsmethode "NACH_NAME"
     private static int[] terminNachNameSuchen(String value) {
+
+        if(value.isEmpty()) {
+            return null;
+        }
+
         int terminCount = 0;
         int[] ids = new int[termine.size()]; // Array der gefundenen IDs
                                              // Keine teilweise Übereinstimmung: -1
