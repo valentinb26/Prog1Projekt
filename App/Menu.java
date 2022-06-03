@@ -48,7 +48,6 @@ public class Menu {
         case 5 -> {
             System.out.println(repeat1 + ui + " (Termin bearbeiten)");
             Verwaltung.terminBearbeiten();
-            //in arbeit
         }
         case 6 -> {
             System.out.println(repeat1 + ui + " (Ansicht)");
@@ -57,13 +56,11 @@ public class Menu {
         case 7 -> {
             System.out.println(repeat1 + ui + " (Hilfe)");
             About.help();
-            // Hilfe
         }
         case 8 -> {
             System.out.println(repeat1 + ui + " (Speichern & Beenden)");
             System.out.println("Auf Wiedersehen :)");
             CsvIO.csvWrite();
-            // Protokoll-Aufruf "Beendet durch Benutzereingabe.".
             System.exit(0);
         }
         default -> {
