@@ -42,6 +42,7 @@ public class Convert {
     public static Uhrzeit convertToUhrzeit(String uhrzeit) {
         String[] parts = uhrzeit.split(":");
 
+        if(parts[0] == null || parts[1] == null) return null;
         try {
             int hours   = Integer.parseInt(parts[0]);
             int minutes = Integer.parseInt(parts[1]);

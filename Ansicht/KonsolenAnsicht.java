@@ -9,9 +9,6 @@ import OwnUtil.Output;
 
 public class KonsolenAnsicht { 
     // Konsolenansichts-Zeugs.
-    public void erstelleFormatierteAnsicht() {
-        
-    }
     public static void erstelleErweiterteAnsicht() {
         // irgendwie noch nach Datum und Uhrzeit sortieren
         for(Termin t : Verwaltung.getTermine()) {

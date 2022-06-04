@@ -3,20 +3,21 @@ package Ansicht;
 import App.Verwaltung;
 import java.util.ArrayList;
 import Typen.Termin;
+import Typen.Datum;
+import Typen.Uhrzeit;
 
-public class DruckAnsicht extends Ansicht {
+public class DruckAnsicht {
     // So DruckAnsicht-Zeugs.
-    @Override
-    public void erstelleListenAnsicht() {
-        // Liste
-        for(Termin t : Verwaltung.getTermine()) {
-            System.out.println();
-            System.out.println(t);
-        }
-        
-
-    }
-    public void erstelleFormatierteAnsicht() {
+    public static void erstelleFormatierteAnsicht(Datum abDatum) {
         // Formatierte Ansicht!
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        // Termin suchen
+        for(int i = 0; i < Verwaltung.getTermine().size(); i++) {
+            if(abDatum.equals(Verwaltung.getTermine().get(i).getDatum())) {
+                ids.add(Verwaltung.getTermine().get(i).getID());
+            }
+        }
+
+
     }
 }
