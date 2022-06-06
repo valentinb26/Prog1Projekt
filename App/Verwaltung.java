@@ -39,6 +39,7 @@ public class Verwaltung {
     */
     
     // Termin einsehen
+    // Ist gelb unterstrichen, wird allerdings von terminSuchen benutzt.
     private static void terminEinsehen(int id) {
         // Termin suchen, der diese ID hat.
         // Danach Termin ausgeben.
@@ -91,7 +92,7 @@ public class Verwaltung {
         int[] idsNachDatum = terminNachDatumSuchen(Convert.convertToDatum(szDatum));
         if(idsNachDatum != null) idsNachDatumLen = idsNachDatum.length;
         
-        int[] idsSchnitt = new int[Math.max(idsNachNameLen, idsNachDatumLen)];
+        int[] idsSchnitt = new int[Math.max(idsNachNameLen, idsNachDatumLen)]; // Schnittmenge beider Termine
 
         int schnittCounter = 0;
         // Über beide Arrays iterieren und Schnitt
@@ -99,7 +100,7 @@ public class Verwaltung {
         if(idsNachName != null && idsNachDatum != null) {
             for(int n = 0; n < idsNachNameLen; n++) {
                 for(int d = 0; d < idsNachDatumLen; d++) {
-                    if(idsNachName[n] == idsNachDatum[d]) {
+                    if(idsNachName[n] == idsNachDatum[d] && idsNachName[n] != -1 && idsNachDatum[d] != -1) {
                         idsSchnitt[schnittCounter] = idsNachName[n];    
                         schnittCounter++;
                     }
@@ -111,26 +112,28 @@ public class Verwaltung {
         
         if(idsNachName != null) {
             System.out.println(Output.SEPARATOR);
-            System.out.println("Ergebnisse nach Name:");
+            System.out.println("----- Ergebnisse nach Name:");
             for(int i = 0; i < idsNachName.length; i++) {
                 if(idsNachName[i] != -1) {
                     terminEinsehen(idsNachName[i], true);
                 }
             }
-            System.out.println(Output.SEPARATOR);
+            
         }
 
         if(idsNachDatum != null) {
-            System.out.println("Ergebnisse nach Datum:");
+            System.out.println(Output.SEPARATOR);
+            System.out.println("----- Ergebnisse nach Datum:");
             for(int i = 0; i < idsNachDatum.length; i++) {
                 if(idsNachDatum[i] != -1) {
                     terminEinsehen(idsNachDatum[i], true);
                 }
             }
-            System.out.println(Output.SEPARATOR);
         }
+
         if(idsSchnitt != null && schnittCounter != 0) {
-            System.out.println("Uebereinstimmung in Name und Datum:");
+            System.out.println(Output.SEPARATOR);
+            System.out.println("----- Uebereinstimmung in Name und Datum:");
             for(int i = 0; i < schnittCounter; i++) {
                 terminEinsehen(idsSchnitt[i], true);
             }
@@ -143,21 +146,19 @@ public class Verwaltung {
     // Hilfsmethode "NACH_DATUM"
     private static int[] terminNachDatumSuchen(Datum datum) {
 
+        // Explizite Suche nach Datum
+
         if(datum == null) {
             return null;
         }
 
         int terminCount = 0;
-        int [] ids = new int[termine.size()];
+        int[] ids = new int[termine.size()];
 
         for(int i = 0; i < termine.size(); i++) {
-            if(datum.getJahr() == termine.get(i).getDatum().getJahr()) {
-                if(datum.getMonat() == termine.get(i).getDatum().getMonat()) {
-                    if(datum.getTag() == termine.get(i).getDatum().getTag()) {
-                        ids[i] = termine.get(i).getID();
-                        terminCount++;
-                    }
-                 }
+            if(datum.equals(termine.get(i).getDatum())) {
+                ids[i] = termine.get(i).getID();
+                terminCount++;
             }
             else {
                 ids[i] = -1;
@@ -169,6 +170,8 @@ public class Verwaltung {
     
     // Hilfsmethode "NACH_NAME"
     private static int[] terminNachNameSuchen(String value) {
+
+        // "Grosszuegige" Suche nach Name
 
         if(value.isEmpty()) {
             return null;
@@ -235,8 +238,6 @@ public class Verwaltung {
     
     // Termin löschen
     public static void terminLoeschen(int id) {
-
-        // TODO Termin auch in der CSV datei löschen
 
         int indexInList = -1;
 

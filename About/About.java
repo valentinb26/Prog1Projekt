@@ -11,7 +11,7 @@ public class About {
                 "1) Menue-Bedienung:\n " +
                 "\tMenuepunkte werden mit Nummern bedient\n\n" +
 
-                "2) Speichern&Beenden:\n" +
+                "2) Speichern & Beenden:\n" +
                 "\tNur bei korrekter Beendigung der Anwendung werden Aenderungen uebernommen!\n\n" +
 
                 "3) Datenverwaltung:\n" +
@@ -25,7 +25,7 @@ public class About {
                 "\tIm Falle von Datenverlust haftet der Hersteller nicht!\n"
         );
 
-        System.out.println("Baeuerle Liebig GmbH&CoKG©");
+        System.out.println("Baeuerle Liebig GmbH & Co. KG ©");
         System.out.println(Output.SEPARATOR);
     }
 }

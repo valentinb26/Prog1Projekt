@@ -67,7 +67,7 @@ public class Termin {
                 + "Beschreibung:     " + this.beschr + "\n"
                 + "am " + this.datum + " - um " + this.uhrzeit + "\n"
                 + "ID:               " + this.terminId + "\n"
-                + "Erledigt:         " + this.erledigt;
+                + "Erledigt:         " + ((this.erledigt == true) ? "Ja" : "Nein");
     }
 
     public String toStringCsv() {
