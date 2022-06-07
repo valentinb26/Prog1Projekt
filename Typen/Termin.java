@@ -33,9 +33,6 @@ public class Termin {
     public Uhrzeit getUhrzeit() {
         return this.uhrzeit;
     }
-    public static int getCurrentId() {
-        return id;
-    }
 
     public void setErledigt(boolean value) {
         this.erledigt = value;
@@ -55,10 +52,7 @@ public class Termin {
     
     // END Getter und (Setter)
 
-    //was macht das?????
-    public static void setNewStartId(int newid) {
-        id = newid;
-    }
+
 
     @Override
     public String toString() {

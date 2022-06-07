@@ -147,6 +147,9 @@ public class Verwaltung {
     private static int[] terminNachDatumSuchen(String datum) {
 
         // Implizite Suche nach Datum
+
+        if(datum.isEmpty()) return null;
+
         int terminCount = 0;
         int[] ids = new int[termine.size()];
 
@@ -168,9 +171,7 @@ public class Verwaltung {
 
         // "Grosszuegige" Suche nach Name
 
-        if(value.isEmpty()) {
-            return null;
-        }
+        if(value.isEmpty()) return null;
 
         int terminCount = 0;
         int[] ids = new int[termine.size()]; // Array der gefundenen IDs
@@ -244,7 +245,7 @@ public class Verwaltung {
 
 
         for(int i = 0; i < termine.size(); i++) {
-            if(existTermin(id) != null) {
+            if(getTerminMitId(id) != null) {
                 indexInList = i;
                 break;
             }
@@ -287,7 +288,7 @@ public class Verwaltung {
         Termin t;
         int inputId = Input.readInt();
 
-        if((t = existTermin(inputId)) == null) {
+        if((t = getTerminMitId(inputId)) == null) {
             System.out.println("!! ID nicht gefunden. !!");
             return;
         }
@@ -367,7 +368,7 @@ public class Verwaltung {
     }
 
     // Existiert Termin?
-    private static Termin existTermin(int id) {
+    public static Termin getTerminMitId(int id) {
         for(int i = 0; i < Verwaltung.getTermine().size(); i++) {
             if(Verwaltung.getTermine().get(i).getID() == id) {
                 return Verwaltung.getTermine().get(i);

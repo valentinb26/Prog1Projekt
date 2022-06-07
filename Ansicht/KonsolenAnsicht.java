@@ -14,4 +14,13 @@ public class KonsolenAnsicht {
         }
         System.out.println(Output.SEPARATOR);
     }
+
+    public static void einzelAnsicht(int id) {
+        if(Verwaltung.getTerminMitId(id) == null) {
+            return;
+        }
+        System.out.println("\n" + Output.SEPARATOR);  
+        System.out.println(Verwaltung.getTerminMitId(id));
+        System.out.println(Output.SEPARATOR + "\n");
+    }
 }

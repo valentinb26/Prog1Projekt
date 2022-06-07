@@ -22,47 +22,54 @@ public class Menu {
 
     public static void inputHauptMenu() {
         System.out.print(Output.PROMPT);
-        int userInput = Input.readInt();
+        String userInput = Input.readLine();
         final String repeat1 = "Von Ihnen gewaehlter Menuepunkt: ";
-        
 
-        if(userInput <= 8 && userInput >= 1) {
-            System.out.print(repeat1 + userInput + " ");
+        if(userInput.startsWith("show")) {
+            userInput = userInput.replace("show ", "");
+            try {
+                int id = Integer.parseInt(userInput);
+                KonsolenAnsicht.einzelAnsicht(id);
+                return;
+            }
+            catch(NumberFormatException e) {
+                return;
+            }   
         }
-
+        
         // Eingabeverarbeitung.
         switch (userInput) {
-        case 1 -> {
-            System.out.println("(Termine einsehen)");
+        case "1" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termine einsehen)");
             Verwaltung.termineEinsehen();
         }
-        case 2 -> {
-            System.out.println("(Termin erstellen)");
+        case "2" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin erstellen)");
             Verwaltung.terminErstellen();
         }
-        case 3 -> {
-            System.out.println("(Termin suchen)");
+        case "3" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin suchen)");
             Verwaltung.terminSuchen();
         }
-        case 4 -> {
-            System.out.println("(Termin loeschen)");
+        case "4" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin loeschen)");
             Verwaltung.terminLoeschen();
         }
-        case 5 -> {
-            System.out.println("(Termin bearbeiten)");
+        case "5" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin bearbeiten)");
             Verwaltung.terminBearbeiten();
         }
-        case 6 -> {
-            System.out.println("(Ansicht)");
+        case "6" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Ansicht)");
             KonsolenAnsicht.erstelleErweiterteAnsicht();
         }
-        case 7 -> {
-            System.out.println("(Hilfe)");
+        case "7" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Hilfe)");
             About.help();
         }
-        case 8 -> {
-            System.out.println("(Speichern & Beenden)");
-            System.out.println("Auf Wiedersehen :)");
+        case "8" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Speichern & Beenden)");
+            System.out.println("Auf Wiedersehen.");
             CsvIO.csvWrite();
             System.exit(0);
         }

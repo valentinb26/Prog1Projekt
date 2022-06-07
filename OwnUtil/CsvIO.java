@@ -36,12 +36,7 @@ public class CsvIO {
             while ((line = br.readLine()) != null) {
 
                 String[] parts = line.split(";");
-                // ließt die last ID ein und setzt sie als startwert für neue Termin während der Runtime
-                // Beschränkt auf 10000 Termine.
-                if(line.length() < 5) {
-                    Termin.setNewStartId(Integer.parseInt(line));
-                    return temp;
-                }
+
                 // nimmt das entstandene Aarry und weißt die Stellen richtig zu um einen Termin zu erstellen
                 //id = Integer.parseInt(parts[0]);
                 name = parts[1];
@@ -87,9 +82,6 @@ public class CsvIO {
                 writer.write(Verwaltung.getTermine().get(i).toStringCsv());
                 writer.write('\n');
             }
-            // Letzte Id wird am ende hinzugefügt in die csv datei
-            System.out.println(Termin.getCurrentId());
-            writer.write(String.valueOf(Termin.getCurrentId()));
         }
         catch (Exception e){
             System.out.println("Something wrong u can feel it");
