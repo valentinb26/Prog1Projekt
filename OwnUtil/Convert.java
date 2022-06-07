@@ -1,21 +1,9 @@
 package OwnUtil;
 
-import Typen.Termin;
-import App.Verwaltung;
 import Typen.Uhrzeit;
 import Typen.Datum;
 
 public class Convert {
-    // Existiert Termin?
-    public static Termin existTermin(int id) {
-        for(int i = 0; i < Verwaltung.getTermine().size(); i++) {
-            if(Verwaltung.getTermine().get(i).getID() == id) {
-                return Verwaltung.getTermine().get(i);
-            }
-        }
-        return null;
-    }
-
     //Exception werfen beim splitten für Schreibfehler !!
     public static Datum convertToDatum(String dat) {
         
@@ -30,7 +18,7 @@ public class Convert {
             return new Datum(day, month, year);
         }
         catch(NumberFormatException e) {
-            System.out.println("!! Datumsformat falsch !!");
+            System.out.println("!! Datumformat falsch !!");
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
@@ -48,10 +36,12 @@ public class Convert {
             int minutes = Integer.parseInt(parts[1]);
             return new Uhrzeit(hours, minutes);
         }
-        catch(Exception e) {
+        catch(NumberFormatException e) {
             System.out.println("!! Uhrzeitformat falsch !!");
         }
-
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 }

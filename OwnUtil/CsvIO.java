@@ -23,7 +23,6 @@ public class CsvIO {
         // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
         // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN
 
-        int id;
         String name;
         String beschreibung;
         Datum datum;
@@ -44,7 +43,7 @@ public class CsvIO {
                     return temp;
                 }
                 // nimmt das entstandene Aarry und weißt die Stellen richtig zu um einen Termin zu erstellen
-                id = Integer.parseInt(parts[0]);
+                //id = Integer.parseInt(parts[0]);
                 name = parts[1];
                 beschreibung = parts[2];
                 if((datum = Convert.convertToDatum(parts[3])) == null) {
@@ -55,19 +54,16 @@ public class CsvIO {
                 }
                 erledigt = Boolean.parseBoolean(parts[5]);
 
-                //ausgelesener termin in temp Liste
+                // Temporäre Liste, die zurückgegeben wird.
                 temp.add(new Termin(datum, uhrzeit, name, beschreibung));
-                
-                // ich geb einfach die temp-Liste in die Main
-                // und hab die dann gleich in der Verwaltung.
             }
             return temp;
             }
             catch(IOException e) {
-                System.out.println("TEMPERROR");
+                System.out.println("Fehler beim Einlesen der Datei.");
             }
-            catch (ArrayIndexOutOfBoundsException e){
-                System.out.println("Keine Termine gefunden oder erfolglose übernahme!");
+            catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Keine Termine gefunden oder erfolglose Uebernahme!");
                 e.printStackTrace();
             }
             catch(Exception e) {
@@ -82,7 +78,7 @@ public class CsvIO {
         try {
             createStructure();
         }catch (IOException e) {
-            System.out.println("something wrong i can feel it");
+            System.out.println("Fehler bei Erstellen der Ordnerstruktur");
         }
         // schreibt den inhalt der Liste in die csv Datei per toString und BufferedWriter
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))) {

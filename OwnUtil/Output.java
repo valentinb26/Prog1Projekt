@@ -1,17 +1,11 @@
 package OwnUtil;
 
-import javax.swing.plaf.synth.SynthSplitPaneUI;
-
 public class Output {
-
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BG_WHITE = "\u001B[47m";
-    public static final String ANSI_FG_BLACK = "\u001B[30m";
-
 
     public final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
     public final static String PROMPT = "\t</>";
 
+    // clearScreen wird eigentlich nicht benötigt.
     public static void clearScreen() {
         try {
             String nameOS = System.getProperty("os.name");

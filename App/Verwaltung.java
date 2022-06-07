@@ -89,7 +89,7 @@ public class Verwaltung {
         int[] idsNachName = terminNachNameSuchen(szName);
         if(idsNachName != null) idsNachNameLen = idsNachName.length;
 
-        int[] idsNachDatum = terminNachDatumSuchen(Convert.convertToDatum(szDatum));
+        int[] idsNachDatum = terminNachDatumSuchen(szDatum);
         if(idsNachDatum != null) idsNachDatumLen = idsNachDatum.length;
         
         int[] idsSchnitt = new int[Math.max(idsNachNameLen, idsNachDatumLen)]; // Schnittmenge beider Termine
@@ -143,20 +143,15 @@ public class Verwaltung {
         //System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
     }
 
-    // Hilfsmethode "NACH_DATUM"
-    private static int[] terminNachDatumSuchen(Datum datum) {
+    // Hilfsmethode: "Nach Datum"
+    private static int[] terminNachDatumSuchen(String datum) {
 
-        // Explizite Suche nach Datum
-
-        if(datum == null) {
-            return null;
-        }
-
+        // Implizite Suche nach Datum
         int terminCount = 0;
         int[] ids = new int[termine.size()];
 
         for(int i = 0; i < termine.size(); i++) {
-            if(datum.equals(termine.get(i).getDatum())) {
+            if(termine.get(i).getDatum().toString().contains(datum)) {
                 ids[i] = termine.get(i).getID();
                 terminCount++;
             }
@@ -168,7 +163,7 @@ public class Verwaltung {
         return ids;
     }
     
-    // Hilfsmethode "NACH_NAME"
+    // Hilfsmethode: "Nach Name"
     private static int[] terminNachNameSuchen(String value) {
 
         // "Grosszuegige" Suche nach Name
@@ -237,21 +232,26 @@ public class Verwaltung {
     }
     
     // Termin löschen
-    public static void terminLoeschen(int id) {
+    public static void terminLoeschen() {
 
         int indexInList = -1;
 
         Output.printTitle("Terminloeschung");
 
+        // Eingabe Id:
+        System.out.print("ID: ");
+        int id = Input.readInt();
+
+
         for(int i = 0; i < termine.size(); i++) {
-            if(termine.get(i).getID() == id) {
+            if(existTermin(id) != null) {
                 indexInList = i;
                 break;
             }
         }
 
         if(indexInList == -1) {
-            System.out.println("INTERN: Termin-ID nicht gefunden.");
+            System.out.println("Termin-ID nicht gefunden.");
             System.out.println("===== Loeschvorgang abgebrochen =====");
             return;
         }
@@ -265,7 +265,7 @@ public class Verwaltung {
         }
         else if(input.toUpperCase().equals("J")) {
             termine.remove(indexInList);
-            System.out.println("INTERN: Termin mit index " + indexInList + " und id " + id + " entfernt.");
+            System.out.println("Termin mit Index " + indexInList + " und id " + id + " entfernt.");
             System.out.println("\n===== Termin erfolgreich geloescht. =====\n");
         }
         else {
@@ -278,6 +278,7 @@ public class Verwaltung {
     public static void terminBearbeiten() {
         
         final int ARGUMENT_COUNT = 5;
+        final String FORMAT = "%-25s: ";
 
         Output.printTitle("Terminbearbeitung:");
 
@@ -286,7 +287,7 @@ public class Verwaltung {
         Termin t;
         int inputId = Input.readInt();
 
-        if((t = Convert.existTermin(inputId)) == null) {
+        if((t = existTermin(inputId)) == null) {
             System.out.println("!! ID nicht gefunden. !!");
             return;
         }
@@ -298,25 +299,24 @@ public class Verwaltung {
         System.out.println("Anfangsbuchstaben ohne Leerzeichen getrennt eingeben: (Bspw.: DNU)");
         System.out.print("Eingabe: ");
 
-        String input = Input.readLine();
-        input = input.toUpperCase();
-        
+        String input = Input.readLine().toUpperCase();
+
         for (int i = 0; i < ARGUMENT_COUNT; i++)  {
             if(input.contains("D")) {
                 input = input.replace("D", "");
 
-                System.out.print("Neues Datum: ");
+                System.out.printf(FORMAT, "Neues Datum: ");
                 String datum = Input.readLine();
                 Datum d;
                 if((d = Convert.convertToDatum(datum)) != null) {
                     t.setDatum(d);
                 }
-                else return;
+                else continue;
             }
             else if(input.contains("N")) {
                input = input.replace("N", "");
 
-                System.out.print("Neuer Name: ");
+                System.out.printf(FORMAT, "Neuer Name: ");
                 String name = Input.readLine();
                 if(name == "") {
                     continue;
@@ -328,18 +328,18 @@ public class Verwaltung {
             else if(input.contains("U")) {
                 input = input.replace("U", "");
 
-                System.out.print("Neue Uhrzeit: ");
+                System.out.printf(FORMAT, "Neue Uhrzeit: ");
                 String uhrzeit = Input.readLine();
                 Uhrzeit u;
                 if((u = Convert.convertToUhrzeit(uhrzeit)) != null) {
                     t.setUhrzeit(u);
                 }
-                else return;
+                else continue;
             }
             else if(input.contains("B")) {
                 input = input.replace("B", "");
 
-                System.out.println("Neue Beschreibung: ");
+                System.out.printf(FORMAT, "Neue Beschreibung: ");
                 String beschr = Input.readLine();
                 if(beschr == "") {
                     continue;
@@ -351,7 +351,7 @@ public class Verwaltung {
             else if(input.contains("E")) {
                 input = input.replace("E", "");
 
-                System.out.print("Termin erledigt? (J/N) ");
+                System.out.printf(FORMAT, "Termin erledigt? (J/N) ");
                 String erledigt = Input.readLine();
                 if(erledigt.toUpperCase().equals("J")) {
                     t.setErledigt(true);
@@ -359,10 +359,20 @@ public class Verwaltung {
                 else if(erledigt.toUpperCase().equals("N")) {
                     t.setErledigt(false);
                 }
-                else return;
+                else continue;
         }
         }
         
         System.out.println("\n===== Termin erfolgreich bearbeitet. =====\n");
+    }
+
+    // Existiert Termin?
+    private static Termin existTermin(int id) {
+        for(int i = 0; i < Verwaltung.getTermine().size(); i++) {
+            if(Verwaltung.getTermine().get(i).getID() == id) {
+                return Verwaltung.getTermine().get(i);
+            }
+        }
+        return null;
     }
 }

@@ -9,17 +9,17 @@ public class About {
 
         System.out.println(
                 "1) Menue-Bedienung:\n " +
-                "\tMenuepunkte werden mit Nummern bedient\n\n" +
+                "\tMenuepunkte werden durch Tastatureingaben aufgerufen.\n\n" +
 
                 "2) Speichern & Beenden:\n" +
                 "\tNur bei korrekter Beendigung der Anwendung werden Aenderungen uebernommen!\n\n" +
 
                 "3) Datenverwaltung:\n" +
-                "\tIhre Daten werden in einer externen CSV-Datei aufbewahrt.\n\n" +
+                "\tIhre Daten werden in einer internen CSV-Datei gespeichert.\n\n" +
 
                 "4) Datensicherheit:\n" +
-                "\tIhre Daten werden nicht an dritte weitergegeben und sind\n" +
-                "\tjederzeit für sie frei einsehbar.\n\n" +
+                "\tIhre Daten werden nicht an Dritte weitergegeben und sind\n" +
+                "\tjederzeit für Sie frei einsehbar.\n\n" +
 
                 "5) Haftungsausschluss:\n" +
                 "\tIm Falle von Datenverlust haftet der Hersteller nicht!\n"

@@ -22,49 +22,52 @@ public class Menu {
 
     public static void inputHauptMenu() {
         System.out.print(Output.PROMPT);
-        int ui = Input.readInt();
+        int userInput = Input.readInt();
         final String repeat1 = "Von Ihnen gewaehlter Menuepunkt: ";
         
+
+        if(userInput <= 8 && userInput >= 1) {
+            System.out.print(repeat1 + userInput + " ");
+        }
+
         // Eingabeverarbeitung.
-        switch (ui) {
+        switch (userInput) {
         case 1 -> {
-            System.out.println(repeat1 + ui+" (Termine einsehen)");
+            System.out.println("(Termine einsehen)");
             Verwaltung.termineEinsehen();
         }
         case 2 -> {
-            System.out.println(repeat1 + ui + " (Termin erstellen)");
+            System.out.println("(Termin erstellen)");
             Verwaltung.terminErstellen();
         }
         case 3 -> {
-            System.out.println(repeat1 + ui + " (Termin suchen)");
+            System.out.println("(Termin suchen)");
             Verwaltung.terminSuchen();
         }
         case 4 -> {
-            System.out.println(repeat1 + ui + " (Termin loeschen)");
-            System.out.print("ID: ");
-            int id = Input.readInt();
-            Verwaltung.terminLoeschen(id);
+            System.out.println("(Termin loeschen)");
+            Verwaltung.terminLoeschen();
         }
         case 5 -> {
-            System.out.println(repeat1 + ui + " (Termin bearbeiten)");
+            System.out.println("(Termin bearbeiten)");
             Verwaltung.terminBearbeiten();
         }
         case 6 -> {
-            System.out.println(repeat1 + ui + " (Ansicht)");
+            System.out.println("(Ansicht)");
             KonsolenAnsicht.erstelleErweiterteAnsicht();
         }
         case 7 -> {
-            System.out.println(repeat1 + ui + " (Hilfe)");
+            System.out.println("(Hilfe)");
             About.help();
         }
         case 8 -> {
-            System.out.println(repeat1 + ui + " (Speichern & Beenden)");
+            System.out.println("(Speichern & Beenden)");
             System.out.println("Auf Wiedersehen :)");
             CsvIO.csvWrite();
             System.exit(0);
         }
         default -> {
-            System.out.println("keine gueltige Nummer! Versuchs nochmal :)");
+            System.out.println("Keine gueltige Nummer! Versuch's nochmal :)");
         }
         }
     }

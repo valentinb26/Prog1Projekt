@@ -8,7 +8,6 @@ public class Termin {
     private String beschr;
     private int terminId;
     private boolean erledigt = false;
-    private boolean isPrivat = false; // Differenzierbarkeit zwischen Privat- und Hochschultermin bzw. Vorlesung
     protected static int id = 0;
     // Privat oder Hochschultermin bool
 
