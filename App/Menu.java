@@ -22,49 +22,59 @@ public class Menu {
 
     public static void inputHauptMenu() {
         System.out.print(Output.PROMPT);
-        int ui = Input.readInt();
+        String userInput = Input.readLine();
         final String repeat1 = "Von Ihnen gewaehlter Menuepunkt: ";
+
+        if(userInput.startsWith("show")) {
+            userInput = userInput.replace("show ", "");
+            try {
+                int id = Integer.parseInt(userInput);
+                KonsolenAnsicht.einzelAnsicht(id);
+                return;
+            }
+            catch(NumberFormatException e) {
+                return;
+            }   
+        }
         
         // Eingabeverarbeitung.
-        switch (ui) {
-        case 1 -> {
-            System.out.println(repeat1 + ui+" (Termine einsehen)");
+        switch (userInput) {
+        case "1" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termine einsehen)");
             Verwaltung.termineEinsehen();
         }
-        case 2 -> {
-            System.out.println(repeat1 + ui + " (Termin erstellen)");
+        case "2" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin erstellen)");
             Verwaltung.terminErstellen();
         }
-        case 3 -> {
-            System.out.println(repeat1 + ui + " (Termin suchen)");
+        case "3" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin suchen)");
             Verwaltung.terminSuchen();
         }
-        case 4 -> {
-            System.out.println(repeat1 + ui + " (Termin loeschen)");
-            System.out.print("ID: ");
-            int id = Input.readInt();
-            Verwaltung.terminLoeschen(id);
+        case "4" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin loeschen)");
+            Verwaltung.terminLoeschen();
         }
-        case 5 -> {
-            System.out.println(repeat1 + ui + " (Termin bearbeiten)");
+        case "5" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Termin bearbeiten)");
             Verwaltung.terminBearbeiten();
         }
-        case 6 -> {
-            System.out.println(repeat1 + ui + " (Ansicht)");
+        case "6" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Ansicht)");
             KonsolenAnsicht.erstelleErweiterteAnsicht();
         }
-        case 7 -> {
-            System.out.println(repeat1 + ui + " (Hilfe)");
+        case "7" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Hilfe)");
             About.help();
         }
-        case 8 -> {
-            System.out.println(repeat1 + ui + " (Speichern & Beenden)");
-            System.out.println("Auf Wiedersehen :)");
+        case "8" -> {
+            //System.out.println(repeat1 + " " + userInput + "(Speichern & Beenden)");
+            System.out.println("Auf Wiedersehen.");
             CsvIO.csvWrite();
             System.exit(0);
         }
         default -> {
-            System.out.println("keine gueltige Nummer! Versuchs nochmal :)");
+            System.out.println("Keine gueltige Nummer! Versuch's nochmal :)");
         }
         }
     }

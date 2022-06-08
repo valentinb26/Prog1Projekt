@@ -8,7 +8,6 @@ public class Termin {
     private String beschr;
     private int terminId;
     private boolean erledigt = false;
-    private boolean isPrivat = false; // Differenzierbarkeit zwischen Privat- und Hochschultermin bzw. Vorlesung
     protected static int id = 0;
     // Privat oder Hochschultermin bool
 
@@ -34,9 +33,6 @@ public class Termin {
     public Uhrzeit getUhrzeit() {
         return this.uhrzeit;
     }
-    public static int getCurrentId() {
-        return id;
-    }
 
     public void setErledigt(boolean value) {
         this.erledigt = value;
@@ -56,10 +52,7 @@ public class Termin {
     
     // END Getter und (Setter)
 
-    //was macht das?????
-    public static void setNewStartId(int newid) {
-        id = newid;
-    }
+
 
     @Override
     public String toString() {
@@ -67,7 +60,7 @@ public class Termin {
                 + "Beschreibung:     " + this.beschr + "\n"
                 + "am " + this.datum + " - um " + this.uhrzeit + "\n"
                 + "ID:               " + this.terminId + "\n"
-                + "Erledigt:         " + this.erledigt;
+                + "Erledigt:         " + ((this.erledigt == true) ? "Ja" : "Nein");
     }
 
     public String toStringCsv() {

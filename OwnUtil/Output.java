@@ -2,10 +2,10 @@ package OwnUtil;
 
 public class Output {
 
-
     public final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
-    public final static String PROMPT = "\t</> ";
+    public final static String PROMPT = "\t</>";
 
+    // clearScreen wird eigentlich nicht benötigt.
     public static void clearScreen() {
         try {
             String nameOS = System.getProperty("os.name");
@@ -27,6 +27,6 @@ public class Output {
     }
 
     public static void printTitle(String title) {
-        System.out.println("\n-----------> " + title.toUpperCase() + "\n");
+        System.out.println("\n-<################## " + title.toUpperCase() + " ##################>-\n");
     }
 }

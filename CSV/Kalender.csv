@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 0;sf;sdf;12.01.1212;12:00;false
 1;termin;-;22.08.2000;12:00;false
 2;Bezeichnung;Bibidi;22.01.2022;13:00;false
 3;Friseurtermin;Beschreibung;22.01.2022;12:00;false
 5;GDI;GDI;08.06.2022;15:00;false
 6
+=======
+0;Einkaufen;-;12.06.2022;13:00;false
+1;Fast Weihnachten;Bibidi;22.12.2022;13:00;false
+2;Bald ist Heiligabend;-;23.12.2022;23:59;false
+3;Heiligabend;-;24.12.2022;20:00;false
+4;Weihnachten;-;25.12.2022;12:00;false
+>>>>>>> ba0c9e8b93b0a4169e357ab2b2fa5146f8d8f838
