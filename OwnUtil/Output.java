@@ -3,6 +3,7 @@ package OwnUtil;
 public class Output {
 
     public final static String SEPARATOR = "= = = = = = = = = = = = = = = = = = = = = = = = = =";
+    public final static String SEPARATOR_THIN = "---------------------------------------------------";
     public final static String PROMPT = "\t</>";
 
     // clearScreen wird eigentlich nicht benötigt.

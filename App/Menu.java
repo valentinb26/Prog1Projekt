@@ -20,63 +20,63 @@ public class Menu {
         System.out.println("\t(8) Speichern & Beenden");
     }
 
-    public static void inputHauptMenu() {
+    public static boolean inputHauptMenu() {
         System.out.print(Output.PROMPT);
         String userInput = Input.readLine();
-        final String repeat1 = "Von Ihnen gewaehlter Menuepunkt: ";
+        final String choice = "Von Ihnen gewaehlter Menuepunkt: ";
 
         if(userInput.startsWith("show")) {
             userInput = userInput.replace("show ", "");
             try {
                 int id = Integer.parseInt(userInput);
                 KonsolenAnsicht.einzelAnsicht(id);
-                return;
+                return true;
             }
             catch(NumberFormatException e) {
-                return;
+                return true;
             }   
         }
-        
-        // Eingabeverarbeitung.
+
+        System.out.print(choice);
         switch (userInput) {
         case "1" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Termine einsehen)");
+            System.out.println("(Termine einsehen)");
             Verwaltung.termineEinsehen();
         }
         case "2" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Termin erstellen)");
+            System.out.println("(Termin erstellen)");
             Verwaltung.terminErstellen();
         }
         case "3" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Termin suchen)");
+            System.out.println("(Termin suchen)");
             Verwaltung.terminSuchen();
         }
         case "4" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Termin loeschen)");
+            System.out.println("(Termin loeschen)");
             Verwaltung.terminLoeschen();
         }
         case "5" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Termin bearbeiten)");
+            System.out.println("(Termin bearbeiten)");
             Verwaltung.terminBearbeiten();
         }
         case "6" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Ansicht)");
+            System.out.println("(Ansicht)");
             KonsolenAnsicht.erstelleErweiterteAnsicht();
         }
         case "7" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Hilfe)");
+            System.out.println("(Hilfe)");
             About.help();
         }
         case "8" -> {
-            //System.out.println(repeat1 + " " + userInput + "(Speichern & Beenden)");
-            System.out.println("Auf Wiedersehen.");
+            System.out.println("(Speichern & Beenden)\nAuf Wiedersehen." );
             CsvIO.csvWrite();
-            System.exit(0);
+            return false;
         }
         default -> {
-            System.out.println("Keine gueltige Nummer! Versuch's nochmal :)");
+            System.out.println("\nKeine gueltige Nummer! Versuch's nochmal :)");
         }
         }
+        return true;
     }
 
 }

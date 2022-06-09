@@ -1,18 +1,20 @@
 package Typen;
 
+import OwnUtil.Exceptions.UhrzeitNotFoundException;
+
 public class Uhrzeit {
     
     private int minutes;
     private int hours;
 
-    public Uhrzeit(int hours, int minutes) throws Exception {
+    public Uhrzeit(int hours, int minutes) throws UhrzeitNotFoundException {
 
         // hours muss kleiner 24 sein.
         // minutes muss kleiner 60 sein.
         // sonst Exception.
 
         if(hours >= 24 || minutes > 60) {
-            throw new Exception("Uhrzeitformat falsch!");
+            throw new UhrzeitNotFoundException();
         }
 
         this.minutes = minutes;

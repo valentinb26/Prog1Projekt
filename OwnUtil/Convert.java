@@ -1,13 +1,17 @@
 package OwnUtil;
 
 import Typen.Uhrzeit;
+import OwnUtil.Exceptions.DatumFormatException;
+import OwnUtil.Exceptions.UhrzeitFormatException;
 import Typen.Datum;
 
 public class Convert {
-    //Exception werfen beim splitten für Schreibfehler !!
-    public static Datum convertToDatum(String dat) {
+
+    public static Datum convertToDatum(String dat) throws DatumFormatException {
         
-        if(dat.isEmpty()) return null;
+        if(dat.isEmpty()) {
+            throw new DatumFormatException();
+        }
         // TT.MM.JJJJ
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
         
@@ -27,7 +31,7 @@ public class Convert {
     }
 
     //Exception werfen beim splitten für Schreibfehler !!
-    public static Uhrzeit convertToUhrzeit(String uhrzeit) {
+    public static Uhrzeit convertToUhrzeit(String uhrzeit) throws UhrzeitFormatException {
         String[] parts = uhrzeit.split(":");
 
         if(parts.length < 2 || parts[0] == null || parts[1] == null) return null;

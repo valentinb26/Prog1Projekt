@@ -9,7 +9,6 @@ public class Termin {
     private int terminId;
     private boolean erledigt = false;
     protected static int id = 0;
-    // Privat oder Hochschultermin bool
 
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr) {
         this.datum = datum;
@@ -20,7 +19,7 @@ public class Termin {
         id++;
     }
 
-    // Getter und (Setter)
+    // Getter und Setter
     public String getName() {
         return this.name;
     }
@@ -50,10 +49,7 @@ public class Termin {
         this.beschr = value;
     }
     
-    // END Getter und (Setter)
-
-
-
+    // Methoden
     @Override
     public String toString() {
         return    "Termin:           " + this.name + "\n"

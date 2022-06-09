@@ -20,8 +20,6 @@ public class CsvIO {
 
     public static ArrayList<Termin> csvRead() {
         ArrayList<Termin> temp = new ArrayList<>();
-        // ID;NAME;BESCHREIBUNG;DATUM;UHRZEIT;ERLEDIGT
-        // INT;STR;STR         ;DATUM;UHRZEIT;BOOLEAN
 
         String name;
         String beschreibung;
@@ -32,13 +30,10 @@ public class CsvIO {
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
 
             String line;
-            //der kommt nicht in die Schleife rein warum ??
             while ((line = br.readLine()) != null) {
 
                 String[] parts = line.split(";");
 
-                // nimmt das entstandene Aarry und weißt die Stellen richtig zu um einen Termin zu erstellen
-                //id = Integer.parseInt(parts[0]);
                 name = parts[1];
                 beschreibung = parts[2];
                 if((datum = Convert.convertToDatum(parts[3])) == null) {
@@ -49,7 +44,6 @@ public class CsvIO {
                 }
                 erledigt = Boolean.parseBoolean(parts[5]);
 
-                // Temporäre Liste, die zurückgegeben wird.
                 temp.add(new Termin(datum, uhrzeit, name, beschreibung));
             }
             return temp;
@@ -64,18 +58,15 @@ public class CsvIO {
             catch(Exception e) {
                 e.printStackTrace();
             }
-
             return temp;
         }
     
     public static void csvWrite() {
-        // ruft createStructure auf um Ordner mit der csv datei zu erstellen
         try {
             createStructure();
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Fehler bei Erstellen der Ordnerstruktur");
         }
-        // schreibt den inhalt der Liste in die csv Datei per toString und BufferedWriter
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))) {
 
             for (int i = 0; i < Verwaltung.getTermine().size(); i++) {
@@ -84,11 +75,10 @@ public class CsvIO {
             }
         }
         catch (Exception e){
-            System.out.println("Something wrong u can feel it");
+            System.out.println(e.getMessage());
         }
     }
 
-    //erstellt ein Ordner und die csv Datei falls keine/r vorhanden ist
     public static void createStructure() throws IOException {
         File datei = new File(PATHNAME);
         if(datei.exists() && !datei.isDirectory()){

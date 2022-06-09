@@ -1,61 +1,37 @@
 package App;
 
-// Externe Packages
 import java.util.ArrayList;
 
-// Eigene Packages
 import OwnUtil.Input;
 import OwnUtil.Output;
+import OwnUtil.Exceptions.DatumFormatException;
+import OwnUtil.Exceptions.TerminNotFoundException;
+import OwnUtil.Exceptions.UhrzeitFormatException;
 import OwnUtil.Convert;
 import Typen.Datum;
 import Typen.Termin;
 import Typen.Uhrzeit;
 
 public class Verwaltung {
-    
-    // Felder, Variablen:
-    // Liste der Termine: 
+
     private static ArrayList<Termin> termine = new ArrayList<>();
 
-    //getter für die Termine
     public static ArrayList<Termin> getTermine() {
         return termine;
     }
-    //setter für den Übertrag csv in Arraylist
     public static void setTermine(ArrayList<Termin> t) {
         termine = t;
     }
 
-    /*
-    Methoden:
-        - terminEinsehen
-        - termineEinsehen
-        - terminSuchen
-        - terminNachNameSuchen
-        - terminNachDatumSuchen
-        - terminErstellen
-        - terminLoeschen                
-        - terminBearbeiten
-    */
-    
     // Termin einsehen
-    // Ist gelb unterstrichen, wird allerdings von terminSuchen benutzt.
     private static void terminEinsehen(int id) {
-        // Termin suchen, der diese ID hat.
-        // Danach Termin ausgeben.
-        for(int i = 0; i < termine.size(); i++) {
-            if(termine.get(i).getID() == id) {
-                System.out.println(Output.SEPARATOR);
-                System.out.println(termine.get(i));
-            }
-        }
-    }
-  
-    private static void terminEinsehen(int id, boolean isKompakt) {
         for(int i = 0; i < termine.size(); i++) {
             if(termine.get(i).getID() == id) {
                 System.out.printf("%-10s | %-7s     | %-4d | %s\n", 
-                termine.get(i).getDatum().toString(), termine.get(i).getUhrzeit().toString(), termine.get(i).getID(), termine.get(i).getName());
+                    termine.get(i).getDatum().toString(), 
+                    termine.get(i).getUhrzeit().toString(), 
+                    termine.get(i).getID(), 
+                    termine.get(i).getName());
             }
         }
     }
@@ -65,9 +41,8 @@ public class Verwaltung {
         // Termine nach der Suche bspw. ausgeben lassen.
         Output.printTitle("Kompakte Ansicht");
         System.out.printf("\n%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
-        System.out.println("---------------------------------------------------");
+        System.out.println(Output.SEPARATOR_THIN);
         for(Termin t : termine) {
-            // DATUM:- UHRZEIT: \tID:- NAME:- 
             System.out.printf("%-10s | %-7s     | %-4d | %s\n", t.getDatum().toString(), t.getUhrzeit().toString(), t.getID(), t.getName());
         }
     }
@@ -78,24 +53,25 @@ public class Verwaltung {
 
         int idsNachNameLen = 0;
         int idsNachDatumLen = 0;
+        int schnittCounter = 0;
 
-        // Input Name
         System.out.print("Suche nach Name:  ");
         String szName = Input.readLine();
-        // Input Datum
+
         System.out.print("Suche nach Datum: ");
         String szDatum = Input.readLine();
 
         int[] idsNachName = terminNachNameSuchen(szName);
-        if(idsNachName != null) idsNachNameLen = idsNachName.length;
+        if(idsNachName != null) {
+            idsNachNameLen = idsNachName.length;
+        }
 
         int[] idsNachDatum = terminNachDatumSuchen(szDatum);
-        if(idsNachDatum != null) idsNachDatumLen = idsNachDatum.length;
-        
-        int[] idsSchnitt = new int[Math.max(idsNachNameLen, idsNachDatumLen)]; // Schnittmenge beider Termine
+        if(idsNachDatum != null) {
+            idsNachDatumLen = idsNachDatum.length;
+        }
 
-        int schnittCounter = 0;
-        // Über beide Arrays iterieren und Schnitt
+        int[] idsSchnitt = new int[Math.max(idsNachNameLen, idsNachDatumLen)]; 
 
         if(idsNachName != null && idsNachDatum != null) {
             for(int n = 0; n < idsNachNameLen; n++) {
@@ -115,7 +91,7 @@ public class Verwaltung {
             System.out.println("----- Ergebnisse nach Name:");
             for(int i = 0; i < idsNachName.length; i++) {
                 if(idsNachName[i] != -1) {
-                    terminEinsehen(idsNachName[i], true);
+                    terminEinsehen(idsNachName[i]);
                 }
             }
             
@@ -126,7 +102,7 @@ public class Verwaltung {
             System.out.println("----- Ergebnisse nach Datum:");
             for(int i = 0; i < idsNachDatum.length; i++) {
                 if(idsNachDatum[i] != -1) {
-                    terminEinsehen(idsNachDatum[i], true);
+                    terminEinsehen(idsNachDatum[i]);
                 }
             }
         }
@@ -135,18 +111,15 @@ public class Verwaltung {
             System.out.println(Output.SEPARATOR);
             System.out.println("----- Uebereinstimmung in Name und Datum:");
             for(int i = 0; i < schnittCounter; i++) {
-                terminEinsehen(idsSchnitt[i], true);
+                terminEinsehen(idsSchnitt[i]);
             }
         }
 
         System.out.println(Output.SEPARATOR);
-        //System.out.println("\nIhre Suche \""  + value + "\" ergab " + terminCount + " Treffer");
     }
 
-    // Hilfsmethode: "Nach Datum"
+    // Hilfsmethode: "(Implizite) Suche nach Datum"
     private static int[] terminNachDatumSuchen(String datum) {
-
-        // Implizite Suche nach Datum
 
         if(datum.isEmpty()) return null;
 
@@ -166,17 +139,13 @@ public class Verwaltung {
         return ids;
     }
     
-    // Hilfsmethode: "Nach Name"
+    // Hilfsmethode: "(Implizite) Suche nach Name"
     private static int[] terminNachNameSuchen(String value) {
-
-        // "Grosszuegige" Suche nach Name
 
         if(value.isEmpty()) return null;
 
         int terminCount = 0;
-        int[] ids = new int[termine.size()]; // Array der gefundenen IDs
-                                             // Keine teilweise Übereinstimmung: -1
-                                             // Teilweise Übereinstimmung:       id
+        int[] ids = new int[termine.size()];
         
         // Nach Name suchen
         for(int i = 0; i < termine.size(); i++) {
@@ -195,57 +164,64 @@ public class Verwaltung {
     // Termin erstellen
     public static void terminErstellen() {
         // Termin muss irgendwo in Liste gespeichert werden.
+        Datum datum;
+        Uhrzeit uhrzeit;
+        String name;
+        String beschr;
+
         Output.printTitle("Terminerstellung");
         
-        // Eingabe Datum in DD.MM.YYYY
         System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
-        String datum = Input.readLine();
+        String szDatum = Input.readLine();
+        
+        try {
+            datum = Convert.convertToDatum(szDatum);
+        }
+        catch(DatumFormatException e) {
+            System.out.println(e.getMessage());
+            System.out.println("\n===== Termin konnte nicht erstellt werden. =====\n");
+            return;
+        }
 
-        // Eingabe Uhrzeit in HH:MM
         System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
-        String uhrzeit = Input.readLine();
+        String szUhrzeit = Input.readLine();
 
-        // Eingabe Name:
+        try {
+            uhrzeit = Convert.convertToUhrzeit(szUhrzeit);
+        }
+        catch(UhrzeitFormatException e) {
+            System.out.println(e.getMessage());
+            System.out.println("\n===== Termin konnte nicht erstellt werden. =====\n");
+            return;
+        }
+
         System.out.printf("%-20s", "Bezeichnung: ");
-        String name;
-        if((name = Input.readLine()) == ""){
+        if((name = Input.readLine()).isEmpty()){
             System.out.println("!! Name muss ausgefuellt sein !!");
             return;
         }
 
-        // Eingabe Beschreibung:
         System.out.printf("%-20s", "Beschreibung: ");
-        String beschr;
         if((beschr = Input.readLine()) == "") {
             beschr = "-";
         }
-
-        // Termin zur Liste hinzufügen
-        // Wichtig: einmaliges und (&), Datum und Uhrzeit müssen für korrekte
-        // Fehleranzeige geprüft werden.
-        if(Convert.convertToDatum(datum) != null & Convert.convertToUhrzeit(uhrzeit) != null) {
-            termine.add(new Termin(Convert.convertToDatum(datum), Convert.convertToUhrzeit(uhrzeit), name, beschr));
-            System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
-        } 
-        else {
-            System.out.println("\n===== Termin konnte nicht erstellt werden =====\n");
-        }
+        
+        termine.add(new Termin(datum, uhrzeit, name, beschr));
+        System.out.println("\n===== Termin erfolgreich erstellt. =====\n");
     }
     
     // Termin löschen
     public static void terminLoeschen() {
-
-        int indexInList = -1;
-
+        
         Output.printTitle("Terminloeschung");
+        
+        int indexInList = -1;        
 
-        // Eingabe Id:
         System.out.print("ID: ");
         int id = Input.readInt();
 
-
         for(int i = 0; i < termine.size(); i++) {
-            if(getTerminMitId(id) != null) {
+            if(termine.get(i).getID() == id) {
                 indexInList = i;
                 break;
             }
@@ -288,14 +264,14 @@ public class Verwaltung {
         Termin t;
         int inputId = Input.readInt();
 
-        if((t = getTerminMitId(inputId)) == null) {
-            System.out.println("!! ID nicht gefunden. !!");
+        try {
+            t = getTerminMitId(inputId);
+        }
+        catch(TerminNotFoundException e) {
+            System.out.println(e.getMessage());
             return;
         }
 
-        // Termin hat: (D)atum (N)ame (U)hrzeit (B)eschreibung (E)rledigt
-        // Beispiel Nutzereingabe: "du" bzw. "ud"
-        // Jeder Buchstabe darf nur einmal vorkommen
         System.out.println("\n(D)atum (N)ame (U)hrzeit (B)eschreibung (E)rledigt");
         System.out.println("Anfangsbuchstaben ohne Leerzeichen getrennt eingeben: (Bspw.: DNU)");
         System.out.print("Eingabe: ");
@@ -309,10 +285,13 @@ public class Verwaltung {
                 System.out.printf(FORMAT, "Neues Datum: ");
                 String datum = Input.readLine();
                 Datum d;
-                if((d = Convert.convertToDatum(datum)) != null) {
+                try {
+                    d = Convert.convertToDatum(datum);
                     t.setDatum(d);
                 }
-                else continue;
+                catch(DatumFormatException e) {
+                    System.out.println(e.getMessage());
+                }
             }
             else if(input.contains("N")) {
                input = input.replace("N", "");
@@ -332,10 +311,13 @@ public class Verwaltung {
                 System.out.printf(FORMAT, "Neue Uhrzeit: ");
                 String uhrzeit = Input.readLine();
                 Uhrzeit u;
-                if((u = Convert.convertToUhrzeit(uhrzeit)) != null) {
+                try {
+                    u = Convert.convertToUhrzeit(uhrzeit);
                     t.setUhrzeit(u);
                 }
-                else continue;
+                catch(UhrzeitFormatException e) {
+                    System.out.println(e.getMessage());
+                }
             }
             else if(input.contains("B")) {
                 input = input.replace("B", "");
@@ -367,13 +349,12 @@ public class Verwaltung {
         System.out.println("\n===== Termin erfolgreich bearbeitet. =====\n");
     }
 
-    // Existiert Termin?
-    public static Termin getTerminMitId(int id) {
+    public static Termin getTerminMitId(int id) throws TerminNotFoundException {
         for(int i = 0; i < Verwaltung.getTermine().size(); i++) {
             if(Verwaltung.getTermine().get(i).getID() == id) {
                 return Verwaltung.getTermine().get(i);
             }
         }
-        return null;
+        throw new TerminNotFoundException();
     }
 }
