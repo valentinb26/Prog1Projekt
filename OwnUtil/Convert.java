@@ -12,7 +12,7 @@ public class Convert {
         if(dat.isEmpty()) {
             throw new DatumFormatException();
         }
-        // TT.MM.JJJJ
+
         String[] parts = dat.split("\\."); // Metacharacter escape "\\"
         
         try {
@@ -22,7 +22,7 @@ public class Convert {
             return new Datum(day, month, year);
         }
         catch(NumberFormatException e) {
-            System.out.println("!! Datumformat falsch !!");
+            throw new DatumFormatException();
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
@@ -30,7 +30,7 @@ public class Convert {
         return null;
     }
 
-    //Exception werfen beim splitten für Schreibfehler !!
+
     public static Uhrzeit convertToUhrzeit(String uhrzeit) throws UhrzeitFormatException {
         String[] parts = uhrzeit.split(":");
 
@@ -41,7 +41,7 @@ public class Convert {
             return new Uhrzeit(hours, minutes);
         }
         catch(NumberFormatException e) {
-            System.out.println("!! Uhrzeitformat falsch !!");
+            throw new UhrzeitFormatException();
         }
         catch(Exception e) {
             System.out.println(e.getMessage());

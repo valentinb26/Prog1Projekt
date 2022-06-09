@@ -18,6 +18,8 @@ public class Datum {
         this.jahr = jahr;
     }
 
+
+    // Getter
     public int getTag() {
         return this.tag;
     }
@@ -30,6 +32,7 @@ public class Datum {
         return this.jahr;
     }
 
+    // Methoden
     private boolean isDatumValid(int tag, int monat, int jahr) {
         if(monat > 12 || tag > 31) return false;
         else if(monat == 1 || monat == 3 || monat == 5 || monat == 7 || monat == 8 || monat == 10 || monat == 12) {

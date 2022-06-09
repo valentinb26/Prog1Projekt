@@ -38,7 +38,7 @@ public class Verwaltung {
     
     // Mehrere Termine einsehen
     public static void termineEinsehen() {
-        // Termine nach der Suche bspw. ausgeben lassen.
+
         Output.printTitle("Kompakte Ansicht");
         System.out.printf("\n%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
         System.out.println(Output.SEPARATOR_THIN);
@@ -163,7 +163,7 @@ public class Verwaltung {
 
     // Termin erstellen
     public static void terminErstellen() {
-        // Termin muss irgendwo in Liste gespeichert werden.
+
         Datum datum;
         Uhrzeit uhrzeit;
         String name;
@@ -259,7 +259,6 @@ public class Verwaltung {
 
         Output.printTitle("Terminbearbeitung:");
 
-        // ID Eingabe:
         System.out.print("ID: ");
         Termin t;
         int inputId = Input.readInt();

@@ -13,12 +13,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//Klasse für Input und Output in und aus einer Csv Datei
 public class CsvIO {
 
     public static final String PATHNAME = "./CSV/Kalender.csv";
 
     public static ArrayList<Termin> csvRead() {
+
         ArrayList<Termin> temp = new ArrayList<>();
 
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
