@@ -42,7 +42,7 @@ public class Verwaltung {
     public static void termineEinsehen() {
 
         Output.printTitle("Kompakte Ansicht");
-        System.out.printf("\n%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
+        System.out.printf("%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
         System.out.println(Output.SEPARATOR_THIN);
         for(Termin t : termine) {
             System.out.printf("%-10s | %-7s     | %-4d | %s\n", t.getDatum().toString(), t.getUhrzeit().toString(), t.getID(), t.getName());
@@ -238,22 +238,21 @@ public class Verwaltung {
         }
 
         if(indexInList == -1) {
-            System.out.println("Termin-ID nicht gefunden.");
+            System.out.println("Eingabe konnte nicht verarbeitet werden.");
             System.out.println("===== Loeschvorgang abgebrochen =====");
             return;
         }
 
-        System.out.println("Sind Sie sicher? (J/N)");
+        System.out.println("Sind Sie sicher? -> \"J\" eingeben.");
+        System.out.println("Abbrechen?       -> alles andere.");
         String input = Input.readLine();
         System.out.println(input);
-        if(input.toUpperCase().equals("N")) {
-            System.out.println("===== Loeschvorgang abgebrochen =====");
-            return;
-        }
-        else if(input.toUpperCase().equals("J")) {
+
+        if(input.toUpperCase().equals("J")) {
             termine.remove(indexInList);
-            System.out.println("Termin mit Index " + indexInList + " und id " + id + " entfernt.");
+            System.out.println("Termin mit ID " + id + " entfernt.");
             System.out.println("\n===== Termin erfolgreich geloescht. =====\n");
+            return;
         }
         else {
             System.out.println("===== Loeschvorgang abgebrochen =====");

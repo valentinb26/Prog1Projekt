@@ -4,6 +4,10 @@ import App.Verwaltung;
 import Typen.Termin;
 import Typen.Datum;
 import Typen.Uhrzeit;
+import OwnUtil.Exceptions.DatumFormatException;
+import OwnUtil.Exceptions.DatumNotFoundException;
+import OwnUtil.Exceptions.UhrzeitFormatException;
+import OwnUtil.Exceptions.UhrzeitNotFoundException;
 
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
@@ -15,7 +19,7 @@ import java.util.ArrayList;
 
 public class CsvIO {
 
-    public static final String PATHNAME = "./CSV/Kalender.csv";
+    private static final String PATHNAME = "./CSV/Kalender.csv";
 
     public static ArrayList<Termin> csvRead() {
 
@@ -44,7 +48,7 @@ public class CsvIO {
                 }
                 erledigt = Boolean.parseBoolean(parts[5]);
 
-                temp.add(new Termin(datum, uhrzeit, name, beschreibung));
+                temp.add(new Termin(datum, uhrzeit, name, beschreibung, erledigt));
             }
             return temp;
             }
@@ -54,7 +58,16 @@ public class CsvIO {
             catch(ArrayIndexOutOfBoundsException e){
                 System.out.println("Keine Termine gefunden oder erfolglose Uebernahme!");
             }
-            catch(Exception e) {
+            catch(UhrzeitFormatException e) {
+                System.out.println(e.getMessage());
+            }
+            catch(UhrzeitNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+            catch(DatumFormatException e) {
+                System.out.println(e.getMessage()); 
+            }
+            catch(DatumNotFoundException e) {
                 System.out.println(e.getMessage());
             }
             return temp;

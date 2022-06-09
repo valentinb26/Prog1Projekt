@@ -8,7 +8,8 @@ public class Termin {
     private String beschr;
     private int terminId;
     private boolean erledigt = false;
-    protected static int id = 0;
+
+    private static int id = 0;
 
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr) {
         this.datum = datum;
@@ -17,6 +18,15 @@ public class Termin {
         this.beschr = beschr;
         this.terminId = id;
         id++;
+    }
+    public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr, boolean erledigt) {
+        this.datum = datum;
+        this.uhrzeit = uhrzeit;
+        this.name = name;
+        this.beschr = beschr;
+        this.terminId = id;
+        id++;
+        this.erledigt = erledigt;
     }
 
     // Getter und Setter

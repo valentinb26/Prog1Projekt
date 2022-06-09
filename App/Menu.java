@@ -10,20 +10,20 @@ public class Menu {
 
     public static void printMenu() {
         
-        System.out.println("\n\t\tM E N U E\n");
-        System.out.println("\t(1) Termine einsehen");
-        System.out.println("\t(2) Termin erstellen");
-        System.out.println("\t(3) Termin suchen");
-        System.out.println("\t(4) Termin loeschen");
-        System.out.println("\t(5) Termin bearbeiten");
-        System.out.println("\t(6) Erweiterte Ansicht");
-        System.out.println("\t(7) Hilfe");
-        System.out.println("\t(8) Speichern & Beenden");
+        System.out.println("\n>\t\tM E N U E\n>");
+        System.out.println(">\t(1) Termine einsehen");
+        System.out.println(">\t(2) Termin erstellen");
+        System.out.println(">\t(3) Termin suchen");
+        System.out.println(">\t(4) Termin loeschen");
+        System.out.println(">\t(5) Termin bearbeiten");
+        System.out.println(">\t(6) Erweiterte Ansicht");
+        System.out.println(">\t(7) Hilfe");
+        System.out.println(">\t(8) Speichern & Beenden");
     }
 
     public static boolean inputHauptMenu() {
 
-        System.out.print(Output.PROMPT);
+        System.out.print(">" + Output.PROMPT);
         String userInput = Input.readLine();
         final String choice = "Von Ihnen gewaehlter Menuepunkt: ";
 
@@ -70,12 +70,12 @@ public class Menu {
             About.help();
         }
         case "8" -> {
-            System.out.println("(Speichern & Beenden)\nAuf Wiedersehen." );
+            System.out.println("(Speichern & Beenden) Auf Wiedersehen." );
             CsvIO.csvWrite();
             return false;
         }
         default -> {
-            System.out.println("\nKeine gueltige Nummer! Versuch's nochmal :)");
+            System.out.println("(Keine gueltige Nummer!) Versuch's nochmal :)");
         }
         }
         return true;
