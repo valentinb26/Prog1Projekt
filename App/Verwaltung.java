@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import OwnUtil.Input;
 import OwnUtil.Output;
 import OwnUtil.Exceptions.DatumFormatException;
+import OwnUtil.Exceptions.DatumNotFoundException;
 import OwnUtil.Exceptions.TerminNotFoundException;
 import OwnUtil.Exceptions.UhrzeitFormatException;
+import OwnUtil.Exceptions.UhrzeitNotFoundException;
 import OwnUtil.Convert;
 import Typen.Datum;
 import Typen.Termin;
@@ -171,7 +173,7 @@ public class Verwaltung {
 
         Output.printTitle("Terminerstellung");
         
-        System.out.printf("%-20s","Datum (DD.MM.YYYY): ");
+        System.out.printf("%-20s: ","Datum (DD.MM.YYYY)");
         String szDatum = Input.readLine();
         
         try {
@@ -182,8 +184,12 @@ public class Verwaltung {
             System.out.println("\n===== Termin konnte nicht erstellt werden. =====\n");
             return;
         }
+        catch(DatumNotFoundException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
-        System.out.printf("%-20s", "Uhrzeit (HH:MM): ");
+        System.out.printf("%-20s: ", "Uhrzeit (HH:MM)");
         String szUhrzeit = Input.readLine();
 
         try {
@@ -194,14 +200,18 @@ public class Verwaltung {
             System.out.println("\n===== Termin konnte nicht erstellt werden. =====\n");
             return;
         }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
-        System.out.printf("%-20s", "Bezeichnung: ");
+        System.out.printf("%-20s: ", "Bezeichnung");
         if((name = Input.readLine()).isEmpty()){
             System.out.println("!! Name muss ausgefuellt sein !!");
             return;
         }
 
-        System.out.printf("%-20s", "Beschreibung: ");
+        System.out.printf("%-20s: ", "Beschreibung");
         if((beschr = Input.readLine()) == "") {
             beschr = "-";
         }
@@ -291,13 +301,16 @@ public class Verwaltung {
                 catch(DatumFormatException e) {
                     System.out.println(e.getMessage());
                 }
+                catch(DatumNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
             }
             else if(input.contains("N")) {
                input = input.replace("N", "");
 
                 System.out.printf(FORMAT, "Neuer Name: ");
                 String name = Input.readLine();
-                if(name == "") {
+                if(name.isEmpty()) {
                     continue;
                 }
                 else if(name != null) {
@@ -316,6 +329,11 @@ public class Verwaltung {
                 }
                 catch(UhrzeitFormatException e) {
                     System.out.println(e.getMessage());
+                    System.out.println("Uhrzeit konnte nicht geaendert werden.");
+                }
+                catch(UhrzeitNotFoundException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Uhrzeit konnte nicht geaendert werden.");
                 }
             }
             else if(input.contains("B")) {
@@ -323,7 +341,7 @@ public class Verwaltung {
 
                 System.out.printf(FORMAT, "Neue Beschreibung: ");
                 String beschr = Input.readLine();
-                if(beschr == "") {
+                if(beschr.isEmpty()) {
                     continue;
                 }
                 else if(beschr != null) {

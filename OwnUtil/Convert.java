@@ -2,12 +2,14 @@ package OwnUtil;
 
 import Typen.Uhrzeit;
 import OwnUtil.Exceptions.DatumFormatException;
+import OwnUtil.Exceptions.DatumNotFoundException;
 import OwnUtil.Exceptions.UhrzeitFormatException;
+import OwnUtil.Exceptions.UhrzeitNotFoundException;
 import Typen.Datum;
 
 public class Convert {
 
-    public static Datum convertToDatum(String dat) throws DatumFormatException {
+    public static Datum convertToDatum(String dat) throws DatumFormatException, DatumNotFoundException {
         
         if(dat.isEmpty()) {
             throw new DatumFormatException();
@@ -24,14 +26,10 @@ public class Convert {
         catch(NumberFormatException e) {
             throw new DatumFormatException();
         }
-        catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
     }
 
 
-    public static Uhrzeit convertToUhrzeit(String uhrzeit) throws UhrzeitFormatException {
+    public static Uhrzeit convertToUhrzeit(String uhrzeit) throws UhrzeitFormatException, UhrzeitNotFoundException {
         String[] parts = uhrzeit.split(":");
 
         if(parts.length < 2 || parts[0] == null || parts[1] == null) return null;
@@ -43,9 +41,5 @@ public class Convert {
         catch(NumberFormatException e) {
             throw new UhrzeitFormatException();
         }
-        catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
     }
 }
