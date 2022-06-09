@@ -21,13 +21,13 @@ public class CsvIO {
     public static ArrayList<Termin> csvRead() {
         ArrayList<Termin> temp = new ArrayList<>();
 
-        String name;
-        String beschreibung;
-        Datum datum;
-        Uhrzeit uhrzeit;
-        boolean erledigt;
-
         try(BufferedReader br = new BufferedReader(new FileReader(PATHNAME))) {
+
+            String name;
+            String beschreibung;
+            Datum datum;
+            Uhrzeit uhrzeit;
+            boolean erledigt;
 
             String line;
             while ((line = br.readLine()) != null) {
@@ -53,18 +53,19 @@ public class CsvIO {
             }
             catch(ArrayIndexOutOfBoundsException e){
                 System.out.println("Keine Termine gefunden oder erfolglose Uebernahme!");
-                e.printStackTrace();
             }
             catch(Exception e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
             return temp;
         }
     
     public static void csvWrite() {
+
         try {
             createStructure();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.out.println("Fehler bei Erstellen der Ordnerstruktur");
         }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATHNAME))) {
