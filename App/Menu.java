@@ -7,8 +7,9 @@ import OwnUtil.Input;
 import OwnUtil.Output;
 
 public class Menu {
-    // Menue-Zeugs
+
     public static void printMenu() {
+        
         System.out.println("\n\t\tM E N U E\n");
         System.out.println("\t(1) Termine einsehen");
         System.out.println("\t(2) Termin erstellen");
@@ -21,6 +22,7 @@ public class Menu {
     }
 
     public static boolean inputHauptMenu() {
+
         System.out.print(Output.PROMPT);
         String userInput = Input.readLine();
         final String choice = "Von Ihnen gewaehlter Menuepunkt: ";

@@ -17,6 +17,7 @@ public class Uhrzeit {
         this.hours = hours;
     }
 
+    // Getter
     public int getMinutes() {
         return this.minutes;
     }
@@ -25,9 +26,10 @@ public class Uhrzeit {
         return this.hours;
     }
 
+    // Methoden
     @Override
     public String toString() {
-        // Eventuell mit 0 vor einstelligen Zahlen.
+
         String szHours = String.valueOf(this.hours);
         String szMinutes = String.valueOf(this.minutes);
 
