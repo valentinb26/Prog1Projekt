@@ -14,18 +14,18 @@ public class Termin implements Comparable<Termin> {
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr) {
         this.datum = datum;
         this.uhrzeit = uhrzeit;
-        this.name = name;
+        if(name.length() > 30) {
+            this.name = name.substring(0, 30);
+        }
+        else {
+            this.name = name;
+        }
         this.beschr = beschr;
         this.terminId = id;
         id++;
     }
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr, boolean erledigt) {
-        this.datum = datum;
-        this.uhrzeit = uhrzeit;
-        this.name = name;
-        this.beschr = beschr;
-        this.terminId = id;
-        id++;
+        this(datum, uhrzeit, name, beschr);
         this.erledigt = erledigt;
     }
 
