@@ -1,6 +1,7 @@
 package App;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import OwnUtil.Input;
 import OwnUtil.Output;
@@ -38,13 +39,16 @@ public class Verwaltung {
         }
     }
     
-    // Mehrere Termine einsehen
+    // Alle Termine einsehen
     public static void termineEinsehen() {
+
+        ArrayList<Termin> temp = termine;
+        Collections.sort(temp);
 
         Output.printTitle("Kompakte Ansicht");
         System.out.printf("%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
         System.out.println(Output.SEPARATOR_THIN);
-        for(Termin t : termine) {
+        for(Termin t : temp) {
             System.out.printf("%-10s | %-7s     | %-4d | %s\n", t.getDatum().toString(), t.getUhrzeit().toString(), t.getID(), t.getName());
         }
     }
