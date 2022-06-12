@@ -9,8 +9,7 @@ import OwnUtil.Output;
 public class Menu {
 
     public static void printMenu() {
-        
-        //System.out.println("\n>\t\tM E N U E\n>");
+
         Output.printTitle("Menue");
         System.out.println(">\t(1) Termine einsehen");
         System.out.println(">\t(2) Termin erstellen");

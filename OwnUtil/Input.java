@@ -9,10 +9,6 @@ public class Input {
         return sc.nextLine();
     }
 
-    public static String read() {
-        return sc.next();
-    }
-
     public static int readInt() {
         try {
             return Integer.parseInt(readLine());
