@@ -1,7 +1,9 @@
 package App;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
+import Ansicht.KonsolenAnsicht;
 import OwnUtil.Input;
 import OwnUtil.Output;
 import OwnUtil.Exceptions.DatumFormatException;
@@ -37,18 +39,7 @@ public class Verwaltung {
             }
         }
     }
-    
-    // Mehrere Termine einsehen
-    public static void termineEinsehen() {
-
-        Output.printTitle("Kompakte Ansicht");
-        System.out.printf("%-10s | %-7s     | %-4s | %s\n", "DATUM", "UHRZEIT", "ID", "BEZEICHNUNG");
-        System.out.println(Output.SEPARATOR_THIN);
-        for(Termin t : termine) {
-            System.out.printf("%-10s | %-7s     | %-4d | %s\n", t.getDatum().toString(), t.getUhrzeit().toString(), t.getID(), t.getName());
-        }
-    }
-    
+        
     // Termin suchen
     public static void terminSuchen() {
         Output.printTitle("Terminsuche");
@@ -90,18 +81,17 @@ public class Verwaltung {
         
         if(idsNachName != null) {
             System.out.println(Output.SEPARATOR);
-            System.out.println("----- Ergebnisse nach Name:");
+            System.out.println("> Ergebnisse nach Name:\n");
             for(int i = 0; i < idsNachName.length; i++) {
                 if(idsNachName[i] != -1) {
                     terminEinsehen(idsNachName[i]);
                 }
             }
-            
         }
 
         if(idsNachDatum != null) {
             System.out.println(Output.SEPARATOR);
-            System.out.println("----- Ergebnisse nach Datum:");
+            System.out.println("> Ergebnisse nach Datum:\n");
             for(int i = 0; i < idsNachDatum.length; i++) {
                 if(idsNachDatum[i] != -1) {
                     terminEinsehen(idsNachDatum[i]);
@@ -111,7 +101,7 @@ public class Verwaltung {
 
         if(idsSchnitt != null && schnittCounter != 0) {
             System.out.println(Output.SEPARATOR);
-            System.out.println("----- Uebereinstimmung in Name und Datum:");
+            System.out.println("> Uebereinstimmung in Name und Datum:\n");
             for(int i = 0; i < schnittCounter; i++) {
                 terminEinsehen(idsSchnitt[i]);
             }
@@ -166,6 +156,8 @@ public class Verwaltung {
     // Termin erstellen
     public static void terminErstellen() {
 
+        final String FORMAT = "%-25s: ";
+
         Datum datum;
         Uhrzeit uhrzeit;
         String name;
@@ -173,7 +165,7 @@ public class Verwaltung {
 
         Output.printTitle("Terminerstellung");
         
-        System.out.printf("%-20s: ","Datum (DD.MM.YYYY)");
+        System.out.printf(FORMAT,"Datum (DD.MM.YYYY)");
         String szDatum = Input.readLine();
         
         try {
@@ -189,7 +181,7 @@ public class Verwaltung {
             return;
         }
 
-        System.out.printf("%-20s: ", "Uhrzeit (HH:MM)");
+        System.out.printf(FORMAT, "Uhrzeit (HH:MM)");
         String szUhrzeit = Input.readLine();
 
         try {
@@ -205,14 +197,14 @@ public class Verwaltung {
             return;
         }
 
-        System.out.printf("%-20s: ", "Bezeichnung");
+        System.out.printf(FORMAT, "Bezeichnung");
         if((name = Input.readLine()).isEmpty()){
             System.out.println("!! Name muss ausgefuellt sein !!");
             return;
         }
 
-        System.out.printf("%-20s: ", "Beschreibung");
-        if((beschr = Input.readLine()) == "") {
+        System.out.printf(FORMAT, "Beschreibung");
+        if((beschr = Input.readLine()).isEmpty()) {
             beschr = "-";
         }
         
@@ -246,7 +238,6 @@ public class Verwaltung {
         System.out.println("Sind Sie sicher? -> \"J\" eingeben.");
         System.out.println("Abbrechen?       -> alles andere.");
         String input = Input.readLine();
-        System.out.println(input);
 
         if(input.toUpperCase().equals("J")) {
             termine.remove(indexInList);
@@ -274,13 +265,14 @@ public class Verwaltung {
 
         try {
             t = getTerminMitId(inputId);
+            KonsolenAnsicht.einzelAnsicht(inputId);
         }
         catch(TerminNotFoundException e) {
             System.out.println(e.getMessage());
             return;
         }
 
-        System.out.println("\n(D)atum (N)ame (U)hrzeit (B)eschreibung (E)rledigt");
+        System.out.println("(D)atum (N)ame (U)hrzeit (B)eschreibung (E)rledigt");
         System.out.println("Anfangsbuchstaben ohne Leerzeichen getrennt eingeben: (Bspw.: DNU)");
         System.out.print("Eingabe: ");
 

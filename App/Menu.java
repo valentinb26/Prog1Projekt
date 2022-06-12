@@ -10,7 +10,8 @@ public class Menu {
 
     public static void printMenu() {
         
-        System.out.println("\n>\t\tM E N U E\n>");
+        //System.out.println("\n>\t\tM E N U E\n>");
+        Output.printTitle("Menue");
         System.out.println(">\t(1) Termine einsehen");
         System.out.println(">\t(2) Termin erstellen");
         System.out.println(">\t(3) Termin suchen");
@@ -43,7 +44,7 @@ public class Menu {
         switch (userInput) {
         case "1" -> {
             System.out.println("(Termine einsehen)");
-            Verwaltung.termineEinsehen();
+            KonsolenAnsicht.erstelleKompakteAnsicht();
         }
         case "2" -> {
             System.out.println("(Termin erstellen)");

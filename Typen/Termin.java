@@ -1,6 +1,6 @@
 package Typen;
 
-public class Termin {
+public class Termin implements Comparable<Termin> {
 
     private Datum datum;
     private Uhrzeit uhrzeit;
@@ -14,18 +14,18 @@ public class Termin {
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr) {
         this.datum = datum;
         this.uhrzeit = uhrzeit;
-        this.name = name;
+        if(name.length() > 30) {
+            this.name = name.substring(0, 30);
+        }
+        else {
+            this.name = name;
+        }
         this.beschr = beschr;
         this.terminId = id;
         id++;
     }
     public Termin(Datum datum, Uhrzeit uhrzeit, String name, String beschr, boolean erledigt) {
-        this.datum = datum;
-        this.uhrzeit = uhrzeit;
-        this.name = name;
-        this.beschr = beschr;
-        this.terminId = id;
-        id++;
+        this(datum, uhrzeit, name, beschr);
         this.erledigt = erledigt;
     }
 
@@ -76,5 +76,37 @@ public class Termin {
                 + ";" + this.datum
                 + ";" + this.uhrzeit
                 + ";" + this.erledigt;
+    }
+    @Override
+    public int compareTo(Termin t) {
+        // 1. Jahr  2.Monat  3.Tag  4. Stunde  5. Minute
+
+        if(this.datum.getJahr() > t.datum.getJahr()) {
+            return 1;
+        }
+        else if(this.datum.getJahr() == t.datum.getJahr()) {
+            if(this.datum.getMonat() > t.datum.getMonat()) {
+                return 1;
+            }
+            else if(this.datum.getMonat() == t.datum.getMonat()) {
+                if(this.datum.getTag() > t.datum.getTag()) {
+                    return 1;
+                }
+                else if(this.datum.getTag() == t.datum.getTag()) {
+                    if(this.uhrzeit.getHours() > t.uhrzeit.getHours()) {
+                        return 1;
+                    }
+                    else if(this.uhrzeit.getHours() == t.uhrzeit.getHours()) {
+                        if(this.uhrzeit.getMinutes() > t.uhrzeit.getMinutes()) {
+                            return 1;
+                        }
+                        else if(this.uhrzeit.getMinutes() == t.uhrzeit.getMinutes()) {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
     }
 }
