@@ -1,7 +1,6 @@
 package App;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import Ansicht.KonsolenAnsicht;
 import OwnUtil.Input;

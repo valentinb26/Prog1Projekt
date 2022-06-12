@@ -9,10 +9,10 @@ public class About {
 
         System.out.println(
                 "1) Menue-Bedienung:\n " +
-                "\tMenuepunkte werden durch Tastatureingaben aufgerufen.\n\n" +
+                "\tDurch Eingabe der des Menuepunkts vorangestellten Nummer.\n\n" +
 
                 "2) Speichern & Beenden:\n" +
-                "\tNur bei korrekter Beendigung der Anwendung werden Aenderungen uebernommen!\n\n" +
+                "\tNur bei korrekter Beendigung der Anwendung werden \n\tAenderungen uebernommen!\n\n" +
 
                 "3) Datenverwaltung:\n" +
                 "\tIhre Daten werden in einer internen CSV-Datei gespeichert.\n\n" +
