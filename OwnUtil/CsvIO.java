@@ -96,11 +96,12 @@ public class CsvIO {
     public static void createStructure() throws IOException {
         File datei = new File(PATHNAME);
         if(datei.exists() && !datei.isDirectory()){
-            System.out.println(datei + " exists");
+            System.out.println("LOG:" + datei + " exists.");
         }
         else {
-            System.out.println(datei + " does not exist");
+            System.out.println("LOG:" + datei + " does not exist.");
             datei.createNewFile();
+            System.out.println("LOG:" + "Creating file " + datei + " .");
         }
     }
 }
